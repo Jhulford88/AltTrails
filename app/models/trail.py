@@ -19,7 +19,7 @@ class Trail(db.Model):
         add_prefix_for_prod("categories.id")), nullable=False)
 
    #Relationships
-
+    category = db.relationship("Category",back_populates="trail")
 
 
     def to_dict(self):
