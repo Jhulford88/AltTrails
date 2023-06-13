@@ -11,7 +11,7 @@
 .navbar-ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px solid black;
   list-style: none;
 }
