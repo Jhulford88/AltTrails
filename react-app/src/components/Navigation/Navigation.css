@@ -3,8 +3,14 @@
   display: none;
 }
 
+.logo {
+  width: 180px;
+  height: 35px;
+}
+
 .navbar-ul {
   border-bottom: 1px solid black;
+  list-style: none;
 }
 
 

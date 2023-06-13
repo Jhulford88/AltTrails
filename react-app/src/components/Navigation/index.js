@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import logo from "../../AltTrails.png"
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -10,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className='navbar-ul'>
 			<li>
-				<NavLink exact to="/">AltTrails</NavLink>
+				<NavLink exact to="/"><img className='logo' src={logo}></img></NavLink>
 			</li>
 			{isLoaded && (
 				<li>
