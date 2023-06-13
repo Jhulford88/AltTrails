@@ -1,7 +1,13 @@
-.profile-dropdown {
-  position: absolute;
-}
 
 .hidden {
   display: none;
+}
+
+.navbar-ul {
+  border-bottom: 1px solid black;
+}
+
+
+.profile-dropdown {
+  position: absolute;
 }

@@ -8,7 +8,7 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul className=''>
+		<ul className='navbar-ul'>
 			<li>
 				<NavLink exact to="/">AltTrails</NavLink>
 			</li>
