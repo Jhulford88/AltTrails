@@ -12,7 +12,8 @@ class Favorite(db.Model):
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('trails.id')), nullable=False)
 
     # relationships
-
+    users = db.relationship('User', back_populates='favorites')
+    trails = db.relationship('Trail', back_populates='favorites')
 
     def to_dict(self):
         return{

@@ -13,7 +13,9 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('trails.id')), nullable=False)
 
-    # relationships
+    # Relationships
+    users = db.relationship('User', back_populates='reviews')
+    trails = db.relationship('Trail', back_populates='reviews')
 
 
     def to_dict(self):

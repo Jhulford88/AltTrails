@@ -13,7 +13,9 @@ class Trail_Photo(db.Model):
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('trails.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
-    # relationships
+    # Relationships
+    users = db.relationship('User', back_populates='trail_photos')
+    trail = db.relationship('Trail', back_populates='trail_photos')
 
 
     def to_dict(self):

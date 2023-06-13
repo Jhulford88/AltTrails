@@ -20,7 +20,11 @@ class Trail(db.Model):
 
    #Relationships
     category = db.relationship("Category",back_populates="trail")
-
+    trail_photos = db.relationship('Trail_Photo', back_populates='trail', cascade="all, delete" )
+    reviews = db.relationship('Review', back_populates='trails', cascade="all, delete")
+    collections = db.relationship('Trail_Collection', back_populates='trails')
+    favorites = db.relationship('Favorite', back_populates='trails')
+    trail_collections = db.relationship('Trail_Collection', back_populates='trails')
 
     def to_dict(self):
         return {

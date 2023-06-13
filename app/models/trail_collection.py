@@ -12,6 +12,8 @@ class Trail_Collection(db.Model):
     collection_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('collections.id')), nullable=False)
 
     # relationships
+    trails = db.relationship('Trail', back_populates='collections')
+    collections = db.relationship('Collection', back_populates='trail_collections')
 
 
     def to_dict(self):

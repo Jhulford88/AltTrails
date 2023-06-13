@@ -18,6 +18,12 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(2), nullable=False)
 
+    #Relationships
+    reviews = db.relationship('Review', back_populates='users', cascade="all, delete")
+    favorites = db.relationship('Favorite', back_populates='users', cascade="all, delete")
+    trail_photos = db.relationship('Trail_Photo', back_populates='users', cascade="all, delete")
+    collections = db.relationship('Collection', back_populates='users', cascade="all, delete")
+
     @property
     def password(self):
         return self.hashed_password

@@ -11,8 +11,9 @@ class Collection(db.Model):
     name = db.Column(db.String(55), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
-    # relationships
-
+    # Relationships
+    users = db.relationship('User', back_populates='collections')
+    trail_collections = db.relationship('Trail_Collection', back_populates='collections')
 
     def to_dict(self):
         return{
