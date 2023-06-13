@@ -8,8 +8,8 @@ class Review(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True)
-    reviewText = db.Column(db.Text, nullable=False)
-    starRating = db.Column(db.Integer, nullable=False)
+    review_text = db.Column(db.Text, nullable=False)
+    star_rating = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('trails.id')), nullable=False)
 
@@ -18,6 +18,9 @@ class Review(db.Model):
 
     def to_dict(self):
         return{
-            "id":self.id,
-
+            "id": self.id,
+            "reviewText": self.review_text,
+            "starRating": self.star_rating,
+            "userId": self.user_id,
+            "trailId": self.trail_id
             }
