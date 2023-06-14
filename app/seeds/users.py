@@ -31,7 +31,7 @@ def seed_users():
     name13 = User(
         username='Kerouac123', email='Kerouac@aa.io', password='password', first_name='Jack', last_name='Kerouac', city='Chicago', state='IL')
     name14 = User(
-        username='Chekhov123', email='Chekhov@aa.io', password='password', first_name='Anton', last_name='Chekhov', city='Pheonix', state='AR')
+        username='Chekhov123', email='Chekhov@aa.io', password='password', first_name='Anton', last_name='Chekhov', city='Pheonix', state='AZ')
     name15 = User(
         username='Dostoevsky123', email='Dostoevsky@aa.io', password='password', first_name='Fyodor', last_name='Dostoevsky', city='Boise', state='ID')
 

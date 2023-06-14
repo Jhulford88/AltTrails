@@ -4,19 +4,19 @@ from app.models.category import Category
 
 
 def seed_categories():
-    hiking = Category(
+    hiking1 = Category(
         type = "Hiking")
-    mountain_biking = Category(
+    mountain_biking2 = Category(
         type = "Mountain Biking")
-    running = Category(
+    running3 = Category(
         type = "Running")
-    walking = Category(
+    walking4 = Category(
         type = "Walking")
 
-    db.session.add(hiking)
-    db.session.add(mountain_biking)
-    db.session.add(running)
-    db.session.add(walking)
+    db.session.add(hiking1)
+    db.session.add(mountain_biking2)
+    db.session.add(running3)
+    db.session.add(walking4)
     db.session.commit()
 
 

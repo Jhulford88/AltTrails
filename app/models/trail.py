@@ -10,13 +10,15 @@ class Trail(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     trail_name = db.Column(db.String(55), nullable=False, unique=True)
-    park = db.Column(db.String(55), nullable=False)
+    park = db.Column(db.String(55), default='n/a')
     city = db.Column(db.String(55), nullable=False)
     state = db.Column(db.String(2), nullable=False)
     lat = db.Column(db.Float(precision=6), nullable=False)
     lng = db.Column(db.Float(precision=6), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("categories.id")), nullable=False)
+    length = db.Column(db.Float(precision=4), nullable=False)
+    elevation_gain = db.Column(db.Integer, nullable=False)
 
    #Relationships
     category = db.relationship("Category",back_populates="trail")
