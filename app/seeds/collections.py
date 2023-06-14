@@ -21,20 +21,7 @@ def seed_collections():
         name='New York Trails!', user_id=7 )
     demo8 = Collection(
         name='Waterfalls!', user_id=8 )
-    demo9 = Collection(
-        name='Close to the City', user_id=9 )
-    demo10 = Collection(
-        name='Solo Adventures!', user_id=10 )
-    demo11 = Collection(
-        name='Bucketlist Trails!', user_id=11 )
-    demo12 = Collection(
-        name='Along the Appalachian Trail', user_id=12 )
-    demo13 = Collection(
-        name='Highly reccomended!', user_id=13 )
-    demo14 = Collection(
-        name='Feeling Adventurous', user_id=14 )
-    demo15 = Collection(
-        name='Quick and easy Trails!', user_id=15 )
+
 
 
 
@@ -47,13 +34,6 @@ def seed_collections():
     db.session.add(demo6)
     db.session.add(demo7)
     db.session.add(demo8)
-    db.session.add(demo9)
-    db.session.add(demo10)
-    db.session.add(demo11)
-    db.session.add(demo12)
-    db.session.add(demo13)
-    db.session.add(demo14)
-    db.session.add(demo15)
 
     db.session.commit()
 
