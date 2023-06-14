@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className='navbar-ul'>
 			<li>
-				<NavLink exact to="/"><img className='logo' src={logo}></img></NavLink>
+				<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
 			</li>
 			{isLoaded && (
 				<li>
