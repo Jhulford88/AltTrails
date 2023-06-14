@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User
 
-user_routes = Blueprint('trails', __name__)
+trails_routes = Blueprint('trails', __name__)
 
 
 # @user_routes.route('/')

@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import trails from './trails' //is this right?
 
 const rootReducer = combineReducers({
   session,
+  trails //is this right?
 });
 
 
