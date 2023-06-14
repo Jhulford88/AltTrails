@@ -1,41 +1,76 @@
 from app.models import db, environment, SCHEMA
+from sqlalchemy import insert
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import text
-from app.models.favorite import Favorite
+from app.models.favorite import favorites
+
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_favorites():
-    demo1 = Favorite(
-        user_id=1, trail_id=1 )
-    demo2 = Favorite(
-        user_id=1, trail_id=2 )
-    marnie1 = Favorite(
-        user_id=2, trail_id=3 )
-    marnie2 = Favorite(
-        user_id=2, trail_id=4 )
-    bobbie1 = Favorite(
-        user_id=3, trail_id=5 )
-    bobbie2 = Favorite(
-        user_id=3, trail_id=6 )
-    user4_1 = Favorite(
-        user_id=4, trail_id=7 )
-    user4_2 = Favorite(
-        user_id=4, trail_id=8 )
+    favorites_to_seed = [
+        {'user_id':1, 'trail_id':1},
+        {'user_id':1, 'trail_id':2},
+        {'user_id':2, 'trail_id':3},
+        {'user_id':2, 'trail_id':4},
+        {'user_id':3, 'trail_id':5},
+        {'user_id':3, 'trail_id':6},
+        {'user_id':4, 'trail_id':7},
+        {'user_id':4, 'trail_id':8}
+    ]
 
+    for favorite_data in favorites_to_seed:
+        user_id = favorite_data['user_id']
+        trail_id = favorite_data['trail_id']
 
+        favorite = insert(favorites).values(user_id=user_id, trail_id=trail_id)
 
+        try:
+            db.session.execute(favorite)
+            db.session.commit()
+        except IntegrityError as e:
+            db.session.rollback()
 
-    db.session.add(demo1)
-    db.session.add(demo2)
-    db.session.add(marnie1)
-    db.session.add(marnie2)
-    db.session.add(bobbie1)
-    db.session.add(bobbie2)
-    db.session.add(user4_1)
-    db.session.add(user4_2)
-
+def undo_favorites():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM favorites"))
 
     db.session.commit()
+
+
+    # demo1 = Favorite(
+    #     user_id=1, trail_id=1 )
+    # demo2 = Favorite(
+    #     user_id=1, trail_id=2 )
+    # marnie1 = Favorite(
+    #     user_id=2, trail_id=3 )
+    # marnie2 = Favorite(
+    #     user_id=2, trail_id=4 )
+    # bobbie1 = Favorite(
+    #     user_id=3, trail_id=5 )
+    # bobbie2 = Favorite(
+    #     user_id=3, trail_id=6 )
+    # user4_1 = Favorite(
+    #     user_id=4, trail_id=7 )
+    # user4_2 = Favorite(
+    #     user_id=4, trail_id=8 )
+
+
+
+
+    # db.session.add(demo1)
+    # db.session.add(demo2)
+    # db.session.add(marnie1)
+    # db.session.add(marnie2)
+    # db.session.add(bobbie1)
+    # db.session.add(bobbie2)
+    # db.session.add(user4_1)
+    # db.session.add(user4_2)
+
+
+    # db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -44,10 +79,10 @@ def seed_favorites():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_favorites():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM favorites"))
+# def undo_favorites():
+#     if environment == "production":
+#         db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
+#     else:
+#         db.session.execute(text("DELETE FROM favorites"))
 
-    db.session.commit()
+#     db.session.commit()

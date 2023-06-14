@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
-
+from .favorite import favorites
+from sqlalchemy import or_
 
 class Trail(db.Model):
     __tablename__ = 'trails'
@@ -24,9 +24,19 @@ class Trail(db.Model):
     category = db.relationship("Category",back_populates="trail")
     trail_photos = db.relationship('Trail_Photo', back_populates='trail', cascade="all, delete" )
     reviews = db.relationship('Review', back_populates='trails', cascade="all, delete")
-    collections = db.relationship('Trail_Collection', back_populates='trails')
-    favorites = db.relationship('Favorite', back_populates='trails')
-    trail_collections = db.relationship('Trail_Collection', back_populates='trails')
+    # collections = db.relationship('Trail_Collection', back_populates='trails')
+
+    trail_collections = db.relationship(
+        'Collection',
+        secondary='trail_collections',
+        back_populates='trail_collections')
+
+
+    favorites = db.relationship(
+        'User',
+        secondary='favorites',
+        back_populates='favorites',
+        cascade="all, delete")
 
     def to_dict(self):
         return {

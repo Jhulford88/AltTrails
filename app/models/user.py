@@ -1,6 +1,8 @@
 from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .favorite import favorites
+from sqlalchemy import or_
 
 
 class User(db.Model, UserMixin):
@@ -20,9 +22,15 @@ class User(db.Model, UserMixin):
 
     #Relationships
     reviews = db.relationship('Review', back_populates='users', cascade="all, delete")
-    favorites = db.relationship('Favorite', back_populates='users', cascade="all, delete")
     trail_photos = db.relationship('Trail_Photo', back_populates='users', cascade="all, delete")
     collections = db.relationship('Collection', back_populates='users', cascade="all, delete")
+
+    favorites = db.relationship(
+        'Trail',
+        secondary='favorites',
+        back_populates='favorites',
+        cascade="all, delete")
+
 
     @property
     def password(self):

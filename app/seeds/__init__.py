@@ -7,7 +7,6 @@ from .reviews import seed_reviews, undo_reviews
 from .trail_collection import seed_trail_collections, undo_trail_collections
 from .trail_photos import seed_trail_photos, undo_trail_photos
 from .trails import seed_trails, undo_trails
-
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -37,8 +36,8 @@ def seed():
     seed_reviews()
     seed_trail_photos()
     seed_collections()
-    seed_trail_collections
-    seed_favorites
+    seed_trail_collections()
+    seed_favorites()
     # Add other seed functions here
 
 

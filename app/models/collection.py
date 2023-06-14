@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .trail_collection import trail_collection
 
 class Collection(db.Model):
     __tablename__ = "collections"
@@ -13,7 +14,14 @@ class Collection(db.Model):
 
     # Relationships
     users = db.relationship('User', back_populates='collections')
-    trail_collections = db.relationship('Trail_Collection', back_populates='collections')
+
+
+    trail_collections = db.relationship(
+        'Trail',
+         secondary='trail_collections',
+         back_populates='trail_collections')
+
+
 
     def to_dict(self):
         return{
