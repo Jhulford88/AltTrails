@@ -91,7 +91,51 @@ def seed_trails():
     walking8 = Trail(
         trail_name='River Place Panther Hollow and Canyon Trail', park='National Preserve at River Place', city='West Lake Hills', state='TX', lat=30.2980, lng=97.8020, category_id=4, length=5.5, elevation_gain=823)
 
-    db.session.add(trail1)
+    trails = [hiking1,
+              hiking2,
+              hiking3,
+              hiking4,
+              hiking5,
+              hiking6,
+              hiking7,
+              hiking8,
+              hiking9,
+              hiking10,
+              hiking11,
+              hiking12,
+              hiking13,
+              hiking14,
+              hiking15,
+              biking1,
+              biking2,
+              biking3,
+              biking4,
+              biking5,
+              biking6,
+              biking7,
+              biking8,
+              biking9,
+              biking10,
+              biking11,
+              biking12,
+              running1,
+              running2,
+              running3,
+              running4,
+              running5,
+              running6,
+              running7,
+              running8,
+              walking1,
+              walking2,
+              walking3,
+              walking4,
+              walking5,
+              walking6,
+              walking7,
+              walking8]
+
+    [db.session.add(trail) for trail in trails]
 
     db.session.commit()
 
