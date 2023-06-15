@@ -27,7 +27,7 @@ class Trail(db.Model):
     category = db.relationship("Category",back_populates="trail")
     trail_photos = db.relationship('Trail_Photo', back_populates='trail', cascade="all, delete" )
     reviews = db.relationship('Review', back_populates='trails', cascade="all, delete")
-    user = db.relationiship('User', back_populates='trail')
+    user = db.relationship('User', back_populates='trail')
 
     trail_collections = db.relationship(
         'Collection',
