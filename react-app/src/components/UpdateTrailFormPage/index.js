@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoriesThunk } from '../../store/categories';
-import { postNewTrailThunk } from '../../store/trails';
-import OpenModalButton from '../OpenModalButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
+import { getSingleTrailThunk } from "../../store/trails";
+//import updateTrailThunk here
 
 //this is used to convert the backend errors into a format that the frontend can use
 const caseHelper = (backendstring) => {
@@ -24,34 +22,60 @@ const caseHelper = (backendstring) => {
     return backendToFrontend[backendstring]
 }
 
-function CreateTrailFormPage() {
+function UpdateTrailFormPage() {
 
     //initialize things
-    const history = useHistory();
     const dispatch = useDispatch();
+    const history = useHistory();
+    const { trailId } = useParams()
 
-    //state slices
-    const [trailName, setTrailName] = useState('');
-    const [park, setPark] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [lat, setLat] = useState(0.0);
-    const [lng, setLng] = useState(0.0);
-    const [categoryId, setCategoryId] = useState('');
-    const [length, setLength] = useState(0.0);
-    const [elevationGain, setElevationGain] = useState(0);
-    const [coverPhoto, setCoverPhoto] = useState('');
-    const [errors, setErrors] = useState({});
 
 
     //useSelectors
     const categories = useSelector(state => state.categories.categories);
     const loggedIn = useSelector(state => state.session.user);
+    const singleTrail = useSelector(state => state.trails.singleTrail)
+
+
 
     // Fetch category data
     useEffect(() => {
-        dispatch(getCategoriesThunk())
+        if (!categories) dispatch(getCategoriesThunk())
     }, [dispatch])
+
+
+
+    //state slices
+    const [trailName, setTrailName] = useState(singleTrail?.trailName || '');
+    const [park, setPark] = useState(singleTrail?.park || '');
+    const [city, setCity] = useState(singleTrail?.city || '');
+    const [state, setState] = useState(singleTrail?.state || '');
+    const [lat, setLat] = useState(singleTrail?.lat || 0.0);
+    const [lng, setLng] = useState(singleTrail?.lng || 0.0);
+    const [categoryId, setCategoryId] = useState(singleTrail?.categoryId || '');
+    const [length, setLength] = useState(singleTrail?.length || 0.0);
+    const [elevationGain, setElevationGain] = useState(singleTrail?.elevationGain || 0);
+    const [coverPhoto, setCoverPhoto] = useState(singleTrail?.coverPhoto || '');
+    const [errors, setErrors] = useState({});
+
+
+    useEffect(() => {
+        if(!singleTrail) {
+            dispatch(getSingleTrailThunk(trailId))
+        } else {
+            setTrailName(singleTrail.trailName);
+            setPark(singleTrail.park);
+            setCity(singleTrail.city);
+            setState(singleTrail.state);
+            setLat(singleTrail.lat);
+            setLng(singleTrail.lng);
+            setCategoryId(singleTrail.categoryId);
+            setLength(singleTrail.length);
+            setElevationGain(singleTrail.elevationGain);
+            setCoverPhoto(singleTrail.coverPhoto);
+        }
+    }, [dispatch, trailId])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -89,16 +113,13 @@ function CreateTrailFormPage() {
         console.log('formdata on form page...........', formData)
 
         // Post project to the backend
-        const newTrailOrErrors = await dispatch(postNewTrailThunk(formData))
-        console.log('newTrailOrErrors...............',newTrailOrErrors)
-        console.log('newTrailOrErrors.errors...............',newTrailOrErrors.errors)
-        // console.log('newTrailOrErrors.errors.errors...............',newTrailOrErrors.errors.errors)
+        const updatedTrailOrErrors = await dispatch(updateTrailThunk(trailId, formData))
 
         // Handle backend validation errors
-        if ('errors' in newTrailOrErrors) {
+        if ('errors' in updatedTrailOrErrors) {
             // handle errors from the backend which comes in as an object with a key of errors
-            console.error('The backend returned validation errors when creating a new form', newTrailOrErrors)
-            const formErrors = newTrailOrErrors.errors.errors
+            console.error('The backend returned validation errors when creating a new form', updatedTrailOrErrors)
+            const formErrors = updatedTrailOrErrors.errors.errors
             let errorObj = {}
 
             Object.keys(formErrors).forEach((errorKey) => {
@@ -109,51 +130,22 @@ function CreateTrailFormPage() {
             setErrors(errorObj)
 
         } else {
-            if (newTrailOrErrors) {
-                console.log("Trail successfully created! ")
-                setTrailName('');
-                setPark('');
-                setCity('');
-                setState('');
-                setLat(0.0);
-                setLng(0.0);
-                setCategoryId('');
-                setLength(0.0);
-                setElevationGain(0);
-                setCoverPhoto('');
-
-                history.push(`/trails/${newTrailOrErrors.id}`)
+            if (updatedTrailOrErrors) {
+                history.push(`/trails/${updatedTrailOrErrors.id}`)
             }
             else {
-                console.error('The postNewTrailThunk returned undefined when creating this trail')
+                console.error('The updateTrailThunk returned undefined when updating this trail')
             }
         }
     }
 
-    if (!loggedIn) {
-        return (
-            <>
-                <h3>
-                    Please login or signup with Jumpstarter to create a project!
-                </h3>
-                <OpenModalButton
-                    buttonText="Log In"
-                    modalComponent={<LoginFormModal />}
-                />
-
-                <OpenModalButton
-                    buttonText="Sign Up"
-                    modalComponent={<SignupFormModal />}
-                />
-            </>
-        )
-    }
+    if (!singleTrail) return <p>Trail loading...</p>
 
 
     return (
         <div>
-            <h1>Create a New Trail!</h1>
-            <form className='create-new-trail-form' onSubmit={handleSubmit} >
+            <h1>Update your Trail!</h1>
+            <form className='update-trail-form' onSubmit={handleSubmit} >
                 <label>
                     Trail Name <span className='errors'>{errors?.trailName}</span>
                     <input
@@ -248,11 +240,11 @@ function CreateTrailFormPage() {
                         onChange={(e) => setCoverPhoto(e.target.value)}
                     />
                 </label>
-                <button type='submit'>Create Trail</button>
+                <button type='submit'>Update Trail</button>
             </form>
         </div>
     )
 
 }
 
-export default CreateTrailFormPage
+export default UpdateTrailFormPage
