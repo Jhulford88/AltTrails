@@ -23,7 +23,7 @@ const LandingPage = () => {
         return (
             <div key={trail.id} className="trail-card">
                 <div className="trail-card-img-container">
-                    <img className="trail-card-img" alt="Trail Image" src={trail.photos[0].photo}></img>
+                    <img className="trail-card-img" alt="Trail Image" src={trail?.photos[0]?.photo}></img>
                 </div>
                 <div>{trail.trailName}</div>
                 <div>{trail.park}</div>
@@ -33,6 +33,9 @@ const LandingPage = () => {
         )
     })
 
+    if (!trails) return (
+        <h1>Loading...</h1>
+    )
 
     return (
         <div>
