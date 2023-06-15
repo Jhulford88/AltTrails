@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship('Review', back_populates='users', cascade="all, delete")
     trail_photos = db.relationship('Trail_Photo', back_populates='users', cascade="all, delete")
     collections = db.relationship('Collection', back_populates='users', cascade="all, delete")
-    trail = db.relationship('User', back_populates='user')
+    # trail = db.relationship('User', back_populates='user')
 
     favorites = db.relationship(
         'Trail',

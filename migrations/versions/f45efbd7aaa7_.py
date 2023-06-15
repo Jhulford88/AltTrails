@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: be4b1240e15b
+Revision ID: f45efbd7aaa7
 Revises: 
-Create Date: 2023-06-14 17:43:48.105085
+Create Date: 2023-06-15 08:18:00.514113
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'be4b1240e15b'
+revision = 'f45efbd7aaa7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -55,7 +55,10 @@ def upgrade():
     sa.Column('category_id', sa.Integer(), nullable=False),
     sa.Column('length', sa.Float(precision=4), nullable=False),
     sa.Column('elevation_gain', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('cover_photo', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('trail_name')
     )
@@ -80,7 +83,7 @@ def upgrade():
     op.create_table('trail_collections',
     sa.Column('trail_id', sa.Integer(), nullable=False),
     sa.Column('collection_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['collection_id'], ['trails.id'], ),
+    sa.ForeignKeyConstraint(['collection_id'], ['collections.id'], ),
     sa.ForeignKeyConstraint(['trail_id'], ['trails.id'], ),
     sa.PrimaryKeyConstraint('trail_id', 'collection_id'),
     sa.UniqueConstraint('trail_id', 'collection_id')
