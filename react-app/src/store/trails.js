@@ -8,7 +8,7 @@ const GET_ALL_TRAILS = 'trails/getAllTrails'
 const getAllTrails = (trails) => {
     return {
       type: GET_ALL_TRAILS,
-      projects
+      trails
     }
   }
 
@@ -19,6 +19,7 @@ export const getAllTrailsThunk = () => async (dispatch) => {
     const res = await fetch('/api/trails')
     if (res.ok) {
       const { trails } = await res.json()
+      console.log('trails in thunk response from backend.....................',trails)
       dispatch(getAllTrails(trails))
       return
     } else {
@@ -36,7 +37,7 @@ const trailsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_ALL_TRAILS:
-
+            return { ...state, allTrails: { ...normalizeObj(action.trails)}}
         default:
           return state
     }

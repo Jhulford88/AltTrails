@@ -1,0 +1,9 @@
+.trail-card {
+    border: 1px solid black;
+
+}
+
+.trail-cards-container {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,15 +1,18 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Trail
+
 
 trails_routes = Blueprint('trails', __name__)
 
 
-# @user_routes.route('/')
-# @login_required
-# def users():
-#     """
-#     Query for all users and returns them in a list of user dictionaries
-#     """
-#     users = User.query.all()
-#     return {'users': [user.to_dict() for user in users]}
+@trails_routes.route('/')
+
+def getAllTrails():
+    """
+    Grabs all the Trails with the following joins: ???.
+    Should return a JSON obj for the fronted to catch
+    """
+    trails = Trail.query.all()
+    response = [trail.to_dict() for trail in trails]
+    return {"trails": response}
