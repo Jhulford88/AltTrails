@@ -2,6 +2,7 @@ import { normalizeObj } from './helpers';
 
 // ------------ TYPE VARIABLES ------------
 const GET_ALL_TRAILS = 'trails/getAllTrails'
+const POST_NEW_TRAIL = 'trails/postNewTrail'
 
 
 // ---------- ACTION CREATORS ----------
@@ -10,7 +11,14 @@ const getAllTrails = (trails) => {
       type: GET_ALL_TRAILS,
       trails
     }
+}
+
+const postNewTrail = (trail) => {
+  return {
+    type: POST_NEW_TRAIL,
+    trail
   }
+}
 
 
 
@@ -27,33 +35,33 @@ export const getAllTrailsThunk = () => async (dispatch) => {
     }
 }
 
-export const postNewTrailThunk = (newProject) => async (dispatch) => {
-  // try {
-  //   console.log("Making post request to new project route")
-  //   const res = await fetch('/api/projects/new', {
-  //     method: "POST",
-  //     body: newProject
-  //   })
-  //   console.log("Post request", res)
+export const postNewTrailThunk = (newTrail) => async (dispatch) => {
+  try {
+    console.log("Making post request to new trail route", newTrail)
+    const res = await fetch('/api/trails/new', {
+      method: "POST",
+      body: newTrail
+    })
+    console.log("Post request", res)
 
-  //   if (res.ok) {
-  //     console.log("Response OK")
-  //     const response = await res.json()
-  //     console.log("Response data", response)
-  //     dispatch(postNewProject(response.project))
-  //     return response.project
-  //   } else {
-  //     console.error("Response not OK. Status code:", res.status)
-  //     const response = await res.json()
-  //     console.log("Response when res is not okay and there are errors:", response)
-  //     return {
-  //       errors: { ...response }
-  //     }
-  //   }
-  // } catch (e) {
-  //   console.error('Error caught in postNewProjectThunk', e)
-  //   return e
-  // }
+    if (res.ok) {
+      console.log("Response OK")
+      const response = await res.json()
+      console.log("Response data", response)
+      dispatch(postNewTrail(response.trail))
+      return response.trail
+    } else {
+      console.error("Response not OK. Status code:", res.status)
+      const response = await res.json()
+      console.log("Response when res is not okay and there are errors:", response)
+      return {
+        errors: { ...response }
+      }
+    }
+  } catch (e) {
+    console.error('Error caught in postNewTrailThunk', e)
+    return e
+  }
 }
 
 
@@ -70,6 +78,8 @@ const trailsReducer = (state = initialState, action) => {
             return { ...state, allTrails: { ...normalizeObj(action.trails)}}
         default:
           return state
+        case POST_NEW_TRAIL:
+          return { ...state, singleTrail: { ...action.trail } }
     }
 }
 

@@ -86,9 +86,13 @@ function CreateTrailFormPage() {
         formData.append("elevation_gain", elevationGain)
         formData.append("cover_photo", coverPhoto)
 
+        console.log('formdata on form page...........', formData)
 
         // Post project to the backend
         const newTrailOrErrors = await dispatch(postNewTrailThunk(formData))
+        console.log('newTrailOrErrors...............',newTrailOrErrors)
+        console.log('newTrailOrErrors.errors...............',newTrailOrErrors.errors)
+        // console.log('newTrailOrErrors.errors.errors...............',newTrailOrErrors.errors.errors)
 
         // Handle backend validation errors
         if ('errors' in newTrailOrErrors) {
@@ -118,8 +122,9 @@ function CreateTrailFormPage() {
                 setElevationGain(0);
                 setCoverPhoto('');
 
-                history.push(`/trails/${newTrailOrErrors.id}`)
-            } else {
+                // history.push(`/trails/${newTrailOrErrors.id}`)
+            }
+            else {
                 console.error('The postNewTrailThunk returned undefined when creating this trail')
             }
         }
@@ -243,6 +248,7 @@ function CreateTrailFormPage() {
                         onChange={(e) => setCoverPhoto(e.target.value)}
                     />
                 </label>
+                <button type='submit'>Create Trail</button>
             </form>
         </div>
     )

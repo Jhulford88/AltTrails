@@ -15,7 +15,7 @@ class CreateTrailForm(FlaskForm):
                 message="Please use the state's two character abbreviation."
             )])
     lat = DecimalField('Latitude', validators=[DataRequired()])
-    lng = DecimalField('Latitude', validators=[DataRequired()])
+    lng = DecimalField('Longitude', validators=[DataRequired()])
     category_id = IntegerField("Category ID", validators=[DataRequired()])
     length = DecimalField('Length', validators=[DataRequired()])
     elevation_gain = IntegerField("Elevation Gain", validators=[DataRequired()])
