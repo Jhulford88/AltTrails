@@ -3,7 +3,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoriesThunk } from '../../store/categories';
 import { getSingleTrailThunk } from "../../store/trails";
-//import updateTrailThunk here
+import { updateTrailThunk } from '../../store/trails';
+
 
 //this is used to convert the backend errors into a format that the frontend can use
 const caseHelper = (backendstring) => {
@@ -31,17 +32,14 @@ function UpdateTrailFormPage() {
 
 
 
-    //useSelectors
     const categories = useSelector(state => state.categories.categories);
-    const loggedIn = useSelector(state => state.session.user);
-    const singleTrail = useSelector(state => state.trails.singleTrail)
-
-
-
-    // Fetch category data
     useEffect(() => {
         if (!categories) dispatch(getCategoriesThunk())
     }, [dispatch])
+
+
+
+    const singleTrail = useSelector(state => state.trails.singleTrail)
 
 
 
@@ -116,6 +114,7 @@ function UpdateTrailFormPage() {
         const updatedTrailOrErrors = await dispatch(updateTrailThunk(trailId, formData))
 
         // Handle backend validation errors
+        if (!updatedTrailOrErrors) return null
         if ('errors' in updatedTrailOrErrors) {
             // handle errors from the backend which comes in as an object with a key of errors
             console.error('The backend returned validation errors when creating a new form', updatedTrailOrErrors)

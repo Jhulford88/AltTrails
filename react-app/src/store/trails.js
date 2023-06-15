@@ -4,6 +4,7 @@ import { normalizeObj } from './helpers';
 const GET_ALL_TRAILS = 'trails/getAllTrails'
 const POST_NEW_TRAIL = 'trails/postNewTrail'
 const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
+const UPDATE_TRAIL = 'trails/updateTrail'
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -24,6 +25,14 @@ const getSingleTrail = (trail) => {
   return {
     type: GET_SINGLE_TRAIL,
     trail
+  }
+}
+
+const updateTrail = (trail, id) => {
+  return {
+    type: UPDATE_TRAIL,
+    trail,
+    id
   }
 }
 
@@ -83,6 +92,31 @@ export const getSingleTrailThunk = (id) => async (dispatch) => {
   }
 }
 
+export const updateTrailThunk = (id, trail) => async dispatch => {
+  try {
+    // console.log("Making post request to update trail route", trail)
+    const res = await fetch(`/api/trails/${id}/update`, {
+      method: "PUT",
+      body: trail
+    })
+    console.log("Edit request", res)
+
+    if (res.ok) {
+      console.log("Edit request OK", res)
+      const response = await res.json();
+      dispatch(updateTrail(response.trail, id))
+      return response.trail;
+    } else {
+      console.error('Edit response not OK')
+      const response = await res.json()
+      console.error("Edit response", response)
+      return response;
+    }
+  } catch (e) {
+    console.error("Error making edit request for trail", e)
+  }
+}
+
 
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {} }
@@ -98,6 +132,10 @@ const trailsReducer = (state = initialState, action) => {
           return { ...state, singleTrail: { ...action.trail } }
         case GET_SINGLE_TRAIL:
           return { ...state, singleTrail: { ...action.trail } }
+        case UPDATE_TRAIL:
+          let newEditState = { ...state }
+          newEditState.allTrails[action.id] = action.trail
+          return newEditState
         default:
           return state
     }

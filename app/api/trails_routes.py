@@ -72,3 +72,58 @@ def get_single_trail(id):
 
     response = single_trail.to_dict()
     return {"single_trail": response}
+
+
+@trails_routes.route("/<int:id>/update", methods=["PUT"])
+@login_required
+def update_trail(id):
+    print("Updating trail", id)
+    edit_form = CreateTrailForm()
+    edit_form["csrf_token"].data = request.cookies["csrf_token"]
+    print("FORM", edit_form)
+
+    if edit_form.validate_on_submit():
+        data = edit_form.data
+
+
+        updated_trail = Trail.query.get(id)
+
+        if updated_trail is None:
+            return {"errors": "Trail does not exist"}, 404
+
+        if updated_trail.user_id != current_user.id:
+            return {"errors": "Forbidden"}, 401
+
+        if data["project_name"]:
+            updated_trail.trail_name = data["trail_name"]
+        if data["park"]:
+            updated_trail.park = data["park"]
+        if data["city"]:
+            updated_trail.city = data["city"]
+        if data["state"]:
+            updated_trail.state = data["state"]
+        if data["lat"]:
+            updated_trail.lat = data["lat"]
+        if data["lng"]:
+            updated_trail.lng = data["lng"]
+        if data["category_id"]:
+            updated_trail.category_id = data["category_id"]
+        if data["length"]:
+            updated_trail.length = data["length"]
+        if data["elevation_gain"]:
+            updated_trail.elevation_gain = data["elevation_gain"]
+        if data["cover_photo"]:
+            updated_trail.cover_photo = data["cover_photo"]
+
+        db.session.commit()
+
+        print("This is your new Trail", updated_trail)
+        return (
+            {"trail": updated_trail.to_dict()},
+            200,
+            {"Content-Type": "application/json"},
+        )
+
+    if edit_form.errors:
+        print("There were some form errors", edit_form.errors)
+        return {"errors": edit_form.errors}, 400, {"Content-Type": "application/json"}
