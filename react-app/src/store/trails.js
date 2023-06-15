@@ -25,7 +25,37 @@ export const getAllTrailsThunk = () => async (dispatch) => {
     } else {
       console.log("Problem with loading all trails")
     }
-  }
+}
+
+export const postNewTrailThunk = (newProject) => async (dispatch) => {
+  // try {
+  //   console.log("Making post request to new project route")
+  //   const res = await fetch('/api/projects/new', {
+  //     method: "POST",
+  //     body: newProject
+  //   })
+  //   console.log("Post request", res)
+
+  //   if (res.ok) {
+  //     console.log("Response OK")
+  //     const response = await res.json()
+  //     console.log("Response data", response)
+  //     dispatch(postNewProject(response.project))
+  //     return response.project
+  //   } else {
+  //     console.error("Response not OK. Status code:", res.status)
+  //     const response = await res.json()
+  //     console.log("Response when res is not okay and there are errors:", response)
+  //     return {
+  //       errors: { ...response }
+  //     }
+  //   }
+  // } catch (e) {
+  //   console.error('Error caught in postNewProjectThunk', e)
+  //   return e
+  // }
+}
+
 
 
 // --------- INITIAL STATE -------------
