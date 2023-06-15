@@ -19,12 +19,15 @@ class Trail(db.Model):
         add_prefix_for_prod("categories.id")), nullable=False)
     length = db.Column(db.Float(precision=4), nullable=False)
     elevation_gain = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("user.id")), nullable=False)
+    cover_photo = db.Column(db.String, nullable=False)
 
    #Relationships
     category = db.relationship("Category",back_populates="trail")
     trail_photos = db.relationship('Trail_Photo', back_populates='trail', cascade="all, delete" )
     reviews = db.relationship('Review', back_populates='trails', cascade="all, delete")
-    # collections = db.relationship('Trail_Collection', back_populates='trails')
+    user = db.relationiship('User', back_populates='trail')
 
     trail_collections = db.relationship(
         'Collection',

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User, Trail
+from ..forms.create_trail_form import CreateTrailForm
 
 
 trails_routes = Blueprint('trails', __name__)
