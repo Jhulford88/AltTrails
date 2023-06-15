@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getSingleTrailThunk } from "../../store/trails";
 
 
 const TrailDetailPage = () => {
@@ -21,7 +22,10 @@ const TrailDetailPage = () => {
       }, [dispatch, trailId])
 
     return (
-        <div>hello from trail detail page</div>
+        <div>
+            <div>hello from trail detail page</div>
+            <div>{singleTrail.trailName}</div>
+        </div>
     )
 }
 

@@ -57,3 +57,18 @@ def post_new_trail():
     if form.errors:
         print("There were some form errors", form.errors)
         return {"errors": form.errors}, 400, {"Content-Type": "application/json"}
+
+
+@trails_routes.route("/<int:id>")
+def get_single_trail(id):
+    """
+    Grabs a single trail by it's id
+    """
+    single_trail = Trail.query.get(id)
+    # print("project...................................", single_project)
+
+    if single_trail is None:
+        return {"errors": "Project not Found"}
+
+    response = single_trail.to_dict()
+    return {"single_trail": response}

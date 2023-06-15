@@ -3,7 +3,7 @@ import { normalizeObj } from './helpers';
 // ------------ TYPE VARIABLES ------------
 const GET_ALL_TRAILS = 'trails/getAllTrails'
 const POST_NEW_TRAIL = 'trails/postNewTrail'
-
+const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -20,7 +20,12 @@ const postNewTrail = (trail) => {
   }
 }
 
-
+const getSingleTrail = (trail) => {
+  return {
+    type: GET_SINGLE_TRAIL,
+    trail
+  }
+}
 
 // ---------- THUNKS ----------
 export const getAllTrailsThunk = () => async (dispatch) => {
@@ -65,6 +70,19 @@ export const postNewTrailThunk = (newTrail) => async (dispatch) => {
 }
 
 
+export const getSingleTrailThunk = (id) => async (dispatch) => {
+  console.log("this is the id", id)
+  const res = await fetch(`/api/trails/${id}`)
+  if (res.ok) {
+    const { single_trail } = await res.json()
+    dispatch(getSingleTrail(single_trail))
+    return
+  } else {
+    const { errors } = await res.json()
+    return errors
+  }
+}
+
 
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {} }
@@ -75,11 +93,13 @@ const trailsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_ALL_TRAILS:
-            return { ...state, allTrails: { ...normalizeObj(action.trails)}}
-        default:
-          return state
+          return { ...state, allTrails: { ...normalizeObj(action.trails)}}
         case POST_NEW_TRAIL:
           return { ...state, singleTrail: { ...action.trail } }
+        case GET_SINGLE_TRAIL:
+          return { ...state, singleTrail: { ...action.trail } }
+        default:
+          return state
     }
 }
 
