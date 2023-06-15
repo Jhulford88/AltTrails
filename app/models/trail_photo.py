@@ -22,7 +22,6 @@ class Trail_Photo(db.Model):
         return{
             'id': self.id,
             'photo': self.photo,
-            'description': self.description,
             'trailId': self.trail_id,
             'userId': self.user_id
             }

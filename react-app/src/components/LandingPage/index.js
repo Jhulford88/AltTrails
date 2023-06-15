@@ -21,10 +21,14 @@ const LandingPage = () => {
 
     const cards = Object.values(trails)?.map(trail => {
         return (
-            <div className="trail-card">
+            <div key={trail.id} className="trail-card">
+                <div className="trail-card-img-container">
+                    <img className="trail-card-img" alt="Trail Image" src={trail.photos[0].photo}></img>
+                </div>
                 <div>{trail.trailName}</div>
                 <div>{trail.park}</div>
                 <div>{trail.city}, {trail.state}</div>
+                <div>Length: {trail.length}mi</div>
             </div>
         )
     })
