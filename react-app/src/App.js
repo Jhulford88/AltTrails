@@ -11,6 +11,7 @@ import TrailDetailPage from "./components/TrailDetailPage";
 import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
 import myTrailsPage from "./components/myTrailsPage";
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,18 +33,18 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/current">
-            <myTrailsPage />
-          </Route>
           <Route exact path="/trails/new">
             <CreateTrailFormPage />
           </Route>
           <Route exact path="/trails/:trailId">
           <TrailDetailPage />
-        </Route>
-        <Route exact path="/trails/:trailId/update">
-          <UpdateTrailFormPage />
-        </Route>
+          </Route>
+          <Route exact path="/trails/:trailId/update">
+            <UpdateTrailFormPage />
+          </Route>
+          <Route exact path="/current">
+            <myTrailsPage />
+          </Route>
         </Switch>
       )}
     </>
