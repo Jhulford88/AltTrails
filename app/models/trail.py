@@ -22,6 +22,7 @@ class Trail(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
     cover_photo = db.Column(db.String, nullable=False)
+    description = db.Column(db.Text, nullable=False)
 
    #Relationships
     category = db.relationship("Category",back_populates="trail")
@@ -54,5 +55,6 @@ class Trail(db.Model):
             'length': self.length,
             'coverPhoto': self.cover_photo,
             'user':self.user.to_dict(),
-            "photos": [photo.to_dict() for photo in self.trail_photos]
+            "photos": [photo.to_dict() for photo in self.trail_photos],
+            "description": self.description
         }

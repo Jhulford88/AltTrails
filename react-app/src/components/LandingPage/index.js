@@ -25,7 +25,7 @@ const LandingPage = () => {
                 history.push(`/trails/${trail.id}`)
               }}>
                 <div className="trail-card-img-container">
-                    <img className="landing-trail-card-img" alt="Trail Image" src={trail?.photos[0]?.photo}></img>
+                    <img className="landing-trail-card-img" alt="Trail Image" src={trail?.coverPhoto}></img>
                 </div>
                 <div>{trail.trailName}</div>
                 <div>{trail.park}</div>

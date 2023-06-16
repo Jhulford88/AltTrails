@@ -41,8 +41,9 @@ def post_new_trail():
             category_id=data["category_id"],
             length=data["length"],
             elevation_gain=data["elevation_gain"],
-            user_id=current_user.id,##############
-            cover_photo=data["cover_photo"]
+            user_id=current_user.id,
+            cover_photo=data["cover_photo"],
+            description=data["description"]
         )
         print('newTrail in backend...........', new_trail)
         db.session.add(new_trail)
@@ -114,6 +115,8 @@ def update_trail(id):
             updated_trail.elevation_gain = data["elevation_gain"]
         if data["cover_photo"]:
             updated_trail.cover_photo = data["cover_photo"]
+        if data["description"]:
+            updated_trail.description = data["description"]
 
         db.session.commit()
 

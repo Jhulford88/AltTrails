@@ -34,7 +34,7 @@ const TrailDetailPage = () => {
                 <div>{singleTrail.park}</div>
                 <div>{singleTrail.length}</div>
                 <div>{singleTrail.elevationGain}</div>
-                <div>Trail description goes here</div>
+                <div>{singleTrail.description}</div>
                 <button className="update-button" onClick={() => history.push(`/trails/${trailId}/update`)}>Update</button>
                 <OpenModalButton
                     className="trail-delete-button"

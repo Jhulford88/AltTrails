@@ -20,6 +20,7 @@ const caseHelper = (backendstring) => {
         length: "length",
         elevation_gain: "elevationGain",
         cover_photo: "coverPhoto",
+        description: "description"
     };
     return backendToFrontend[backendstring]
 }
@@ -41,6 +42,7 @@ function CreateTrailFormPage() {
     const [length, setLength] = useState(0.0);
     const [elevationGain, setElevationGain] = useState(0);
     const [coverPhoto, setCoverPhoto] = useState('');
+    const [description, setDescription] = useState('');
     const [errors, setErrors] = useState({});
 
 
@@ -68,6 +70,8 @@ function CreateTrailFormPage() {
         if (length < .1) newErrors['length'] = "Length is required!"
         if (elevationGain < 1) newErrors['elevationGain'] = "Elevation gain is required!"
         if (coverPhoto.length < 1) newErrors['coverPhoto'] = "Cover Photo is required!"
+        if (description.length < 1) newErrors['description'] = "Description is required!"
+
 
         setErrors(newErrors);
         if (Object.keys(newErrors).length) return;
@@ -85,6 +89,7 @@ function CreateTrailFormPage() {
         formData.append("length", length)
         formData.append("elevation_gain", elevationGain)
         formData.append("cover_photo", coverPhoto)
+        formData.append("description", description)
 
         console.log('formdata on form page...........', formData)
 
@@ -121,6 +126,7 @@ function CreateTrailFormPage() {
                 setLength(0.0);
                 setElevationGain(0);
                 setCoverPhoto('');
+                setDescription('');
 
                 history.push(`/trails/${newTrailOrErrors.id}`)
             }
@@ -238,6 +244,16 @@ function CreateTrailFormPage() {
                         placeholder='Elevation Gain'
                         onChange={(e) => setElevationGain(e.target.value)}
                     />
+                </label>
+                <label>
+                    Description<span className='errors'>{errors?.description}</span>
+                    <textarea
+                        type='text'
+                        value={description}
+                        placeholder='Tell people about this trail...'
+                        onChange={(e) => setDescription(e.target.value)}
+                        rows="7" cols="50">
+                    </textarea>
                 </label>
                 <label>
                     Cover Photo<span className='errors'>{errors?.coverPhoto}</span>

@@ -20,3 +20,7 @@ class CreateTrailForm(FlaskForm):
     length = DecimalField('Length', validators=[DataRequired()])
     elevation_gain = IntegerField("Elevation Gain", validators=[DataRequired()])
     cover_photo = StringField('Cover Photo', validators=[DataRequired()])
+    description = TextAreaField(
+        "Description",
+        validators=[DataRequired()],
+    )
