@@ -9,7 +9,7 @@ import LandingPage from "./components/LandingPage";
 import CreateTrailFormPage from "./components/CreateTrailFormPage";
 import TrailDetailPage from "./components/TrailDetailPage";
 import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
-import myTrailsPage from "./components/myTrailsPage";
+import MyTrailsPage from "./components/myTrailsPage";
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
             <UpdateTrailFormPage />
           </Route>
           <Route exact path="/current">
-            <myTrailsPage />
+            <MyTrailsPage />
           </Route>
         </Switch>
       )}

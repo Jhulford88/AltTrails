@@ -153,3 +153,19 @@ def delete_single_project(id):
     db.session.commit()
 
     return {"message": "Succesfully Deleted"}
+
+
+@trails_routes.route("/current")
+def get_current_user_trails():
+    """
+    Grabs all the spots owned by the current user
+    """
+
+    id = current_user.id
+    print("This is the id of the current user.........", id)
+
+    trails = Trail.query.filter(Trail.user_id == id)
+
+    res = [trail.to_dict() for trail in trails]
+
+    return {"trails": res}

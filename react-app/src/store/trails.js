@@ -6,6 +6,7 @@ const POST_NEW_TRAIL = 'trails/postNewTrail'
 const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
 const UPDATE_TRAIL = 'trails/updateTrail'
 const DELETE_TRAIL= "trails/deleteTrail"
+const GET_CURRENT_TRAILS = "trails/getCurrentTrails"
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -41,6 +42,13 @@ const deleteTrail = (trailId) => {
   return {
     type: DELETE_TRAIL,
     trailId
+  }
+}
+
+const getCurrentTrails = (trails) => {
+  return {
+    type: GET_CURRENT_TRAILS,
+    trails
   }
 }
 
@@ -134,9 +142,19 @@ export const deleteTrailThunk = (trailId) => async (dispatch) => {
   }
 }
 
+export const getCurrentTrailsThunk = () => async (dispatch) => {
+  const res = await fetch('/api/trails/current')
+  if (res.ok) {
+    const { trails } = await res.json()
+    // console.log(trails)
+    dispatch(getCurrentTrails(trails))
+    return
+  }
+}
+
 
 // --------- INITIAL STATE -------------
-const initialState = { allTrails: {}, singleTrail: {} }
+const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
 
 // ---------- REDUCER ----------
 
@@ -158,6 +176,8 @@ const trailsReducer = (state = initialState, action) => {
           delete newDeleteState.allTrails[action.trailId]
           delete newDeleteState.singleTrail[action.trailId]
           return newDeleteState
+        case GET_CURRENT_TRAILS:
+          return { ...state, userTrails: { ...normalizeObj(action.trails) } }
         default:
           return state
     }
