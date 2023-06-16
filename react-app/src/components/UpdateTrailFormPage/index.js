@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCategoriesThunk } from '../../store/categories';
 import { getSingleTrailThunk } from "../../store/trails";
 import { updateTrailThunk } from '../../store/trails';
+import { getAllTrailsThunk } from '../../store/trails';
 
 
 //this is used to convert the backend errors into a format that the frontend can use
@@ -39,27 +40,29 @@ function UpdateTrailFormPage() {
 
 
 
-    const singleTrail = useSelector(state => state.trails.singleTrail)
-
+    const singleTrail = useSelector(state => state.trails.allTrails[trailId])
+    console.log('singletrail pulled from all trails............',singleTrail)
 
 
     //state slices
-    const [trailName, setTrailName] = useState(singleTrail?.trailName || '');
-    const [park, setPark] = useState(singleTrail?.park || '');
-    const [city, setCity] = useState(singleTrail?.city || '');
-    const [state, setState] = useState(singleTrail?.state || '');
-    const [lat, setLat] = useState(singleTrail?.lat || 0.0);
-    const [lng, setLng] = useState(singleTrail?.lng || 0.0);
-    const [categoryId, setCategoryId] = useState(singleTrail?.categoryId || '');
-    const [length, setLength] = useState(singleTrail?.length || 0.0);
-    const [elevationGain, setElevationGain] = useState(singleTrail?.elevationGain || 0);
-    const [coverPhoto, setCoverPhoto] = useState(singleTrail?.coverPhoto || '');
-    const [errors, setErrors] = useState({});
+
+        const [trailName, setTrailName] = useState(singleTrail?.trailName || '');
+        const [park, setPark] = useState(singleTrail?.park || '');
+        const [city, setCity] = useState(singleTrail?.city || '');
+        const [state, setState] = useState(singleTrail?.state || '');
+        const [lat, setLat] = useState(singleTrail?.lat || 0.0);
+        const [lng, setLng] = useState(singleTrail?.lng || 0.0);
+        const [categoryId, setCategoryId] = useState(singleTrail?.categoryId || '');
+        const [length, setLength] = useState(singleTrail?.length || 0.0);
+        const [elevationGain, setElevationGain] = useState(singleTrail?.elevationGain || 0);
+        const [coverPhoto, setCoverPhoto] = useState(singleTrail?.coverPhoto || '');
+        const [errors, setErrors] = useState({});
+
 
 
     useEffect(() => {
         if(!singleTrail) {
-            dispatch(getSingleTrailThunk(trailId))
+            dispatch(getAllTrailsThunk())
         } else {
             setTrailName(singleTrail.trailName);
             setPark(singleTrail.park);
@@ -72,7 +75,7 @@ function UpdateTrailFormPage() {
             setElevationGain(singleTrail.elevationGain);
             setCoverPhoto(singleTrail.coverPhoto);
         }
-    }, [dispatch, trailId])
+    }, [dispatch, singleTrail])
 
 
     const handleSubmit = async (e) => {

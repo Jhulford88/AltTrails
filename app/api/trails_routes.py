@@ -75,12 +75,12 @@ def get_single_trail(id):
 
 
 @trails_routes.route("/<int:id>/update", methods=["PUT"])
-@login_required
+# @login_required
 def update_trail(id):
-    print("Updating trail", id)
+    print("Updating trail.............................", id)
     edit_form = CreateTrailForm()
     edit_form["csrf_token"].data = request.cookies["csrf_token"]
-    print("FORM", edit_form)
+    print("FORM..................................", edit_form)
 
     if edit_form.validate_on_submit():
         data = edit_form.data
@@ -91,10 +91,10 @@ def update_trail(id):
         if updated_trail is None:
             return {"errors": "Trail does not exist"}, 404
 
-        if updated_trail.user_id != current_user.id:
-            return {"errors": "Forbidden"}, 401
+        # if updated_trail.user_id != current_user.id:
+        #     return {"errors": "Forbidden"}, 401
 
-        if data["project_name"]:
+        if data["trail_name"]:
             updated_trail.trail_name = data["trail_name"]
         if data["park"]:
             updated_trail.park = data["park"]
@@ -117,7 +117,7 @@ def update_trail(id):
 
         db.session.commit()
 
-        print("This is your new Trail", updated_trail)
+        print("This is your new Trail.......................", updated_trail)
         return (
             {"trail": updated_trail.to_dict()},
             200,

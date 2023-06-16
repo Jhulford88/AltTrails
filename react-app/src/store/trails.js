@@ -41,7 +41,7 @@ export const getAllTrailsThunk = () => async (dispatch) => {
     const res = await fetch('/api/trails')
     if (res.ok) {
       const { trails } = await res.json()
-      console.log('trails in thunk response from backend.....................',trails)
+      // console.log('trails in thunk response from backend.....................',trails)
       dispatch(getAllTrails(trails))
       return
     } else {
@@ -51,23 +51,23 @@ export const getAllTrailsThunk = () => async (dispatch) => {
 
 export const postNewTrailThunk = (newTrail) => async (dispatch) => {
   try {
-    console.log("Making post request to new trail route", newTrail)
+    // console.log("Making post request to new trail route", newTrail)
     const res = await fetch('/api/trails/new', {
       method: "POST",
       body: newTrail
     })
-    console.log("Post request", res)
+    // console.log("Post request", res)
 
     if (res.ok) {
-      console.log("Response OK")
+      // console.log("Response OK")
       const response = await res.json()
-      console.log("Response data", response)
+      // console.log("Response data", response)
       dispatch(postNewTrail(response.trail))
       return response.trail
     } else {
-      console.error("Response not OK. Status code:", res.status)
+      // console.error("Response not OK. Status code:", res.status)
       const response = await res.json()
-      console.log("Response when res is not okay and there are errors:", response)
+      // console.log("Response when res is not okay and there are errors:", response)
       return {
         errors: { ...response }
       }
@@ -80,7 +80,7 @@ export const postNewTrailThunk = (newTrail) => async (dispatch) => {
 
 
 export const getSingleTrailThunk = (id) => async (dispatch) => {
-  console.log("this is the id", id)
+  // console.log("this is the id", id)
   const res = await fetch(`/api/trails/${id}`)
   if (res.ok) {
     const { single_trail } = await res.json()
@@ -94,12 +94,12 @@ export const getSingleTrailThunk = (id) => async (dispatch) => {
 
 export const updateTrailThunk = (id, trail) => async dispatch => {
   try {
-    // console.log("Making post request to update trail route", trail)
+    console.log("trail has arrived in thunk............", trail)
     const res = await fetch(`/api/trails/${id}/update`, {
       method: "PUT",
       body: trail
     })
-    console.log("Edit request", res)
+    // console.log("Edit request", res)
 
     if (res.ok) {
       console.log("Edit request OK", res)
@@ -107,9 +107,9 @@ export const updateTrailThunk = (id, trail) => async dispatch => {
       dispatch(updateTrail(response.trail, id))
       return response.trail;
     } else {
-      console.error('Edit response not OK')
+      // console.error('Edit response not OK')
       const response = await res.json()
-      console.error("Edit response", response)
+      // console.error("Edit response", response)
       return response;
     }
   } catch (e) {
