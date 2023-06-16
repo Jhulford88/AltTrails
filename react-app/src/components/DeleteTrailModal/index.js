@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { deleteTrailThunk } from "../../store/trails";
+import { getCurrentTrailsThunk } from "../../store/trails";
 
 const DeleteTrailModal = ({trailId, setDeleted}) => {
 
@@ -13,9 +14,9 @@ const DeleteTrailModal = ({trailId, setDeleted}) => {
 
     const deleteTrail = (e) => {
         dispatch(deleteTrailThunk(trailId))
+          .then(dispatch(getCurrentTrailsThunk()))
           .then(closeModal)
-          .then(setDeleted(false))
-          .then(history.push('/'))
+          .then(setDeleted(true))
       }
 
 

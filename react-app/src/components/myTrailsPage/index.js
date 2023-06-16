@@ -47,7 +47,7 @@ const MyTrailsPage = () => {
                                 <OpenModalButton
                                     className="trail-delete-button"
                                     buttonText={"Delete"}
-                                    modalComponent={<DeleteTrailModal TrailId={trail.id} setDeleted={setDeleted} />}
+                                    modalComponent={<DeleteTrailModal trailId={trail.id} setDeleted={setDeleted} />}
                                     />
                     </div>
             </div>
