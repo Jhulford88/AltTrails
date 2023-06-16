@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import CreateTrailFormPage from "./components/CreateTrailFormPage";
 import TrailDetailPage from "./components/TrailDetailPage";
 import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
+import myTrailsPage from "./components/myTrailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route exact path="/current">
+            <myTrailsPage />
           </Route>
           <Route exact path="/trails/new">
             <CreateTrailFormPage />
