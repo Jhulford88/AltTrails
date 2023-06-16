@@ -31,24 +31,25 @@ const MyTrailsPage = () => {
 
     const cards = Object.values(trails)?.map(trail => {
         return (
-            <div key={trail.id} className="manage-trail-card" onClick={(e) => {
-                history.push(`/trails/${trail.id}`)
-              }}>
-                <div className="manage-trail-card-img-container">
-                    <img className="manage-trail-card-img" alt="Trail Card" src={trail?.coverPhoto}></img>
+            <div>
+                <div key={trail.id} className="manage-trail-card" onClick={(e) => {
+                    history.push(`/trails/${trail.id}`)}}>
+                    <div className="manage-trail-card-img-container">
+                        <img className="manage-trail-card-img" alt="Trail Card" src={trail?.coverPhoto}></img>
+                    </div>
+                    <div>{trail.trailName}</div>
+                    <div>{trail.park}</div>
+                    <div>{trail.city}, {trail.state}</div>
+                    <div>Length: {trail.length}mi</div>
                 </div>
-                <div>{trail.trailName}</div>
-                <div>{trail.park}</div>
-                <div>{trail.city}, {trail.state}</div>
-                <div>Length: {trail.length}mi</div>
-                <div className='manage-button-container'>
-                    <button  onClick={() => history.push(`/trails/${trail.id}/update`)} >Update</button>
-                            <OpenModalButton
-                                className="trail-delete-button"
-                                buttonText={"Delete"}
-                                modalComponent={<DeleteTrailModal TrailId={trail.id} setDeleted={setDeleted} />}
-                            />
-                </div>
+                    <div className='manage-button-container'>
+                        <button  onClick={() => history.push(`/trails/${trail.id}/update`)} >Update</button>
+                                <OpenModalButton
+                                    className="trail-delete-button"
+                                    buttonText={"Delete"}
+                                    modalComponent={<DeleteTrailModal TrailId={trail.id} setDeleted={setDeleted} />}
+                                    />
+                    </div>
             </div>
         )
       })
@@ -58,7 +59,9 @@ const MyTrailsPage = () => {
     return (
         <div>
             <h1>Hello from My Trails Page</h1>
-            <div>{cards}</div>
+            <div className="manage-trail-cards-container">
+                <div>{cards}</div>
+            </div>
         </div>
     )
 }

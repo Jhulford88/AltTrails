@@ -1,0 +1,31 @@
+.manage-trail-card {
+    border: 1px solid red;
+    width: 25%;
+    padding: 30px;
+    padding-bottom: 40px;
+    height: 275px;
+    cursor: pointer;
+    margin: 10px;
+
+}
+
+.manage-trail-cards-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.manage-trail-card-img {
+    width: 100%;
+    height: 200px;
+    /* border-radius: 10%; */
+    object-fit: cover;
+    border: 1px solid black;
+}
+
+.manage-trail-card-img-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-direction: wrap;
+}
