@@ -1,0 +1,19 @@
+.review-form-container {
+    /* border: 2px solid red; */
+}
+
+.off {
+    color: #ccc;
+  }
+
+
+  .on {
+    color: gold;
+  }
+
+  #star-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }

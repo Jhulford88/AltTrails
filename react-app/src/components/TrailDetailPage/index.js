@@ -3,9 +3,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
-// import OpenModalButton from '../OpenModalButton';
-// import DeleteTrailModal from "../DeleteTrailModal";
+import OpenModalButton from '../OpenModalButton';
+import CreateReviewModal from "../ReviewComponent";
 import './trailDetailPage.css'
+
 
 const TrailDetailPage = () => {
 
@@ -35,12 +36,13 @@ const TrailDetailPage = () => {
                 <div>{singleTrail.length}</div>
                 <div>{singleTrail.elevationGain}</div>
                 <div>{singleTrail.description}</div>
-                {/* <button className="update-button" onClick={() => history.push(`/trails/${trailId}/update`)}>Update</button>
+                <div>
                 <OpenModalButton
-                    className="trail-delete-button"
-                    buttonText={"Delete"}
-                    modalComponent={<DeleteTrailModal trailId={singleTrail.id} />}
-                /> */}
+                    className="create-review-button"
+                    buttonText={"Leave a Review"}
+                    modalComponent={<CreateReviewModal />}
+                />
+                </div>
             </div>
         </div>
     )
