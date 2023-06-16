@@ -5,6 +5,7 @@ const GET_ALL_TRAILS = 'trails/getAllTrails'
 const POST_NEW_TRAIL = 'trails/postNewTrail'
 const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
 const UPDATE_TRAIL = 'trails/updateTrail'
+const DELETE_TRAIL= "trails/deleteTrail"
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -33,6 +34,13 @@ const updateTrail = (trail, id) => {
     type: UPDATE_TRAIL,
     trail,
     id
+  }
+}
+
+const deleteTrail = (trailId) => {
+  return {
+    type: DELETE_TRAIL,
+    trailId
   }
 }
 
@@ -117,6 +125,15 @@ export const updateTrailThunk = (id, trail) => async dispatch => {
   }
 }
 
+export const deleteTrailThunk = (trailId) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${trailId}`, {
+    method: "DELETE"
+  })
+  if (res.ok) {
+    dispatch(deleteTrail(trailId))
+  }
+}
+
 
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {} }
@@ -136,6 +153,11 @@ const trailsReducer = (state = initialState, action) => {
           let newEditState = { ...state }
           newEditState.allTrails[action.id] = action.trail
           return newEditState
+        case DELETE_TRAIL:
+          let newDeleteState = { ...state }
+          delete newDeleteState.allTrails[action.trailId]
+          delete newDeleteState.singleTrail[action.trailId]
+          return newDeleteState
         default:
           return state
     }

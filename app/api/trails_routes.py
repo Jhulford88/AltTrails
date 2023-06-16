@@ -127,3 +127,26 @@ def update_trail(id):
     if edit_form.errors:
         print("There were some form errors", edit_form.errors)
         return {"errors": edit_form.errors}, 400, {"Content-Type": "application/json"}
+
+
+@trails_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_single_project(id):
+    """
+    Takes in a trail_id from the frontend then uses that to initalize a
+    delete
+    """
+
+    trail = Trail.query.get(id)
+
+    if trail is None:
+        return {"errors": "Trail does not exist"}, 404
+
+    # if trail.user_id != current_user.id:
+    #     return {"errors": "Forbidden"}, 401
+
+
+    db.session.delete(trail)
+    db.session.commit()
+
+    return {"message": "Succesfully Deleted"}

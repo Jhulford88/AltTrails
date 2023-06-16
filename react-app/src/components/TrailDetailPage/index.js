@@ -1,9 +1,10 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from '../OpenModalButton';
+import DeleteTrailModal from "../DeleteTrailModal";
 import './trailDetailPage.css'
 
 const TrailDetailPage = () => {
@@ -35,7 +36,11 @@ const TrailDetailPage = () => {
                 <div>{singleTrail.elevationGain}</div>
                 <div>Trail description goes here</div>
                 <button className="update-button" onClick={() => history.push(`/trails/${trailId}/update`)}>Update</button>
-                <button>Delete</button>
+                <OpenModalButton
+                    className="trail-delete-button"
+                    buttonText={"Delete"}
+                    modalComponent={<DeleteTrailModal trailId={singleTrail.id} />}
+                />
             </div>
         </div>
     )
