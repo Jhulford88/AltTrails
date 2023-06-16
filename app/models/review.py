@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import date
 
 class Review(db.Model):
     __tablename__ = "reviews"
@@ -12,6 +13,7 @@ class Review(db.Model):
     star_rating = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('trails.id')), nullable=False)
+    created_at = db.Column(db.Date, nullable=False, default=date.today())
 
     # Relationships
     users = db.relationship('User', back_populates='reviews')
