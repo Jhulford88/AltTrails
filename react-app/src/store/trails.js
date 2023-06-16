@@ -175,6 +175,7 @@ const trailsReducer = (state = initialState, action) => {
           let newDeleteState = { ...state }
           delete newDeleteState.allTrails[action.trailId]
           delete newDeleteState.singleTrail[action.trailId]
+          delete newDeleteState.userTrails[action.trailId]
           return newDeleteState
         case GET_CURRENT_TRAILS:
           return { ...state, userTrails: { ...normalizeObj(action.trails) } }

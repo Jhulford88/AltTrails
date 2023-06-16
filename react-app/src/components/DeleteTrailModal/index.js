@@ -3,7 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { deleteTrailThunk } from "../../store/trails";
 
-const DeleteTrailModal = ({trailId}) => {
+const DeleteTrailModal = ({trailId, setDeleted}) => {
 
     //initialize things
     const { closeModal } = useModal()
@@ -14,6 +14,7 @@ const DeleteTrailModal = ({trailId}) => {
     const deleteTrail = (e) => {
         dispatch(deleteTrailThunk(trailId))
           .then(closeModal)
+          .then(setDeleted(false))
           .then(history.push('/'))
       }
 
