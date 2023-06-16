@@ -26,5 +26,6 @@ class Review(db.Model):
             "reviewText": self.review_text,
             "starRating": self.star_rating,
             "userId": self.user_id,
-            "trailId": self.trail_id
+            "trailId": self.trail_id,
+            "createdAt": self.created_at
             }

@@ -33,6 +33,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(trails_routes, url_prefix='/api/trails')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
 
+
 db.init_app(app)
 Migrate(app, db)
 
