@@ -202,3 +202,42 @@ def post_new_review(id):
     if form.errors:
         print("There were some form errors.................", form.errors)
         return form.errors, 400
+
+
+@trails_routes.route("/reviews/<int:reviewId>/update", methods=["PUT"])
+def update_review(reviewId):
+    print("reviewID in backend.............................", reviewId)
+    edit_form = ReviewForm()
+    edit_form["csrf_token"].data = request.cookies["csrf_token"]
+    print("FORM..................................", edit_form)
+
+    if edit_form.validate_on_submit():
+        data = edit_form.data
+
+
+        updated_review = Review.query.get(reviewId)
+
+        if updated_review is None:
+            return {"errors": "Review does not exist"}, 404
+
+        # if updated_trail.user_id != current_user.id:
+        #     return {"errors": "Forbidden"}, 401
+
+        if data["review_text"]:
+            updated_review.review_text = data["review_text"]
+        if data["star_rating"]:
+            updated_review.star_rating = data["star_rating"]
+
+
+        db.session.commit()
+
+        print("This is your updated Review.......................", updated_review)
+        return (
+            {"trail": updated_review.to_dict()},
+            200,
+            {"Content-Type": "application/json"},
+        )
+
+    if edit_form.errors:
+        print("There were some form errors", edit_form.errors)
+        return {"errors": edit_form.errors}, 400, {"Content-Type": "application/json"}

@@ -179,6 +179,16 @@ export const postNewReviewThunk = (formData, trailId) => async (dispatch) => {
   }
 }
 
+export const updateReviewThunk = (formData, trailId, reviewId) => async (dispatch) => {
+  let id = parseInt(trailId)
+  console.log("comment in thunk", formData)
+  const res = await fetch(`/api/trails/reviews/${reviewId}/update`, {
+    method: "PUT",
+    body: formData
+  })
+  return res;
+}
+
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
 

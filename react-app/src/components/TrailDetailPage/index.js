@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
 import OpenModalButton from '../OpenModalButton';
 import CreateReviewModal from "../CreateReviewModal";
+import UpdateReviewModal from "../UpdateReviewModal";
 import './trailDetailPage.css'
 
 
@@ -53,6 +54,16 @@ const TrailDetailPage = () => {
                 {/* {userId === review.user_id ? <button onClick={() => handleDelete(comment.id)} className="update-delete-buttons">Delete</button> : null} */}
                 {/* {userId === comment.user_id ? <button onClick={() => handleUpdate()} className="update-delete-buttons">Update</button> : null} */}
                 {/* {userId === comment.user_id && update ? <UpdateCommentComponent commentId={comment.id} projectId={projectId} originalText={comment.comment} setUpdate={setUpdate} /> : null} */}
+                <OpenModalButton
+                    className="create-review-button"
+                    buttonText={"Update"}
+                    modalComponent={<UpdateReviewModal review={review}/>}
+                />
+                <OpenModalButton
+                    className="create-review-button"
+                    buttonText={"Delete"}
+                    modalComponent={<CreateReviewModal trailId={trailId}/>}
+                />
               </div>
 
             )
