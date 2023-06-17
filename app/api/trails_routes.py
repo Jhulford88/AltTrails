@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import User, Trail, db
+from app.models import User, Trail, Review, db
 from ..forms.create_trail_form import CreateTrailForm
+from ..forms.review_form import ReviewForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -169,3 +170,35 @@ def get_current_user_trails():
     res = [trail.to_dict() for trail in trails]
 
     return {"trails": res}
+
+
+@trails_routes.route("/reviews/<int:id>", methods=["POST"])
+# @login_required
+def post_new_review(id):
+    """
+    Posts form data from the frontend into the comments table.
+    Should return a JSON obj for the fronted to catch
+    """
+    # print('entered the backend.................')
+    # print('id in the the backend.................', id)
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print('after creating form.................')
+    if form.validate_on_submit():
+        data = form.data
+        # print('passed form validators.................')
+        newReview = Review(
+            review_text=data["review_text"],
+            star_rating=data["star_rating"],
+            trail_id=id,
+            user_id=current_user.id
+        )
+
+        db.session.add(newReview)
+        db.session.commit()
+
+        return newReview.to_dict()
+
+    if form.errors:
+        print("There were some form errors.................", form.errors)
+        return form.errors, 400

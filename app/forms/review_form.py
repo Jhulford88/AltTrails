@@ -3,9 +3,10 @@ from wtforms import (TextAreaField, IntegerField, TextAreaField)
 from wtforms.validators import DataRequired
 
 
-class CreateComment(FlaskForm):
+class ReviewForm(FlaskForm):
     review_text = TextAreaField(
         "Review Text",
         validators=[DataRequired()],
     )
     star_rating = IntegerField("Star Rating", validators=[DataRequired()])
+    # trail_id = IntegerField("Trail ID", validators=[DataRequired()])

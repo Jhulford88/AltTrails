@@ -40,7 +40,7 @@ const TrailDetailPage = () => {
                 <OpenModalButton
                     className="create-review-button"
                     buttonText={"Leave a Review"}
-                    modalComponent={<CreateReviewModal />}
+                    modalComponent={<CreateReviewModal trailId={trailId}/>}
                 />
                 </div>
                 <div>

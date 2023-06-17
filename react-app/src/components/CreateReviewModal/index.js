@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
+import { getSingleTrailThunk } from '../../store/trails';
+import { postNewReviewThunk } from '../../store/trails';
 import './createReviewModal.css'
 
 
-const CreateReviewModal = () => {
+const CreateReviewModal = ({trailId}) => {
 
      //initialize things
      const { closeModal } = useModal()
@@ -22,15 +24,22 @@ const CreateReviewModal = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // closeModal
+        dispatch(postNewReviewThunk(formData, trailId))
+            .then(dispatch(getSingleTrailThunk(trailId)))
+            .then(closeModal)
     }
 
     // Build up form data
     const formData = new FormData()
     formData.append("review_text", reviewText)
     formData.append("star_rating", starRating)
+    formData.append("trail_id", trailId)
 
+    // Log our form data
+    console.log("Form Data gathered from form:")
+    for (let key of formData.entries()) {
+        console.log(key[0] + ' ----> ' + key[1])
+    }
 
     return (
         <div className="review-form-container">

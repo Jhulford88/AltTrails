@@ -7,6 +7,7 @@ const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
 const UPDATE_TRAIL = 'trails/updateTrail'
 const DELETE_TRAIL= "trails/deleteTrail"
 const GET_CURRENT_TRAILS = "trails/getCurrentTrails"
+const POST_NEW_REVIEW = 'trails/postNewReview'
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -49,6 +50,13 @@ const getCurrentTrails = (trails) => {
   return {
     type: GET_CURRENT_TRAILS,
     trails
+  }
+}
+
+const postNewReview = (review) => {
+  return {
+    type: POST_NEW_REVIEW,
+    review
   }
 }
 
@@ -152,6 +160,24 @@ export const getCurrentTrailsThunk = () => async (dispatch) => {
   }
 }
 
+export const postNewReviewThunk = (formData, trailId) => async (dispatch) => {
+  const res = await fetch(`/api/trails/reviews/${trailId}`, {
+    method: "POST",
+    body: formData
+  })
+  // console.log('res after returning from backend..........', res)
+  if (res.ok) {
+    const response = await res.json()
+    // console.log("response in post review", response)
+    dispatch(postNewReview(response))
+    return response
+  } else {
+    const response = await res.json()
+    return {
+      errors: { ...response }
+    }
+  }
+}
 
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
