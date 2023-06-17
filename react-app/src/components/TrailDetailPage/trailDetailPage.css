@@ -21,3 +21,12 @@
     object-fit: cover;
     border: 1px solid black;
 }
+
+.individual-review {
+    border: 1px solid red;
+}
+
+.reviews-ul {
+    list-style: none;
+    width: 50%;
+}

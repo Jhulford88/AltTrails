@@ -56,5 +56,6 @@ class Trail(db.Model):
             'coverPhoto': self.cover_photo,
             'user':self.user.to_dict(),
             "photos": [photo.to_dict() for photo in self.trail_photos],
-            "description": self.description
+            "description": self.description,
+            "reviews": [review.to_dict() for review in self.reviews]
         }

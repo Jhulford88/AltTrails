@@ -43,6 +43,22 @@ const TrailDetailPage = () => {
                     modalComponent={<CreateReviewModal />}
                 />
                 </div>
+                <div>
+        <ul className="reviews-ul">
+          {singleTrail.reviews?.map(review => {
+            return (
+              <div className="review-area">
+                {/* <span className="username-says">{comment.user.first_name} says...</span> */}
+                <li key={review.id} className="individual-review"> {review.reviewText}</li>
+                {/* {userId === review.user_id ? <button onClick={() => handleDelete(comment.id)} className="update-delete-buttons">Delete</button> : null} */}
+                {/* {userId === comment.user_id ? <button onClick={() => handleUpdate()} className="update-delete-buttons">Update</button> : null} */}
+                {/* {userId === comment.user_id && update ? <UpdateCommentComponent commentId={comment.id} projectId={projectId} originalText={comment.comment} setUpdate={setUpdate} /> : null} */}
+              </div>
+
+            )
+          })}
+        </ul>
+      </div>
             </div>
         </div>
     )

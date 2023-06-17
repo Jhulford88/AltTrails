@@ -17,7 +17,7 @@ const CreateReviewModal = () => {
     const [reviewText, setReviewText] = useState('');
     const [starRating, setStarRating] = useState(0);
     const [hover, setHover] = useState(0);
-    const [disabled, setDisabled] = useState(true);
+    // const [disabled, setDisabled] = useState(true);
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
