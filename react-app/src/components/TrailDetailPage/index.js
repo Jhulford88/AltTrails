@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
 import OpenModalButton from '../OpenModalButton';
-import CreateReviewModal from "../ReviewComponent";
+import CreateReviewModal from "../CreateReviewModal";
 import './trailDetailPage.css'
 
 

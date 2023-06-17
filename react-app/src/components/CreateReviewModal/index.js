@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
-import './reviewComponent.css'
+import './createReviewModal.css'
 
 
 const CreateReviewModal = () => {
