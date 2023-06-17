@@ -8,6 +8,7 @@ const UPDATE_TRAIL = 'trails/updateTrail'
 const DELETE_TRAIL= "trails/deleteTrail"
 const GET_CURRENT_TRAILS = "trails/getCurrentTrails"
 const POST_NEW_REVIEW = 'trails/postNewReview'
+const DELETE_REVIEW = "trails/deleteReview"
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
@@ -57,6 +58,13 @@ const postNewReview = (review) => {
   return {
     type: POST_NEW_REVIEW,
     review
+  }
+}
+
+const deleteReview = (reviewId) => {
+  return {
+    type: DELETE_REVIEW,
+    reviewId
   }
 }
 
@@ -189,6 +197,16 @@ export const updateReviewThunk = (formData, trailId, reviewId) => async (dispatc
   return res;
 }
 
+export const deleteReviewThunk = (reviewId) => async (dispatch) => {
+  reviewId = parseInt(reviewId)
+  const res = await fetch(`/api/trails/reviews/${reviewId}`, {
+    method: "DELETE"
+  })
+  if (res.ok) {
+    dispatch(deleteReview(reviewId))
+  }
+}
+
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
 
@@ -215,6 +233,11 @@ const trailsReducer = (state = initialState, action) => {
           return newDeleteState
         case GET_CURRENT_TRAILS:
           return { ...state, userTrails: { ...normalizeObj(action.trails) } }
+        case DELETE_REVIEW:
+          let newDeleteReviewState = { ...state, singleTrail: { ...state.singleTrail } }
+          let filteredReviews = newDeleteReviewState.singleTrail.reviews.filter(review => review.id !== action.reviewId)
+          newDeleteReviewState.singleTrail.reviews = filteredReviews
+          return newDeleteReviewState
         default:
           return state
     }

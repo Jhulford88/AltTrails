@@ -241,3 +241,19 @@ def update_review(reviewId):
     if edit_form.errors:
         print("There were some form errors", edit_form.errors)
         return {"errors": edit_form.errors}, 400, {"Content-Type": "application/json"}
+
+
+@trails_routes.route("/reviews/<int:reviewId>", methods=["DELETE"])
+# @login_required
+def delete_comment(reviewId):
+    print("hello from delete review")
+    review = Review.query.get(reviewId)
+    # print(comment)
+
+    if not review:
+        return {"errors": "Review does not exist"}, 404
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {"message": "Succesfully Deleted"}

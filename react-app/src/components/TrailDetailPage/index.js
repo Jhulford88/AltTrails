@@ -7,6 +7,7 @@ import OpenModalButton from '../OpenModalButton';
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import './trailDetailPage.css'
+import DeleteReviewModal from "../DeleteReviewModal";
 
 
 const TrailDetailPage = () => {
@@ -62,7 +63,7 @@ const TrailDetailPage = () => {
                 <OpenModalButton
                     className="create-review-button"
                     buttonText={"Delete"}
-                    modalComponent={<CreateReviewModal trailId={trailId}/>}
+                    modalComponent={<DeleteReviewModal reviewId={review.id}/>}
                 />
               </div>
 
