@@ -60,7 +60,12 @@ const MyTrailsPage = () => {
         <div>
             <h1>Hello from My Trails Page</h1>
             <div className="manage-trail-cards-container">
+                <h2>My Trails</h2>
                 <div>{cards}</div>
+            </div>
+            <div>
+                <h2>My Favorites</h2>
+                <div>favorites cards go here</div>
             </div>
         </div>
     )
