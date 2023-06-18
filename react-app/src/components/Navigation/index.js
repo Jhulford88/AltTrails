@@ -12,6 +12,8 @@ function Navigation({ isLoaded }){
 		<ul className='navbar-ul'>
 			<li>
 				<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
+				<NavLink exact to="/trails/new">Create a new Trail</NavLink>
+				<NavLink exact to="/current">My Trails</NavLink>
 			</li>
 			{isLoaded && (
 				<li>
