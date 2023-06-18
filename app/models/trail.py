@@ -36,10 +36,10 @@ class Trail(db.Model):
         back_populates='trail_collections')
 
 
-    favorites = db.relationship(
+    favorite_users = db.relationship(
         'User',
         secondary='favorites',
-        back_populates='favorites',
+        back_populates='favorite_trails',
         cascade="all, delete")
 
     def to_dict(self):

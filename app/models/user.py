@@ -26,10 +26,10 @@ class User(db.Model, UserMixin):
     collections = db.relationship('Collection', back_populates='users', cascade="all, delete")
     # trail = db.relationship('User', back_populates='user')
 
-    favorites = db.relationship(
+    favorite_trails = db.relationship(
         'Trail',
         secondary='favorites',
-        back_populates='favorites',
+        back_populates='favorite_users',
         cascade="all, delete")
 
 
@@ -53,5 +53,5 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'city': self.city,
             'state': self.state,
-            "favorites": [favorite.to_dict() for favorite in self.favorites]
+            # "favorites": [favorite.to_dict() for favorite in self.favorite_trails]
         }
