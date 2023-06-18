@@ -275,3 +275,17 @@ def post_new_favorite(trailId):
     db.session.commit()
 
     return {"message": "Succesfully Favorited"}
+
+
+@trails_routes.route("/favorites/<int:trailId>/delete", methods=["DELETE"])
+# @login_required
+def delete_favorite(trailId):
+    print("hello from delete favorite", trailId)
+
+    delete_query = delete(favorites).where(
+    ((favorites.c.trail_id == trailId) & (favorites.c.user_id == current_user.id)))
+
+    db.session.execute(delete_query)
+    db.session.commit()
+
+    return {"message": "Succesfully Deleted"}

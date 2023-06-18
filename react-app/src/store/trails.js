@@ -214,6 +214,15 @@ export const createFavoriteThunk = (trailId) => async (dispatch) => {
   })
 }
 
+export const deleteFavoriteThunk = (trailId) => async (dispatch) => {
+  // console.log('trailId in the thunk..........', trail.id)
+  // let trailId = trail.id
+  const res = await fetch(`/api/trails/favorites/${trailId}/delete`, {
+    method: "DELETE"
+  })
+
+}
+
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
 
