@@ -53,5 +53,5 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'city': self.city,
             'state': self.state,
-            # "favorites": [favorite.to_dict() for favorite in self.favorite_trails]
+            "favorites": [favorite.to_dict() for favorite in self.favorite_trails]
         }
