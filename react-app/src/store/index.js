@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import trails from './trails'
 import categories from './categories'
+import favorites from './favorites'
 
 const rootReducer = combineReducers({
   session,
   trails,
-  categories
+  categories,
+  favorites
 });
 
 
