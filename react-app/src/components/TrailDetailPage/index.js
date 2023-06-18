@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
+import { createFavoriteThunk } from "../../store/trails";
 import OpenModalButton from '../OpenModalButton';
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
@@ -24,7 +25,12 @@ const TrailDetailPage = () => {
 
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
-      }, [dispatch, trailId])
+    }, [dispatch, trailId])
+
+    const addFavorite = (e) => {
+      dispatch(createFavoriteThunk(trailId))
+    }
+
 
     return (
         <div className="parent-container">
@@ -44,6 +50,9 @@ const TrailDetailPage = () => {
                     buttonText={"Leave a Review"}
                     modalComponent={<CreateReviewModal trailId={trailId}/>}
                 />
+                </div>
+                <div className="favorite-button">
+                  <button onClick={addFavorite}>add to favorites</button>
                 </div>
                 <div>
         <ul className="reviews-ul">

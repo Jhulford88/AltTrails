@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import User, Trail, Review, db
+from app.models import User, Trail, Review, favorites, db
 from ..forms.create_trail_form import CreateTrailForm
 from ..forms.review_form import ReviewForm
 from flask_login import current_user, login_user, logout_user, login_required
-
+from sqlalchemy import insert
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy import or_, delete
 
 trails_routes = Blueprint('trails', __name__)
 
@@ -257,3 +259,19 @@ def delete_comment(reviewId):
     db.session.commit()
 
     return {"message": "Succesfully Deleted"}
+
+
+@trails_routes.route('/favorites/<int:trailId>', methods=["POST"])
+def post_new_favorite(trailId):
+    """
+    Posts new entry in the favorites join table.
+    """
+    print("hello from backend...............")
+
+
+    new_favorite = insert(favorites).values(user_id=current_user.id, trail_id=trailId)
+
+    db.session.execute(new_favorite)
+    db.session.commit()
+
+    return {"message": "Succesfully Favorited"}

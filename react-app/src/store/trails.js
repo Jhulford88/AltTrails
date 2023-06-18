@@ -207,6 +207,13 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
   }
 }
 
+export const createFavoriteThunk = (trailId) => async (dispatch) => {
+  trailId = parseInt(trailId)
+  const res = await fetch(`/api/trails/favorites/${trailId}`, {
+    method: "POST"
+  })
+}
+
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
 
