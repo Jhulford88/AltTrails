@@ -18,6 +18,7 @@ const MyTrailsPage = () => {
 
     //useSelectors
     const user = useSelector(state => state.session.user)
+    const favorites = useSelector(state => state.session.user.favorites)
     const trails = useSelector(state => state.trails.userTrails)
 
     //state (to force reload of state after delete)
@@ -55,6 +56,24 @@ const MyTrailsPage = () => {
       })
 
 
+      const favoriteCards = favorites?.map(trail => {
+        return (
+            <div>
+                <div key={trail.id} className="manage-trail-card" onClick={(e) => {
+                    history.push(`/trails/${trail.id}`)}}>
+                    <div className="manage-trail-card-img-container">
+                        <img className="manage-trail-card-img" alt="Trail Card" src={trail?.coverPhoto}></img>
+                    </div>
+                    <div>{trail.trailName}</div>
+                    <div>{trail.park}</div>
+                    <div>{trail.city}, {trail.state}</div>
+                    <div>Length: {trail.length}mi</div>
+                </div>
+            </div>
+        )
+      })
+
+
 
     return (
         <div>
@@ -65,7 +84,7 @@ const MyTrailsPage = () => {
             </div>
             <div>
                 <h2>My Favorites</h2>
-                <div>favorites cards go here</div>
+                <div>{favoriteCards}</div>
             </div>
         </div>
     )
