@@ -6,6 +6,7 @@ import { deleteFavoriteThunk } from '../../store/trails';
 import { authenticate } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import DeleteTrailModal from "../DeleteTrailModal";
+import image from "../../assets/slider-5.avif"
 import "./myTrailsPage.css"
 
 //add useSelector and dispatch thunk for get user trails
@@ -89,7 +90,7 @@ const MyTrailsPage = () => {
 
     return (
         <div>
-            <h1>Hello from My Trails Page</h1>
+            <img className="trail-card-img" src={image}></img>
             <div className="manage-trail-cards-container">
                 <h2>My Trails</h2>
                 <div>{cards}</div>
