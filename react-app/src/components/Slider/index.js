@@ -11,7 +11,7 @@ import image3 from "../../assets/slider-5.avif"
 const Slider = () => {
 
     return (
-        <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true}>
+        <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showArrows={false}>
             <div>
                 <img src={image1} />
 
