@@ -4,6 +4,10 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllTrailsThunk } from "../../store/trails";
 import Slider from "../Slider"
 import './landingPage.css';
+import hikingPhoto from "../../assets/hiking-photo.png"
+import bikingPhoto from "../../assets/biking-photo.png"
+import runningPhoto from "../../assets/running-photo.png"
+import walkingPhoto from "../../assets/walking-photo.png"
 
 
 const LandingPage = () => {
@@ -42,6 +46,27 @@ const LandingPage = () => {
     return (
         <div>
             <Slider />
+            <div className="categories-container">
+                <h1>Browse by activity</h1>
+                <div className="cat-pic-container">
+                    <div>
+                        <img className="cat-pics" src={hikingPhoto}></img>
+                        <h2 className="cat-pics-labels">Hiking</h2>
+                    </div>
+                    <div>
+                        <img className="cat-pics" src={bikingPhoto}></img>
+                        <h2 className="cat-pics-labels">Biking</h2>
+                    </div>
+                    <div>
+                        <img className="cat-pics" src={runningPhoto}></img>
+                        <h2 className="cat-pics-labels">Running</h2>
+                    </div>
+                    <div>
+                        <img className="cat-pics" src={walkingPhoto}></img>
+                        <h2 className="cat-pics-labels">Walking</h2>
+                    </div>
+                </div>
+            </div>
             <div className="trail-cards-container">
                 {cards}
             </div>

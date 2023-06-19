@@ -1,3 +1,34 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.categories-container {
+    background-color: beige;
+    height: 400px;
+    padding-top: 10px;
+
+}
+
+.cat-pic-container {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-around;
+}
+
+.cat-pics-labels {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+
+.cat-pics {
+    border-radius: 100%;
+}
+
 .trail-card {
     border: 1px solid red;
     width: 25%;
