@@ -56,7 +56,7 @@ class Trail(db.Model):
             'categoryId': self.category_id,
             'length': self.length,
             'coverPhoto': self.cover_photo,
-            # 'user':self.user.to_dict(),
+            'userId':self.user_id,
             "photos": [photo.to_dict() for photo in self.trail_photos],
             "description": self.description,
             "reviews": [review.to_dict() for review in self.reviews],

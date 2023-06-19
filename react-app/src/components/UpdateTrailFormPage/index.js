@@ -40,6 +40,7 @@ function UpdateTrailFormPage() {
         if (!categories) dispatch(getCategoriesThunk())
     }, [dispatch])
 
+    const sessionUser = useSelector(state => state.session.user)
 
 
     const singleTrail = useSelector(state => state.trails.allTrails[trailId])
@@ -150,6 +151,7 @@ function UpdateTrailFormPage() {
 
     if (!singleTrail) return <p>Trail loading...</p>
 
+    if (sessionUser?.id != singleTrail.userId) return <h1>Forbidden!</h1>
 
     return (
         <div>

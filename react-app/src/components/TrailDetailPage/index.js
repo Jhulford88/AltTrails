@@ -39,7 +39,6 @@ const TrailDetailPage = () => {
       singleTrail.reviews?.forEach(review => {
         totalStars += review.starRating
       })
-      // console.log('res.....',totalStars / singleTrail.reviews.length)
       return totalStars / singleTrail?.reviews?.length
     }
 
