@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllTrailsThunk } from "../../store/trails";
+import Slider from "../Slider"
 import './landingPage.css';
 
 
@@ -41,6 +42,7 @@ const LandingPage = () => {
 
     return (
         <div>
+            <Slider />
             <h1>hello from landing page</h1>
             <div className="trail-cards-container">
                 {cards}
