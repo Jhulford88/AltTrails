@@ -10,3 +10,15 @@ import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import './categoriesPage.css'
 import DeleteReviewModal from "../DeleteReviewModal";
+
+
+const CategoriesPage = () => {
+
+    const { category } = useParams();
+
+    return (
+        <h1>Hello from category page</h1>
+    )
+}
+
+export default CategoriesPage

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllTrailsThunk } from "../../store/trails";
 import Slider from "../Slider"
 import './landingPage.css';
@@ -49,22 +49,22 @@ const LandingPage = () => {
             <div className="categories-container">
                 <h1 className="browse-by-activity">Browse by activity</h1>
                 <div className="cat-pic-container">
-                    <div>
-                        <img className="cat-pics" src={hikingPhoto}></img>
-                        <h2 className="cat-pics-labels">Hiking</h2>
-                    </div>
-                    <div>
-                        <img className="cat-pics" src={bikingPhoto}></img>
-                        <h2 className="cat-pics-labels">Biking</h2>
-                    </div>
-                    <div>
-                        <img className="cat-pics" src={runningPhoto}></img>
-                        <h2 className="cat-pics-labels">Running</h2>
-                    </div>
-                    <div>
-                        <img className="cat-pics" src={walkingPhoto}></img>
-                        <h2 className="cat-pics-labels">Walking</h2>
-                    </div>
+                    <NavLink exact to="/categories/hiking">
+                            <img className="cat-pics" src={hikingPhoto}></img>
+                            <h2 className="cat-pics-labels">Hiking</h2>
+                    </NavLink>
+                    <NavLink exact to="/categories/biking">
+                            <img className="cat-pics" src={bikingPhoto}></img>
+                            <h2 className="cat-pics-labels">Biking</h2>
+                    </NavLink>
+                    <NavLink exact to="/categories/running">
+                            <img className="cat-pics" src={runningPhoto}></img>
+                            <h2 className="cat-pics-labels">Running</h2>
+                    </NavLink>
+                    <NavLink exact to="/categories/walking">
+                            <img className="cat-pics" src={walkingPhoto}></img>
+                            <h2 className="cat-pics-labels">Walking</h2>
+                    </NavLink>
                 </div>
             </div>
             <h1 className="all-trails-h1">All trails...</h1>
