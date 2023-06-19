@@ -71,10 +71,10 @@ const TrailDetailPage = () => {
                     <div>
                     {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
                     </div>
-                    {sessionUser ? <div>
+                    {sessionUser ? <div className="create-review-button-container">
                       <OpenModalButton
                           className="create-review-button"
-                          buttonText={"Leave a Review"}
+                          buttonText={"Write Review"}
                           modalComponent={<CreateReviewModal trailId={trailId}/>}
                       />
                       </div>
