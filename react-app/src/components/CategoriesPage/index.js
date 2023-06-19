@@ -2,16 +2,13 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getSingleTrailThunk } from "../../store/trails";
-import { createFavoriteThunk } from "../../store/trails";
-import { authenticate } from '../../store/session';
-import OpenModalButton from '../OpenModalButton';
-import CreateReviewModal from "../CreateReviewModal";
-import UpdateReviewModal from "../UpdateReviewModal";
-import './categoriesPage.css'
-import DeleteReviewModal from "../DeleteReviewModal";
 import { getAllTrailsThunk } from "../../store/trails";
 import { getCategoriesThunk } from "../../store/categories";
+import hiking from "../../assets/hiking-banner.jpeg"
+import biking from "../../assets/biking-banner.jpeg"
+import running from "../../assets/running-banner.webp"
+import walking from "../../assets/walking-banner.jpeg"
+import './categoriesPage.css'
 
 
 const CategoriesPage = () => {
@@ -60,6 +57,10 @@ const CategoriesPage = () => {
 
     return (
         <div>
+            {categoryParam == "Hiking" ? <img className="trail-card-img" src={hiking}></img> : null}
+            {categoryParam == "Biking" ? <img className="trail-card-img" src={biking}></img> : null}
+            {categoryParam == "Running" ? <img className="trail-card-img" src={running}></img> : null}
+            {categoryParam == "Walking" ? <img className="trail-card-img" src={walking}></img> : null}
             <h1>Here Are Some {categoryParam} Trails!</h1>
             <div className="category-trail-cards-container">
                 {cards}
