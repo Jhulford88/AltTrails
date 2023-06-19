@@ -6,14 +6,16 @@ import './Navigation.css';
 import logo from "../../AltTrails.png"
 
 function Navigation({ isLoaded }){
+
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
 		<ul className='navbar-ul'>
 			<li>
 				<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
-				<NavLink exact to="/trails/new">Create a new Trail</NavLink>
-				<NavLink exact to="/current">My Trails</NavLink>
+				{sessionUser ? <NavLink exact to="/trails/new">Create a new Trail</NavLink> : null}
+				{sessionUser ? <NavLink exact to="/current">My Trails</NavLink> : null}
+
 			</li>
 			{isLoaded && (
 				<li>

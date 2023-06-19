@@ -21,6 +21,7 @@ const TrailDetailPage = () => {
 
     //useSelectors
     const singleTrail = useSelector(state => state.trails.singleTrail)
+    const sessionUser = useSelector(state => state.session.user)
 
 
     useEffect(() => {
@@ -44,16 +45,22 @@ const TrailDetailPage = () => {
                 <div>{singleTrail.length}</div>
                 <div>{singleTrail.elevationGain}</div>
                 <div>{singleTrail.description}</div>
-                <div>
+                {sessionUser ? <div>
                 <OpenModalButton
                     className="create-review-button"
                     buttonText={"Leave a Review"}
                     modalComponent={<CreateReviewModal trailId={trailId}/>}
                 />
                 </div>
+                : null}
+
+                {sessionUser ?
                 <div className="favorite-button">
                   <button onClick={addFavorite}>add to favorites</button>
                 </div>
+                : null}
+
+
                 <div>
         <ul className="reviews-ul">
           {singleTrail.reviews?.map(review => {
@@ -61,19 +68,23 @@ const TrailDetailPage = () => {
               <div className="review-area">
                 {/* <span className="username-says">{comment.user.first_name} says...</span> */}
                 <li key={review.id} className="individual-review"> {review.reviewText}</li>
-                {/* {userId === review.user_id ? <button onClick={() => handleDelete(comment.id)} className="update-delete-buttons">Delete</button> : null} */}
-                {/* {userId === comment.user_id ? <button onClick={() => handleUpdate()} className="update-delete-buttons">Update</button> : null} */}
-                {/* {userId === comment.user_id && update ? <UpdateCommentComponent commentId={comment.id} projectId={projectId} originalText={comment.comment} setUpdate={setUpdate} /> : null} */}
-                <OpenModalButton
+                <li key={review.id} className="individual-review-stars"> Stars: {review.starRating}</li>
+
+                {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
                     className="create-review-button"
                     buttonText={"Update"}
                     modalComponent={<UpdateReviewModal review={review}/>}
                 />
-                <OpenModalButton
+                : null}
+
+                {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
                     className="create-review-button"
                     buttonText={"Delete"}
                     modalComponent={<DeleteReviewModal reviewId={review.id}/>}
                 />
+                : null}
+
+
               </div>
 
             )
