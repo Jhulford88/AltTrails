@@ -58,5 +58,6 @@ class Trail(db.Model):
             "photos": [photo.to_dict() for photo in self.trail_photos],
             "description": self.description,
             "reviews": [review.to_dict() for review in self.reviews],
+            "elevationGain": self.elevation_gain
             # "favorites": [favorite.to_dict() for favorite in self.favorites]
         }

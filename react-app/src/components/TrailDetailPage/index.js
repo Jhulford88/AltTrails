@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
 import { createFavoriteThunk } from "../../store/trails";
+import { authenticate } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
@@ -26,6 +27,7 @@ const TrailDetailPage = () => {
 
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
+        dispatch(authenticate())
     }, [dispatch, trailId])
 
     const addFavorite = (e) => {
@@ -36,14 +38,13 @@ const TrailDetailPage = () => {
     return (
         <div className="parent-container">
             <div className="detail-page-container">
-                <h1>hello from trail detail page</h1>
                 <div className="cover-photo-container">
                     <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
                 </div>
-                <div>{singleTrail.trailName}</div>
-                <div>{singleTrail.park}</div>
-                <div>{singleTrail.length}</div>
-                <div>{singleTrail.elevationGain}</div>
+                <h1 className="trail-name-h1">{singleTrail.trailName}</h1>
+                <h2 className="park-name-h2">{singleTrail.park}</h2>
+                <div>{singleTrail.length} mi</div>
+                <div>elevation gain {singleTrail.elevationGain} ft</div>
                 <div>{singleTrail.description}</div>
                 {sessionUser ? <div>
                 <OpenModalButton
