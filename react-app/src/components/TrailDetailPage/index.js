@@ -65,12 +65,15 @@ const TrailDetailPage = () => {
 
                 <div>
                   <div className="review-totals-container">
-                    <div className="average-rating-number">
-                    {reviewAvg()} <span className="average-rating-text">average rating</span>
-                    </div>
-                    <div>
-                    {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
-                    </div>
+                    {singleTrail.reviews?.length ?
+                      <div >
+                        <div className="average-rating-number">{reviewAvg()} <span className="average-rating-text">average rating</span></div>
+                        <div>
+                          {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
+                        </div>
+                      </div>
+                    : <h2>Be the First to Leave a Review!</h2>}
+
                     {sessionUser ? <div className="create-review-button-container">
                       <OpenModalButton
                           className="create-review-button"
