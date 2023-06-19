@@ -20,7 +20,7 @@ const MyTrailsPage = () => {
 
     //useSelectors
     const user = useSelector(state => state.session.user)
-    const favorites = user.favorites
+    const favorites = user?.favorites
     const trails = useSelector(state => state.trails.userTrails)
 
     //state (to force reload of state after delete)
@@ -85,6 +85,7 @@ const MyTrailsPage = () => {
       })
 
 
+      if (!user) history.push('/')
 
     return (
         <div>
