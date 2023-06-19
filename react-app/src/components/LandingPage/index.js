@@ -49,19 +49,19 @@ const LandingPage = () => {
             <div className="categories-container">
                 <h1 className="browse-by-activity">Browse by activity</h1>
                 <div className="cat-pic-container">
-                    <NavLink exact to="/categories/hiking">
+                    <NavLink exact to="/categories/Hiking">
                             <img className="cat-pics" src={hikingPhoto}></img>
                             <h2 className="cat-pics-labels">Hiking</h2>
                     </NavLink>
-                    <NavLink exact to="/categories/biking">
+                    <NavLink exact to="/categories/Biking">
                             <img className="cat-pics" src={bikingPhoto}></img>
                             <h2 className="cat-pics-labels">Biking</h2>
                     </NavLink>
-                    <NavLink exact to="/categories/running">
+                    <NavLink exact to="/categories/Running">
                             <img className="cat-pics" src={runningPhoto}></img>
                             <h2 className="cat-pics-labels">Running</h2>
                     </NavLink>
-                    <NavLink exact to="/categories/walking">
+                    <NavLink exact to="/categories/Walking">
                             <img className="cat-pics" src={walkingPhoto}></img>
                             <h2 className="cat-pics-labels">Walking</h2>
                     </NavLink>

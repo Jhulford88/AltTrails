@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/current">
             <MyTrailsPage />
           </Route>
-          <Route exact path="/categories/:category">
+          <Route exact path="/categories/:categoryParam">
             <CategoriesPage />
           </Route>
         </Switch>

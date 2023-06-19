@@ -1,0 +1,8 @@
+.category-trail-cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border: 1px solid blue; */
+    /* align-items: center; */
+    justify-content: space-around;
+}
