@@ -34,6 +34,14 @@ const TrailDetailPage = () => {
       dispatch(createFavoriteThunk(trailId))
     }
 
+    const reviewAvg = () => {
+      let totalStars = null;
+      singleTrail.reviews?.forEach(review => {
+        totalStars += review.starRating
+      })
+      // console.log('res.....',totalStars / singleTrail.reviews.length)
+      return totalStars / singleTrail?.reviews?.length
+    }
 
     return (
         <div className="parent-container">
@@ -46,14 +54,7 @@ const TrailDetailPage = () => {
                 <div>{singleTrail.length} mi</div>
                 <div>elevation gain {singleTrail.elevationGain} ft</div>
                 <div>{singleTrail.description}</div>
-                {sessionUser ? <div>
-                <OpenModalButton
-                    className="create-review-button"
-                    buttonText={"Leave a Review"}
-                    modalComponent={<CreateReviewModal trailId={trailId}/>}
-                />
-                </div>
-                : null}
+                <div>category?</div>
 
                 {sessionUser ?
                 <div className="favorite-button">
@@ -63,13 +64,29 @@ const TrailDetailPage = () => {
 
 
                 <div>
+                  <div className="review-totals-container">
+                    <div className="average-rating-number">
+                    {reviewAvg()} <span className="average-rating-text">average rating</span>
+                    </div>
+                    <div>
+                    {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
+                    </div>
+                    {sessionUser ? <div>
+                      <OpenModalButton
+                          className="create-review-button"
+                          buttonText={"Leave a Review"}
+                          modalComponent={<CreateReviewModal trailId={trailId}/>}
+                      />
+                      </div>
+                    : null}
+
+                  </div>
         <ul className="reviews-ul">
           {singleTrail.reviews?.map(review => {
             return (
-              <div className="review-area">
-                {/* <span className="username-says">{comment.user.first_name} says...</span> */}
-                <li key={review.id} className="individual-review"> {review.reviewText}</li>
-                <li key={review.id} className="individual-review-stars"> Stars: {review.starRating}</li>
+              <div key={review.id} className="review-area">
+                <div className="individual-review"> {review.reviewText}</div>
+                <div className="individual-review-stars"> Stars: {review.starRating}</div>
 
                 {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
                     className="create-review-button"

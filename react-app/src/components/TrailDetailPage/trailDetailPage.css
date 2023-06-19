@@ -48,3 +48,20 @@
     text-decoration: underline;
     margin-bottom: 75px;
 }
+
+.review-totals-container {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.average-rating-number {
+    font-size: 42px;
+    color: green;
+}
+
+.average-rating-text {
+    font-size: 16px;
+    color: black;
+}

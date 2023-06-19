@@ -42,6 +42,8 @@ class Trail(db.Model):
         back_populates='favorite_trails',
         cascade="all, delete")
 
+
+
     def to_dict(self):
         return {
             'id': self.id,
