@@ -1,4 +1,9 @@
 
+.create-trail-link {
+  text-decoration: none;
+  color: green;
+}
+
 .hidden {
   display: none;
 }
@@ -6,17 +11,34 @@
 .logo {
   width: 180px;
   height: 35px;
+  margin-left: -20px;
+  margin-right: 20px;
 }
 
 .navbar-ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: 1px solid black;
   list-style: none;
+  padding-right: 15px;
 }
 
 
 .profile-dropdown {
+  /* gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10px;
+  list-style-type: none;
+  padding: 10px 20px;  */
   position: absolute;
+  /* top: 74px;  */
+  right: 75px;
+  /* background-color: white;
+  min-width: 1rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  z-index: 1;
+
 }

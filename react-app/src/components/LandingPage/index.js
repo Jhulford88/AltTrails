@@ -42,7 +42,6 @@ const LandingPage = () => {
     return (
         <div>
             <Slider />
-            <h1>hello from landing page</h1>
             <div className="trail-cards-container">
                 {cards}
             </div>
