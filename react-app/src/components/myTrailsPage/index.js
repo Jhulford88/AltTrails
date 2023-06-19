@@ -90,7 +90,10 @@ const MyTrailsPage = () => {
 
     return (
         <div>
-            <img className="trail-card-img" src={image}></img>
+            <div className="banner-img-container">
+                <img className='banner-img' src={image}></img>
+                <h1 className='banner-text'>Lets do this...</h1>
+            </div>
             <div className="manage-trail-cards-container">
                 <h2>My Trails</h2>
                 <div>{cards}</div>

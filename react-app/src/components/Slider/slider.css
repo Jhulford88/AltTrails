@@ -1,11 +1,11 @@
 .test {
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 48px;
   color: white;
-  padding-bottom: 350px;
+  /* padding-bottom: 350px; */
   z-index: 1;
   font-family: Arial, Helvetica, sans-serif;
 }
