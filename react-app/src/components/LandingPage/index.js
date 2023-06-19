@@ -31,10 +31,10 @@ const LandingPage = () => {
                 <div className="trail-card-img-container">
                     <img className="landing-trail-card-img" alt="Trail Image" src={trail?.coverPhoto}></img>
                 </div>
-                <div>{trail.trailName}</div>
-                <div>{trail.park}</div>
-                <div>{trail.city}, {trail.state}</div>
-                <div>Length: {trail.length}mi</div>
+                <div className="trail-name">{trail.trailName}</div>
+                <div className="park-name">{trail.park}</div>
+                {/* <div>{trail.city}, {trail.state}</div> */}
+                <div>Length: {trail.length}mi · Est. {Math.floor(trail.length*17)}min</div>
             </div>
         )
     })
@@ -47,7 +47,7 @@ const LandingPage = () => {
         <div>
             <Slider />
             <div className="categories-container">
-                <h1>Browse by activity</h1>
+                <h1 className="browse-by-activity">Browse by activity</h1>
                 <div className="cat-pic-container">
                     <div>
                         <img className="cat-pics" src={hikingPhoto}></img>
@@ -67,6 +67,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
+            <h1 className="all-trails-h1">All trails...</h1>
             <div className="trail-cards-container">
                 {cards}
             </div>

@@ -16,7 +16,7 @@ const Slider = () => {
     return (
         <div>
             <p className="test">Let's find a new trail{user ? ", " + user.firstName : null}</p>
-            <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showArrows={false}>
+            <Carousel className="carousel" showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showArrows={false}>
                 <div>
                     <img src={image1} />
 
