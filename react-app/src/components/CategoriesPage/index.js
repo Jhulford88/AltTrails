@@ -17,7 +17,7 @@ const CategoriesPage = () => {
     const { category } = useParams();
 
     return (
-        <h1>Hello from category page</h1>
+        <h1>Hello from {category} category page</h1>
     )
 }
 

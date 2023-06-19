@@ -10,6 +10,7 @@ import CreateTrailFormPage from "./components/CreateTrailFormPage";
 import TrailDetailPage from "./components/TrailDetailPage";
 import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
 import MyTrailsPage from "./components/myTrailsPage";
+import CategoriesPage from "./components/CategoriesPage";
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/current">
             <MyTrailsPage />
+          </Route>
+          <Route exact path="/categories/:category">
+            <CategoriesPage />
           </Route>
         </Switch>
       )}
