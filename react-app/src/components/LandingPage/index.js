@@ -6,7 +6,6 @@ import Slider from "../Slider"
 import './landingPage.css';
 
 
-
 const LandingPage = () => {
 
     //Initialize things
