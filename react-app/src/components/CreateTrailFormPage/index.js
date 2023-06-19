@@ -6,6 +6,7 @@ import { postNewTrailThunk } from '../../store/trails';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import "./createTrailFormPage.css"
 
 //this is used to convert the backend errors into a format that the frontend can use
 const caseHelper = (backendstring) => {
@@ -158,8 +159,8 @@ function CreateTrailFormPage() {
 
     return (
         <div>
-            <h1>Create a New Trail!</h1>
-            <form className='create-new-trail-form' onSubmit={handleSubmit} >
+            <form className='signupForm' onSubmit={handleSubmit} >
+                <h1>Create a New Trail!</h1>
                 <label>
                     Trail Name <span className='errors'>{errors?.trailName}</span>
                     <input
@@ -264,7 +265,9 @@ function CreateTrailFormPage() {
                         onChange={(e) => setCoverPhoto(e.target.value)}
                     />
                 </label>
-                <button type='submit'>Create Trail</button>
+                <div className='signup-button-container'>
+                    <button className='signup-button' type='submit'>Create Trail</button>
+                </div>
             </form>
         </div>
     )

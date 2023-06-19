@@ -5,6 +5,7 @@ import { getCategoriesThunk } from '../../store/categories';
 import { getSingleTrailThunk } from "../../store/trails";
 import { updateTrailThunk } from '../../store/trails';
 import { getAllTrailsThunk } from '../../store/trails';
+import "./updateTrailFormPage.css"
 
 
 //this is used to convert the backend errors into a format that the frontend can use
@@ -152,8 +153,8 @@ function UpdateTrailFormPage() {
 
     return (
         <div>
-            <h1>Update your Trail!</h1>
-            <form className='update-trail-form' onSubmit={handleSubmit} >
+            <form className='signupForm' onSubmit={handleSubmit} >
+                <h1>Update your Trail!</h1>
                 <label>
                     Trail Name <span className='errors'>{errors?.trailName}</span>
                     <input
@@ -258,7 +259,9 @@ function UpdateTrailFormPage() {
                         onChange={(e) => setCoverPhoto(e.target.value)}
                     />
                 </label>
-                <button type='submit'>Update Trail</button>
+                <div className='signup-button-container'>
+                    <button className='signup-button' type='submit'>Update Trail</button>
+                </div>
             </form>
         </div>
     )
