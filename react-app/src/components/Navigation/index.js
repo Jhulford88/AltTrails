@@ -16,10 +16,13 @@ function Navigation({ isLoaded }){
 				{sessionUser ? <NavLink exact to="/trails/new" className="create-trail-link" title="Create a New Trail!">+</NavLink> : null}
 
 			</li>
+
 			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
+				<div>
+					<li>
+						<ProfileButton user={sessionUser} />
+					</li>
+				</div>
 			)}
 		</ul>
 	);

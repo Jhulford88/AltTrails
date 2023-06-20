@@ -47,10 +47,12 @@ const TrailDetailPage = () => {
         <div className="parent-container">
             <div className="cover-photo-container">
                 <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
+                <div className="detail-banner-text">
+                  <h1 className="trail-name-h1">{singleTrail.trailName}</h1>
+                  <h2 className="park-name-h2">{singleTrail.park}</h2>
+                </div>
             </div>
             <div className="detail-page-container">
-                <h1 className="trail-name-h1">{singleTrail.trailName}</h1>
-                <h2 className="park-name-h2">{singleTrail.park}</h2>
                 <div>{singleTrail.length} mi</div>
                 <div>elevation gain {singleTrail.elevationGain} ft</div>
                 <div>{singleTrail.description}</div>

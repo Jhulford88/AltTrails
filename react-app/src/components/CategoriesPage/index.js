@@ -57,11 +57,13 @@ const CategoriesPage = () => {
 
     return (
         <div>
-            {categoryParam == "Hiking" ? <img className="trail-card-img" src={hiking}></img> : null}
-            {categoryParam == "Biking" ? <img className="trail-card-img" src={biking}></img> : null}
-            {categoryParam == "Running" ? <img className="trail-card-img" src={running}></img> : null}
-            {categoryParam == "Walking" ? <img className="trail-card-img" src={walking}></img> : null}
-            <h1>Here Are Some {categoryParam} Trails!</h1>
+            <div className="cat-banner-container">
+                {categoryParam == "Hiking" ? <img className="trail-card-img" src={hiking}></img> : null}
+                {categoryParam == "Biking" ? <img className="trail-card-img" src={biking}></img> : null}
+                {categoryParam == "Running" ? <img className="trail-card-img" src={running}></img> : null}
+                {categoryParam == "Walking" ? <img className="trail-card-img" src={walking}></img> : null}
+                <h1 className="cat-banner-text">{categoryParam}</h1>
+            </div>
             <div className="category-trail-cards-container">
                 {cards}
             </div>

@@ -51,9 +51,10 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
-            <li>
-              <NavLink className="category-link" exact to="/current">My Trails</NavLink>
-            </li>
+            <li className="my-trails-link-li">
+				      <NavLink className="my-trails-link" exact to="/current">My Trails</NavLink>
+			      </li>
+
             {/* <li><button onClick={history.push('/current')}>My Trails</button></li> */}
             <li>
               <button onClick={handleLogout}>Log Out</button>
