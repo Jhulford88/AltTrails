@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getCurrentTrailsThunk } from '../../store/trails';
 import { deleteFavoriteThunk } from '../../store/trails';
 import { authenticate } from '../../store/session';
@@ -8,8 +8,6 @@ import OpenModalButton from '../OpenModalButton';
 import DeleteTrailModal from "../DeleteTrailModal";
 import image from "../../assets/slider-5.avif"
 import "./myTrailsPage.css"
-
-//add useSelector and dispatch thunk for get user trails
 
 
 const MyTrailsPage = () => {
@@ -33,6 +31,7 @@ const MyTrailsPage = () => {
         dispatch(authenticate())
     }, [dispatch, deleted, favorites])
 
+    //Delete favorite from DB and update store
     const removeFavorite = (trailId) => {
         dispatch(deleteFavoriteThunk(trailId))
         dispatch(authenticate())
