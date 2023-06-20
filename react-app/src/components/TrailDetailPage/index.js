@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
 import { createFavoriteThunk } from "../../store/trails";
 import { authenticate } from '../../store/session';
+import { getAllTrailsThunk } from "../../store/trails";
+import { getCategoriesThunk } from "../../store/categories";
 import OpenModalButton from '../OpenModalButton';
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
@@ -23,11 +25,15 @@ const TrailDetailPage = () => {
     //useSelectors
     const singleTrail = useSelector(state => state.trails.singleTrail)
     const sessionUser = useSelector(state => state.session.user)
+    const trails = useSelector(state => state.trails.allTrails)
+    const categories = useSelector(state => state.categories.categories);
 
 
     //dispatching thunks on mount
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
+        dispatch(getAllTrailsThunk())
+        dispatch(getCategoriesThunk())
         dispatch(authenticate())
     }, [dispatch, trailId])
 
@@ -35,6 +41,35 @@ const TrailDetailPage = () => {
     const addFavorite = (e) => {
       dispatch(createFavoriteThunk(trailId))
     }
+
+    //determine the category
+    let categoryId;
+    if (categories) {
+        Object.values(categories).forEach(category => {
+           if (category.id == singleTrail.categoryId){
+               categoryId = category.id
+           }
+        })
+    }
+
+    //build category cards
+    const catCards = Object.values(trails)?.filter(trail => trail.categoryId == categoryId && trail.id != singleTrail.id).map(trail => {
+
+      return (
+          <div key={trail.id} className="cat-trail-card" onClick={(e) => {
+              history.push(`/trails/${trail.id}`)
+            }}>
+              <div className="trail-card-img-container">
+                  <img className="landing-trail-card-img" alt="Trail Image" src={trail?.coverPhoto}></img>
+              </div>
+              <div className="trail-name">{trail.trailName}</div>
+              <div className="park-name">{trail.park}</div>
+              <div>Length: {trail.length}mi · Est. {Math.floor(trail.length*17)}min</div>
+          </div>
+      )
+
+  })
+
 
     //Find the average star rating for single trail
     const reviewAvg = () => {
@@ -154,8 +189,20 @@ const TrailDetailPage = () => {
                     )
                   })}
                 </ul>
+                {/* <h3 className="related-trails-header">Explore Similar:</h3> */}
                 <div className="related-trails-container">
-
+                  <div className="related-trails-cards">
+                    {catCards[0]}
+                  </div>
+                  <div className="related-trails-cards">
+                    {catCards[1]}
+                  </div>
+                  <div className="related-trails-cards">
+                    {catCards[2]}
+                  </div>
+                  <div className="related-trails-cards">
+                    {catCards[3]}
+                  </div>
                 </div>
             </div>
         </div>

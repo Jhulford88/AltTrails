@@ -1,13 +1,8 @@
 
 .detail-page-container {
     width: 97%;
-    /* margin: 0 auto; */
-    /* margin-left: 20px; */
-    /* padding: 20px; */
     margin-top: 10px;
     margin-left: 10px;
-    /* margin-right: 0px; */
-    /* border: 2px solid red; */
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
@@ -20,7 +15,7 @@
 .detail-page-description {
     grid-column-start: 1;
     grid-column-end: 5;
-    /* border: 2px solid orange; */
+    font-size: 20px;
 }
 
 .fa-bookmark {
@@ -78,17 +73,21 @@
     position: relative;
     width: 100%;
     height: 400px;
-    /* opacity: 70%; */
-    /* background-color: black; */
-    filter: brightness(90%);
+    filter: brightness(80%);
 }
 
 .review-area {
-    border-top: 1px solid gray;
-    /* border-bottom: 1px solid gray; */
     margin-bottom: 10px;
     margin-left: -30px;
-    /* border: 1px solid blue; */
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(244, 241, 241);
+}
+
+.individual-review {
+    font-size: 18px;
+    background-color: rgb(244, 241, 241);
 }
 
 .reviews-ul {
@@ -102,24 +101,50 @@
 
 
 .review-totals-container {
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
     margin-top: 15px;
     margin-bottom: 5px;
+    margin-left: 10px;
     grid-row-start: 2;
     grid-column-start: 1;
     grid-column-end: 3;
-    /* border: 2px solid purple; */
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(244, 241, 241);
 }
 
 .related-trails-container {
-    border: 2px solid red;
-    grid-row-start: 2;
+    /* border: 2px solid red; */
+    grid-row-start: 1;
     grid-row-end: 10;
     grid-column-start: 5;
     grid-column-end: 7;
     margin-left: 20px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-rows: 4fr;
+    grid-template-columns: auto;
 }
+
+.cat-trail-card {
+    cursor: pointer;
+}
+
+.related-trails-cards {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    width: 80%;
+}
+
+/* .related-trails-header {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    margin-left: 120px;
+    margin-top: 140px;
+} */
 
 .average-rating-number {
     font-size: 42px;
