@@ -1,6 +1,6 @@
 .test {
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 48px;
@@ -11,6 +11,12 @@
 }
 
 
-/* .carousel {
+.carousel {
   height: 400px;
-} */
+  /* margin-top: -20px; */
+}
+
+.car-img {
+  height: 400px;
+  object-fit: cover;
+}

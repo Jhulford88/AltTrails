@@ -1,18 +1,11 @@
-/* .cover-photo-container {
-    width: 100%;
-    height: 350px;
-
-}
 
 .detail-page-container {
     width: 100%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* margin-left: 20px; */
+    /* padding: 20px; */
 }
 
-.parent-container {
-    width: 100%;
-
-} */
 
 .create-review-button-container {
     display: flex;
@@ -30,6 +23,10 @@
     padding: 10px;
     margin-bottom: 70px;
     cursor: pointer;
+  }
+
+  .fa-star {
+    color: #028858;
   }
 
 .trail-card-img {

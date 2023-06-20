@@ -18,15 +18,15 @@ const Slider = () => {
             <p className="test">Let's find a new trail{user ? ", " + user.firstName : null}</p>
             <Carousel className="carousel" showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showArrows={false}>
                 <div>
-                    <img src={image1} />
+                    <img className="car-img" src={image1} />
 
                 </div>
                 <div>
-                    <img src={image2} />
+                    <img className="car-img" src={image2} />
 
                 </div>
                 <div>
-                    <img src={image3} />
+                    <img className="car-img" src={image3} />
 
                 </div>
             </Carousel>

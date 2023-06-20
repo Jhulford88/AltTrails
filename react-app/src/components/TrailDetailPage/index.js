@@ -45,10 +45,10 @@ const TrailDetailPage = () => {
 
     return (
         <div className="parent-container">
+            <div className="cover-photo-container">
+                <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
+            </div>
             <div className="detail-page-container">
-                <div className="cover-photo-container">
-                    <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
-                </div>
                 <h1 className="trail-name-h1">{singleTrail.trailName}</h1>
                 <h2 className="park-name-h2">{singleTrail.park}</h2>
                 <div>{singleTrail.length} mi</div>
@@ -67,7 +67,7 @@ const TrailDetailPage = () => {
                   <div className="review-totals-container">
                     {singleTrail.reviews?.length ?
                       <div >
-                        <div className="average-rating-number">{reviewAvg()} <span className="average-rating-text">average rating</span></div>
+                        <div className="average-rating-number">{reviewAvg()} <span className="average-rating-text"><i class="fa-solid fa-star"></i></span></div>
                         <div>
                           {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
                         </div>
@@ -89,7 +89,7 @@ const TrailDetailPage = () => {
             return (
               <div key={review.id} className="review-area">
                 <div className="individual-review"> {review.reviewText}</div>
-                <div className="individual-review-stars"> Stars: {review.starRating}</div>
+                <div className="individual-review-stars">{review.starRating} <i class="fa-solid fa-star"></i></div>
 
                 {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
                     className="create-review-button"
