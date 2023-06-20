@@ -8,6 +8,7 @@ import { authenticate } from '../../store/session';
 import { getAllTrailsThunk } from "../../store/trails";
 import { getCategoriesThunk } from "../../store/categories";
 import OpenModalButton from '../OpenModalButton';
+import OpenReviewModalButton from "../OpenReviewModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import './trailDetailPage.css'
@@ -159,7 +160,7 @@ const TrailDetailPage = () => {
                     : <h2>Be the First to Leave a Review!</h2>}
 
                     {sessionUser ? <div className="create-review-button-container">
-                      <OpenModalButton
+                      <OpenReviewModalButton
                           className="create-review-button"
                           buttonText={"Write Review"}
                           modalComponent={<CreateReviewModal trailId={trailId}/>}
