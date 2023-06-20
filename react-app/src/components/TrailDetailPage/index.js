@@ -34,6 +34,7 @@ const TrailDetailPage = () => {
       dispatch(createFavoriteThunk(trailId))
     }
 
+    //Find the average star rating for single trail
     const reviewAvg = () => {
       let totalStars = null;
       singleTrail.reviews?.forEach(review => {
@@ -41,6 +42,22 @@ const TrailDetailPage = () => {
       })
       let res =  totalStars / singleTrail?.reviews?.length
       return res.toFixed(1)
+    }
+
+    //Find the difficulty level for single trail
+    const findDifficulty = () => {
+      if (singleTrail.length >= 20) return "Hard"
+      if ((singleTrail.elevationGain / singleTrail.length) >= 300) return "Hard"
+      if ((singleTrail.elevationGain / singleTrail.length) >= 200 && (singleTrail.elevationGain / singleTrail.length) <= 300) return "Medium"
+      return "Easy"
+    }
+
+    //Find the category type
+    const findCategory = () => {
+      if (singleTrail.categoryId == 1) return "Hiking"
+      if (singleTrail.categoryId == 2) return "Biking"
+      if (singleTrail.categoryId == 3) return "Running"
+      if (singleTrail.categoryId == 4) return "Walking"
     }
 
     return (
@@ -52,9 +69,26 @@ const TrailDetailPage = () => {
                   <h2 className="park-name-h2">{singleTrail.park}</h2>
                 </div>
             </div>
+            <div className="detail-stats-container">
+              <div className="detail-stats">
+                <div >distance</div>
+                <div className="detail-stats-res">{singleTrail.length} mi</div>
+              </div>
+              <div className="detail-stats">
+                <div >elevation gain</div>
+                <div className="detail-stats-res">{singleTrail.elevationGain} ft</div>
+              </div>
+              <div className="detail-stats">
+                <div >difficulty</div>
+                <div className="detail-stats-res">{findDifficulty()}</div>
+              </div>
+              <div className="detail-stats">
+                <div >type</div>
+                <div className="detail-stats-res">{findCategory()}</div>
+              </div>
+            </div>
             <div className="detail-page-container">
-                <div>{singleTrail.length} mi</div>
-                <div>elevation gain {singleTrail.elevationGain} ft</div>
+
                 <div>{singleTrail.description}</div>
                 <div>category?</div>
 

@@ -99,3 +99,27 @@
    font-size: 24px;
    font-weight: lighter;
 }
+
+.detail-stats-container {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.detail-stats {
+    /* border: 1px solid blue; */
+    width: 25%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+
+
+}
+
+.detail-stats-res {
+    font-size: 22px;
+    font-weight: bolder;
+    color: #028858;
+}
