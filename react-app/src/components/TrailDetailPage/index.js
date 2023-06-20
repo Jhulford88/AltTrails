@@ -35,6 +35,7 @@ const TrailDetailPage = () => {
         dispatch(getAllTrailsThunk())
         dispatch(getCategoriesThunk())
         dispatch(authenticate())
+        window.scrollTo(0, 0)
     }, [dispatch, trailId])
 
     //dispatch thunk on click

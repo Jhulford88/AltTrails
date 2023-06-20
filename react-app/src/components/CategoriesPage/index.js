@@ -25,6 +25,7 @@ const CategoriesPage = () => {
      useEffect(() => {
          dispatch(getAllTrailsThunk())
          dispatch(getCategoriesThunk())
+         window.scrollTo(0, 0)
      }, [dispatch])
 
      //determine the category
