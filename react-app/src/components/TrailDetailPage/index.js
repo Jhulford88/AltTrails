@@ -174,7 +174,7 @@ const TrailDetailPage = () => {
                     return (
                       <div key={review.id} className="review-area">
                         <div className="individual-review"> {review.reviewText}</div>
-                        <div className="individual-review-stars">{review.starRating} <i class="fa-solid fa-star"></i></div>
+                        <div className="individual-review-stars">{review.starRating} <span className="individual-review-star"><i class="fa-solid fa-star"></i></span></div>
                         {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
                             className="create-review-button"
                             buttonText={"Update"}

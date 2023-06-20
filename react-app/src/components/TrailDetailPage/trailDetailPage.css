@@ -1,3 +1,52 @@
+.average-rating-number {
+    font-size: 42px;
+    color: green;
+}
+
+
+.average-rating-number-banner {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.average-rating-text {
+    font-size: 36px;
+    color: gold;
+}
+
+#banner-rating-icon {
+    color: gold;
+    font-size: 32px;
+    outline: white;
+}
+
+.cat-trail-card {
+    cursor: pointer;
+}
+
+.cover-photo-container {
+    height: 400px;
+    justify-content: center;
+    background-color: beige;
+}
+
+.create-review-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.create-review-button{
+    width: 20px;
+    height: 50px;
+    border: none;
+    width: 100%;
+    text-align: center;
+    background: #028858;
+    color: white;
+    padding: 10px;
+    margin-bottom: 70px;
+    cursor: pointer;
+}
 
 .detail-page-container {
     width: 97%;
@@ -12,10 +61,44 @@
     padding: 10px;
 }
 
+.detail-stats-res {
+    font-size: 22px;
+    font-weight: bolder;
+    color: #028858;
+}
+
 .detail-page-description {
     grid-column-start: 1;
     grid-column-end: 5;
     font-size: 20px;
+}
+
+.detail-banner-text {
+   position: absolute;
+   top: 270px;
+   left: 1%;
+   color: white;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 24px;
+   font-weight: lighter;
+}
+
+.detail-stats-container {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    padding-top: 10px;
+    background-color: beige;
+
+}
+
+.detail-stats {
+    width: 25%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+
+
 }
 
 .fa-bookmark {
@@ -31,17 +114,6 @@
 
 }
 
-#banner-rating-icon {
-    color: gold;
-    font-size: 32px;
-    outline: white;
-}
-
-.average-rating-number-banner {
-    font-size: 32px;
-    font-weight: bold;
-}
-
 .favorite-button-container {
    position: absolute;
    top: 150px;
@@ -49,31 +121,31 @@
 
 }
 
-.create-review-button-container {
-    display: flex;
-    align-items: center;
-  }
+.individual-review {
+    font-size: 18px;
+    background-color: rgb(244, 241, 241);
+}
 
-  .create-review-button{
-    width: 20px;
+.individual-review-star {
+    color: gold;
+    font-size: 20px;
+}
+
+.open-review-modal-button {
+    margin-left: 75px;
     height: 50px;
-    border: none;
-    width: 100%;
-    text-align: center;
+    width: 150px;
+    border-radius: 20px;
     background: #028858;
     color: white;
-    padding: 10px;
-    margin-bottom: 70px;
-    cursor: pointer;
-  }
+}
 
+.park-name-h2 {
+    text-decoration: underline;
+}
 
-  .trail-card-img {
-    object-fit: cover;
-    position: relative;
-    width: 100%;
-    height: 400px;
-    filter: brightness(80%);
+.parent-container {
+    background-color: rgb(244, 241, 241);
 }
 
 .review-area {
@@ -85,20 +157,12 @@
     background-color: rgb(244, 241, 241);
 }
 
-.individual-review {
-    font-size: 18px;
-    background-color: rgb(244, 241, 241);
-}
-
 .reviews-ul {
     list-style: none;
-    /* width: 50%; */
     grid-row-start: 3;
     grid-column-start: 1;
     grid-column-end: 5;
-    /* border: 2px solid green; */
 }
-
 
 .review-totals-container {
     margin-top: 15px;
@@ -111,10 +175,11 @@
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(244, 241, 241);
+    display: flex;
+    flex-direction: row;
 }
 
 .related-trails-container {
-    /* border: 2px solid red; */
     grid-row-start: 1;
     grid-row-end: 10;
     grid-column-start: 5;
@@ -126,10 +191,6 @@
     grid-template-columns: auto;
 }
 
-.cat-trail-card {
-    cursor: pointer;
-}
-
 .related-trails-cards {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -138,71 +199,14 @@
     width: 80%;
 }
 
-/* .related-trails-header {
-    grid-column-start: 5;
-    grid-column-end: 7;
-    grid-row-start: 1;
-    margin-left: 120px;
-    margin-top: 140px;
-} */
-
-.average-rating-number {
-    font-size: 42px;
-    color: green;
-}
-
-.average-rating-text {
-    font-size: 16px;
-    color: black;
-}
-
-.cover-photo-container {
+.trail-card-img {
+    object-fit: cover;
+    position: relative;
+    width: 100%;
     height: 400px;
-    /* text-align: center; */
-    justify-content: center;
-    background-color: beige;
-    /* margin-bottom: 10px; */
+    filter: brightness(80%);
 }
 
-.park-name-h2 {
-    text-decoration: underline;
-}
-
-.detail-banner-text {
-   position: absolute;
-   top: 270px;
-   left: 1%;
-   color: white;
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: 24px;
-   font-weight: lighter;
-}
-
-.detail-stats-container {
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: row;
-    vertical-align: middle;
-    padding-top: 10px;
-    background-color: beige;
-
-}
-
-.detail-stats {
-    /* border: 1px solid blue; */
-    width: 25%;
-    height: 50px;
-    text-align: center;
-    border-bottom: 1px solid gray;
-
-
-}
-
-.detail-stats-res {
-    font-size: 22px;
-    font-weight: bolder;
-    color: #028858;
-}
 
 .trail-detail-subheader-container {
     height: 50px;
@@ -213,8 +217,4 @@
 .trail-detail-subheader-text {
     margin-left: 30px;
     padding-top: 15px;
-}
-
-.parent-container {
-    background-color: rgb(244, 241, 241);
 }
