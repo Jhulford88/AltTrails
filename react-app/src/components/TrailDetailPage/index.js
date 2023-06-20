@@ -91,19 +91,19 @@ const TrailDetailPage = () => {
 
             <div className="detail-stats-container">
                 <div className="detail-stats">
-                  <div >distance</div>
+                  <div >Distance</div>
                   <div className="detail-stats-res">{singleTrail.length} mi</div>
                 </div>
                 <div className="detail-stats">
-                  <div >elevation gain</div>
+                  <div >Elevation Gain</div>
                   <div className="detail-stats-res">{singleTrail.elevationGain} ft</div>
                 </div>
                 <div className="detail-stats">
-                  <div >difficulty</div>
+                  <div >Difficulty</div>
                   <div className="detail-stats-res">{findDifficulty()}</div>
                 </div>
                 <div className="detail-stats">
-                  <div >type</div>
+                  <div >Type</div>
                   <div className="detail-stats-res">{findCategory()}</div>
                 </div>
             </div>

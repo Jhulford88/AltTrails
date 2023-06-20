@@ -30,7 +30,8 @@ const MyTrailsPage = () => {
     useEffect(() => {
         dispatch(getCurrentTrailsThunk())
         setDeleted(false)
-    }, [dispatch, deleted])
+        dispatch(authenticate())
+    }, [dispatch, deleted, favorites])
 
     const removeFavorite = (trailId) => {
         dispatch(deleteFavoriteThunk(trailId))
