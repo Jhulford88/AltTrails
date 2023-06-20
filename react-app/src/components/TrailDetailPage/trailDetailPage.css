@@ -71,10 +71,7 @@
     margin-bottom: 70px;
     cursor: pointer;
   }
-/*
-  .fa-star {
-    color: gold;
-  } */
+
 
   .trail-card-img {
     object-fit: cover;
@@ -113,6 +110,15 @@
     grid-column-start: 1;
     grid-column-end: 3;
     /* border: 2px solid purple; */
+}
+
+.related-trails-container {
+    border: 2px solid red;
+    grid-row-start: 2;
+    grid-row-end: 10;
+    grid-column-start: 5;
+    grid-column-end: 7;
+    margin-left: 20px;
 }
 
 .average-rating-number {

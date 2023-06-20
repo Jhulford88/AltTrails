@@ -154,6 +154,9 @@ const TrailDetailPage = () => {
                     )
                   })}
                 </ul>
+                <div className="related-trails-container">
+
+                </div>
             </div>
         </div>
     )
