@@ -1,12 +1,58 @@
 
 .detail-page-container {
-    width: 100%;
+    width: 97%;
     /* margin: 0 auto; */
     /* margin-left: 20px; */
     /* padding: 20px; */
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    /* margin-right: 0px; */
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    column-gap: 10px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
 }
 
+.detail-page-description {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    /* border: 2px solid orange; */
+}
+
+.fa-bookmark {
+
+    color: gold;
+    font-size: 60px;
+}
+
+.favorite-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+
+}
+
+#banner-rating-icon {
+    color: gold;
+    font-size: 32px;
+    outline: white;
+}
+
+.average-rating-number-banner {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.favorite-button-container {
+   position: absolute;
+   top: 150px;
+   left: 92%;
+
+}
 
 .create-review-button-container {
     display: flex;
@@ -35,43 +81,38 @@
     position: relative;
     width: 100%;
     height: 400px;
-
+    /* opacity: 70%; */
+    /* background-color: black; */
+    filter: brightness(90%);
 }
 
 .review-area {
     border-top: 1px solid gray;
     /* border-bottom: 1px solid gray; */
     margin-bottom: 10px;
+    margin-left: -30px;
+    /* border: 1px solid blue; */
 }
 
 .reviews-ul {
     list-style: none;
-    width: 50%;
+    /* width: 50%; */
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    /* border: 2px solid green; */
 }
 
-/* .trail-name-h1 {
-    z-index: 1;
-    margin-top: -175px;
-    color: white;
-    margin-left: 30px;
-    font-size: 48px;
-    font-weight: lighter;
-}
-
-.park-name-h2 {
-    color: white;
-    margin-left: 30px;
-    font-size: 28px;
-    font-weight: lighter;
-    text-decoration: underline;
-    margin-bottom: 75px;
-} */
 
 .review-totals-container {
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     margin-top: 15px;
     margin-bottom: 5px;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* border: 2px solid purple; */
 }
 
 .average-rating-number {
@@ -88,6 +129,12 @@
     height: 400px;
     /* text-align: center; */
     justify-content: center;
+    background-color: beige;
+    /* margin-bottom: 10px; */
+}
+
+.park-name-h2 {
+    text-decoration: underline;
 }
 
 .detail-banner-text {
@@ -105,7 +152,9 @@
     display: flex;
     flex-direction: row;
     vertical-align: middle;
-    margin-top: 10px;
+    padding-top: 10px;
+    background-color: beige;
+
 }
 
 .detail-stats {
@@ -122,4 +171,19 @@
     font-size: 22px;
     font-weight: bolder;
     color: #028858;
+}
+
+.trail-detail-subheader-container {
+    height: 50px;
+    background-color: rgb(244, 241, 241);
+
+}
+
+.trail-detail-subheader-text {
+    margin-left: 30px;
+    padding-top: 15px;
+}
+
+.parent-container {
+    background-color: rgb(244, 241, 241);
 }

@@ -25,11 +25,13 @@ const TrailDetailPage = () => {
     const sessionUser = useSelector(state => state.session.user)
 
 
+    //dispatching thunks on mount
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
         dispatch(authenticate())
     }, [dispatch, trailId])
 
+    //dispatch thunk on click
     const addFavorite = (e) => {
       dispatch(createFavoriteThunk(trailId))
     }
@@ -62,45 +64,55 @@ const TrailDetailPage = () => {
 
     return (
         <div className="parent-container">
+          <div className="trail-detail-subheader-container">
+            <div className="trail-detail-subheader-text"> United States &nbsp; {">"} &nbsp; {singleTrail.state} &nbsp; {">"} &nbsp; {singleTrail.city} &nbsp; {">"} &nbsp; {singleTrail.park} </div>
+          </div>
+
             <div className="cover-photo-container">
                 <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
+                {sessionUser ?
+                <div className="favorite-button-container" title="Add to Favorites">
+                  <button className="favorite-button" onClick={addFavorite}><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+                : null}
                 <div className="detail-banner-text">
                   <h1 className="trail-name-h1">{singleTrail.trailName}</h1>
                   <h2 className="park-name-h2">{singleTrail.park}</h2>
+                  <div className="review-over-banner-container">
+                    {singleTrail.reviews?.length ?
+                      <div >
+                        <div className="average-rating-number-banner">{reviewAvg()} <span className="average-rating-text"><i class="fa-solid fa-star" id="banner-rating-icon"></i></span></div>
+                      </div>
+                    : null}
+                  </div>
                 </div>
             </div>
+
+
             <div className="detail-stats-container">
-              <div className="detail-stats">
-                <div >distance</div>
-                <div className="detail-stats-res">{singleTrail.length} mi</div>
-              </div>
-              <div className="detail-stats">
-                <div >elevation gain</div>
-                <div className="detail-stats-res">{singleTrail.elevationGain} ft</div>
-              </div>
-              <div className="detail-stats">
-                <div >difficulty</div>
-                <div className="detail-stats-res">{findDifficulty()}</div>
-              </div>
-              <div className="detail-stats">
-                <div >type</div>
-                <div className="detail-stats-res">{findCategory()}</div>
-              </div>
-            </div>
-            <div className="detail-page-container">
-
-                <div>{singleTrail.description}</div>
-                <div>category?</div>
-
-                {sessionUser ?
-                <div className="favorite-button">
-                  <button onClick={addFavorite}>add to favorites</button>
+                <div className="detail-stats">
+                  <div >distance</div>
+                  <div className="detail-stats-res">{singleTrail.length} mi</div>
                 </div>
-                : null}
+                <div className="detail-stats">
+                  <div >elevation gain</div>
+                  <div className="detail-stats-res">{singleTrail.elevationGain} ft</div>
+                </div>
+                <div className="detail-stats">
+                  <div >difficulty</div>
+                  <div className="detail-stats-res">{findDifficulty()}</div>
+                </div>
+                <div className="detail-stats">
+                  <div >type</div>
+                  <div className="detail-stats-res">{findCategory()}</div>
+                </div>
+            </div>
 
 
-                <div>
-                  <div className="review-totals-container">
+
+            <div className="detail-page-container">
+                <div className="detail-page-description">{singleTrail.description}</div>
+                <div className="review-totals-container">
                     {singleTrail.reviews?.length ?
                       <div >
                         <div className="average-rating-number">{reviewAvg()} <span className="average-rating-text"><i class="fa-solid fa-star"></i></span></div>
@@ -118,36 +130,30 @@ const TrailDetailPage = () => {
                       />
                       </div>
                     : null}
+                </div>
 
-                  </div>
-        <ul className="reviews-ul">
-          {singleTrail.reviews?.map(review => {
-            return (
-              <div key={review.id} className="review-area">
-                <div className="individual-review"> {review.reviewText}</div>
-                <div className="individual-review-stars">{review.starRating} <i class="fa-solid fa-star"></i></div>
-
-                {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
-                    className="create-review-button"
-                    buttonText={"Update"}
-                    modalComponent={<UpdateReviewModal review={review}/>}
-                />
-                : null}
-
-                {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
-                    className="create-review-button"
-                    buttonText={"Delete"}
-                    modalComponent={<DeleteReviewModal reviewId={review.id}/>}
-                />
-                : null}
-
-
-              </div>
-
-            )
-          })}
-        </ul>
-      </div>
+                <ul className="reviews-ul">
+                  {singleTrail.reviews?.map(review => {
+                    return (
+                      <div key={review.id} className="review-area">
+                        <div className="individual-review"> {review.reviewText}</div>
+                        <div className="individual-review-stars">{review.starRating} <i class="fa-solid fa-star"></i></div>
+                        {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
+                            className="create-review-button"
+                            buttonText={"Update"}
+                            modalComponent={<UpdateReviewModal review={review}/>}
+                        />
+                        : null}
+                        {sessionUser && sessionUser.id === review.userId ? <OpenModalButton
+                            className="create-review-button"
+                            buttonText={"Delete"}
+                            modalComponent={<DeleteReviewModal reviewId={review.id}/>}
+                        />
+                        : null}
+                      </div>
+                    )
+                  })}
+                </ul>
             </div>
         </div>
     )
