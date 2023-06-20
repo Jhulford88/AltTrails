@@ -65,9 +65,11 @@ function CreateTrailFormPage() {
         if (park.length < 1) newErrors['park'] = "Park name is required!"
         if (city.length < 1) newErrors['city'] = "City is required!"
         if (state.length !== 2) newErrors['state'] = "Two character state abbreviation is required!"
+        if (!lat) newErrors['lat'] = "Latitude is required!"
         if (lat < -90 || lat > 90) newErrors['lat'] = "Latitude must be between -90 and 90!"
-        if (lng < -180 || lat > 180) newErrors['lng'] = "Longitude must be between -180 and 180!"
-        if (categoryId === 'Select') newErrors['categoryId'] = "Please select a category!"
+        if (!lng) newErrors['lng'] = "Longitudeis requried!"
+        if (lng < -180 || lng > 180) newErrors['lng'] = "Longitude must be between -180 and 180!"
+        if (!categoryId) newErrors['category'] = "Please select a category!"
         if (length < .1) newErrors['length'] = "Length is required!"
         if (elevationGain < 1) newErrors['elevationGain'] = "Elevation gain is required!"
         if (coverPhoto.length < 1) newErrors['coverPhoto'] = "Cover Photo is required!"
@@ -216,7 +218,7 @@ function CreateTrailFormPage() {
                     />
                 </label>
                 <label>
-                    Category <span className='errors'>{errors.category}</span>
+                    Category <span className='errors'>{errors?.category}</span>
                     <select
                         value={categoryId}
                         onChange={(e) => setCategoryId(e.target.value)}>
