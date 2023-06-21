@@ -13,8 +13,8 @@ function Navigation({ isLoaded }){
 		<ul className='navbar-ul'>
 			<li>
 				<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
-				{sessionUser ? <NavLink exact to="/trails/new" className="create-trail-link" title="Create a New Trail!">+</NavLink> : null}
-
+				{sessionUser ? <NavLink exact to="/trails/new" className="create-trail-link" title="Create a New Trail!">Create a Trail</NavLink> : null}
+				<NavLink className="my-trails-link" exact to="/current">My Trails</NavLink>
 			</li>
 
 			{isLoaded && (

@@ -2,7 +2,13 @@
 .create-trail-link {
   text-decoration: none;
   color: green;
-  font-size: 40px;
+  font-size: 20px;
+}
+
+.my-trails-link {
+  text-decoration: none;
+  color: green;
+  font-size: 20px;
 }
 
 .hidden {
