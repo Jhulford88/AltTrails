@@ -24,6 +24,16 @@ const CreateReviewModal = ({trailId}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        //frontend form validation
+        const newErrors = {};
+        if (reviewText.length < 1) newErrors['reviewText'] = "Review text is required!"
+        if (starRating < 1) newErrors['starRating'] = "Star rating is required!"
+
+
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length) return;
+
         dispatch(postNewReviewThunk(formData, trailId))
             .then(dispatch(getSingleTrailThunk(trailId)))
             .then(closeModal)
@@ -45,6 +55,7 @@ const CreateReviewModal = ({trailId}) => {
         <div className="review-form-container">
             <div className="errors">{errors.reviewText ? errors.reviewText : null}</div>
             <div className="errors">{errors.starRating ? errors.starRating : null}</div>
+            <div className='review-form-header'>Tell everyone about your experience!</div>
             <form className='review-form' onSubmit={handleSubmit}>
                     <textarea
                         type='text'
@@ -72,9 +83,10 @@ const CreateReviewModal = ({trailId}) => {
                             );
                         })}
                         <br className="break"></br>
-                        <span className="stars">Stars</span>
+                        <span className="stars-word">Stars</span>
+                        <br className="break"></br>
+                        <button className='review-submit-button' type='submit'>Submit</button>
                     </div>
-            <button className='review-submit-button' type='submit'>Submit</button>
             </form>
         </div>
     )
