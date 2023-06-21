@@ -1,0 +1,43 @@
+.delete-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 40px; */
+}
+
+h2 {
+
+}
+
+.delete-modal-contents {
+    margin: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-yes-button {
+    /* margin-right: 60px; */
+    height: 30px;
+    width: 60px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-cancel-button {
+    /* margin-right: 60px; */
+    height: 30px;
+    width: 60px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
