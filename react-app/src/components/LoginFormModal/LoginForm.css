@@ -1,6 +1,4 @@
-/* * {
-    z-index: 2;
-} */
+
 
 .form-container {
     display: flex;
@@ -8,6 +6,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    z-index: 2;
   }
 
   .login-header {
