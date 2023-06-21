@@ -1,0 +1,16 @@
+.modal-button {
+    border: none;
+    background: none;
+    margin: 20px;
+    font-size: 16px;
+}
+
+.modal-button:hover {
+    cursor: pointer;
+    color: #037362;
+}
+
+.email-field {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DCDEDD;
+}

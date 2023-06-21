@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
+import './profileButton.css';
 
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
   const ulRef = useRef();
 
   const openMenu = () => {
@@ -36,6 +38,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -43,26 +46,31 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className="profile-button" >
-      <i class="fa-regular fa-circle-user"></i>
+      <button onClick={openMenu} className="header-dropdown-button" >
+      {sessionUser ? <i class="fa-regular fa-circle-user"></i> : <div className="just-login">Login</div>}
+      {/* <i class="fa-regular fa-circle-user"></i> */}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li className="email-field">{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <NavLink className="category-link" exact to="/current">My Trails</NavLink>
+            </li>
+            <li>
+              <button className="login-button" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
             <OpenModalButton
-              buttonText="Log In"
+              buttonText="Login"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-
+            <hr className='bar' />
+            <p className="modal-text">New to AltTrails?</p>
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}

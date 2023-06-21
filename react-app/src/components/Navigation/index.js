@@ -10,21 +10,30 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul className='navbar-ul'>
-			<li>
-				<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
-				{sessionUser ? <NavLink exact to="/trails/new" className="create-trail-link" title="Create a New Trail!">Create a Trail</NavLink> : null}
-				<NavLink className="my-trails-link" exact to="/current">My Trails</NavLink>
-			</li>
-
-			{isLoaded && (
-				<div>
+		<div className='main-nav-container'>
+			<ul className='navbar-ul'>
+				<div className='navbar-leftmost'>
 					<li>
-						<ProfileButton user={sessionUser} />
+						<NavLink exact to="/"><img className='logo' src={logo} alt='logo and home link'></img></NavLink>
+					</li>
+					<li id='navbar-links-left'>
+						{sessionUser ? <NavLink exact to="/trails/new" className="navbar-links-left" title="Create a New Trail!">Create a Trail</NavLink> : null}
+					</li>
+					<li id='navbar-links-left'>
+						{sessionUser ? <NavLink className="navbar-links-left" exact to="/current">My Trails</NavLink> : null}
 					</li>
 				</div>
-			)}
-		</ul>
+				<div className='navbar-rightmost'>
+					{isLoaded && (
+						<div>
+							<li>
+								<ProfileButton user={sessionUser} />
+							</li>
+						</div>
+					)}
+				</div>
+			</ul>
+		</div>
 	);
 }
 
