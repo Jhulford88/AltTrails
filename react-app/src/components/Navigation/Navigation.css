@@ -1,68 +1,3 @@
-/*
-.create-trail-link {
-  text-decoration: none;
-  color: green;
-  font-size: 20px;
-}
-
-.my-trails-link {
-  text-decoration: none;
-  color: green;
-  font-size: 20px;
-}
-
-.hidden {
-  display: none;
-}
-
-.logo {
-  width: 180px;
-  height: 35px;
-  margin-left: -20px;
-  margin-right: 20px;
-}
-
-.navbar-ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  /* border-bottom: 1px solid gray; */
-  /* list-style: none;
-  padding-right: 15px;
-  padding-bottom: 5px;
-  margin-bottom: 0px;
-
-} */
-
-
-.profile-dropdown {
-  /* gap: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  /* padding-bottom: 10px; */
-  /* list-style-type: none;
-  padding: 10px 20px;  */
-  /* position: absolute; */
-  /* top: 74px;  */
-  /* right: 75px; */
-  /* background-color: white;
-  min-width: 1rem;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-  /* z-index: 1; */
-
-}
-
-/* .profile-button {
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-}
-
-.fa-circle-user {
-  font-size: 24px;
-} */
-
 .header-dropdown-button {
   align-items: center;
   border: none;
@@ -74,7 +9,6 @@
   padding: 10px;
   top: 20px;
   width: 80px;
-  /* margin-top: 5px; */
 }
 
 .header-dropdown-button:hover {
@@ -98,10 +32,6 @@
   width: 523px;
 }
 
-/* .navbarlink {
-  white-space: nowrap;
-} */
-
 .navbarlink:hover {
   color: darkgreen;
 }
@@ -118,7 +48,6 @@
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-  /* border-bottom: .5px solid gray; */
   height: 50px;
   margin-top: 5px;
   padding: 0;
@@ -163,10 +92,6 @@ li>* {
 .navbar-links-left:hover {
   color: darkgreen;
 }
-/* .search-link {
-  padding-right: 150px;
-  font-size: 16px;
-} */
 
 .nav-discover-ul {
   display: flex;
@@ -178,7 +103,6 @@ li>* {
   margin-right: 40px;
 }
 
-
 .main-nav-container {
   display: flex;
   flex-direction: column;
@@ -189,36 +113,7 @@ li>* {
 
   height: 35px;
   width: 180px;
-  /* margin-top: 8px; */
 }
-
-/* .search-bar-container {
-  border: 1px solid lightgray;
-  padding: 8px;
-  display: flex;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17);
-}
-
-.search-bar {
-  border: none;
-  width: 125px;
-}
-
-.search-button {
-  border: none;
-  background: none;
-}
-
-.search-button:hover {
-  cursor: pointer;
-  color: #037362;
-} */
-
-/* .bar {
-  border-bottom: .5px solid lightgray;
-  width: 100%;
-  margin-top: -10px;
-} */
 
 .modal-text {
   margin: 0;
