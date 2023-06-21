@@ -11,7 +11,7 @@ import TrailDetailPage from "./components/TrailDetailPage";
 import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
 import MyTrailsPage from "./components/myTrailsPage";
 import CategoriesPage from "./components/CategoriesPage";
-
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,7 +50,9 @@ function App() {
             <CategoriesPage />
           </Route>
         </Switch>
+
       )}
+        <Footer/>
     </>
   );
 }
