@@ -1,6 +1,6 @@
 .average-rating-number {
     font-size: 42px;
-    color: green;
+    color: darkgreen;
 }
 
 
@@ -41,7 +41,7 @@
     border: none;
     width: 100%;
     text-align: center;
-    background: #028858;
+    background: darkgreen;
     color: white;
     padding: 10px;
     margin-bottom: 70px;
@@ -64,7 +64,7 @@
 .detail-stats-res {
     font-size: 22px;
     font-weight: bolder;
-    color: #028858;
+    color: darkgreen;
 }
 
 .detail-page-description {
@@ -107,6 +107,12 @@
     font-size: 60px;
 }
 
+#on {
+
+    color: green;
+    font-size: 60px;
+}
+
 .favorite-button {
     border: none;
     background: none;
@@ -136,7 +142,7 @@
     height: 50px;
     width: 150px;
     border-radius: 20px;
-    background: #028858;
+    background: darkgreen;
     color: white;
 }
 

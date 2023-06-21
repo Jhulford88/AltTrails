@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,8 +11,8 @@ import OpenModalButton from '../OpenModalButton';
 import OpenReviewModalButton from "../OpenReviewModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
-import './trailDetailPage.css'
 import DeleteReviewModal from "../DeleteReviewModal";
+import './trailDetailPage.css'
 
 
 const TrailDetailPage = () => {
@@ -30,6 +30,7 @@ const TrailDetailPage = () => {
     const categories = useSelector(state => state.categories.categories);
 
 
+
     //dispatching thunks on mount
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
@@ -39,8 +40,10 @@ const TrailDetailPage = () => {
         window.scrollTo(0, 0)
     }, [dispatch, trailId])
 
-    //dispatch thunk on click
-    const addFavorite = (e) => {
+
+
+     //dispatch thunk on click
+     const addFavorite = (e) => {
       dispatch(createFavoriteThunk(trailId))
     }
 
@@ -72,7 +75,6 @@ const TrailDetailPage = () => {
 
   })
 
-
     //Find the average star rating for single trail
     const reviewAvg = () => {
       let totalStars = null;
@@ -99,6 +101,9 @@ const TrailDetailPage = () => {
       if (singleTrail.categoryId == 4) return "Walking"
     }
 
+
+
+
     return (
         <div className="parent-container">
           <div className="trail-detail-subheader-container">
@@ -109,7 +114,7 @@ const TrailDetailPage = () => {
                 <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
                 {sessionUser ?
                 <div className="favorite-button-container" title="Add to Favorites">
-                  <button className="favorite-button" onClick={addFavorite}><i class="fa-solid fa-bookmark"></i></button>
+                  <button className="favorite-button" onClick={addFavorite}><i id={null} class="fa-solid fa-bookmark"></i></button>
                 </div>
                 : null}
                 <div className="detail-banner-text">
@@ -191,7 +196,6 @@ const TrailDetailPage = () => {
                     )
                   })}
                 </ul>
-                {/* <h3 className="related-trails-header">Explore Similar:</h3> */}
                 <div className="related-trails-container">
                   <div className="related-trails-cards">
                     {catCards[0]}

@@ -98,3 +98,12 @@
     margin: 0;
     padding-top: 30px;
 }
+
+.user-stats {
+    background-color: darkgreen;
+    height: 60px;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    padding-top: 25px;
+}

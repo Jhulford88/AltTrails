@@ -37,6 +37,16 @@ const MyTrailsPage = () => {
         dispatch(authenticate())
     }
 
+    //Number of reviews by user
+    const reviewsWritten = () => {
+        let sum = 0
+        Object.values(trails).forEach(trail => {
+            sum += trail.reviews.length
+        })
+        return sum
+    }
+    console.log('review written.........',reviewsWritten())
+
 
     const manageCards = Object.values(trails)?.map(trail => {
         return (
@@ -93,6 +103,7 @@ const MyTrailsPage = () => {
                 <img className='banner-img' src={image}></img>
                 <h1 className='banner-text'>Lets do this...</h1>
             </div>
+            <div className='user-stats'>{user.favorites.length ? user.favorites.length : 0} Favorites! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {Object.values(trails).length ? Object.values(trails).length : 0} Trails Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviewsWritten()} Reviews Written!</div>
             <h1 className='section-headers-top'>My Trails</h1>
             <div id='manage-cards-top' className="manage-trail-cards-container">
                 {manageCards}
