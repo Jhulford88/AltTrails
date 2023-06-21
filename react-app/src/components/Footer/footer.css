@@ -1,4 +1,58 @@
 .footer-container {
-    height: 320px;
+    height: 220px;
     background-color: darkgreen;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.footer-headers {
+    color: white;
+    font-size: 28px;
+
+}
+
+.footer-left {
+    /* border: 2px solid red; */
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.footer-right {
+    /* border: 2px solid red; */
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.name {
+    color: white;
+    font-size: 18px;
+}
+
+.fa-brands {
+    color: white;
+    font-size: 36px;
+
+}
+
+.link-container-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+}
+
+.link-container-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* border: 2px solid red; */
+    width: 70%;
+    padding-top: 55px;
 }
