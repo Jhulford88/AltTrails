@@ -39,26 +39,26 @@ const MyTrailsPage = () => {
     }
 
 
-    const cards = Object.values(trails)?.map(trail => {
+    const manageCards = Object.values(trails)?.map(trail => {
         return (
-            <div>
-                <div key={trail.id} className="manage-trail-card" onClick={(e) => {
-                    history.push(`/trails/${trail.id}`)}}>
+            <div className="manage-trail-card">
+                <div key={trail.id}  onClick={(e) => {
+                    history.push(`/trails/${trail.id}`)
+                    }}>
                     <div className="manage-trail-card-img-container">
-                        <img className="manage-trail-card-img" alt="Trail Card" src={trail?.coverPhoto}></img>
+                        <img className="manage-trail-card-img" alt="Trail Image" src={trail?.coverPhoto}></img>
                     </div>
-                    <div>{trail.trailName}</div>
-                    <div>{trail.park}</div>
-                    <div>{trail.city}, {trail.state}</div>
-                    <div>Length: {trail.length}mi</div>
+                    <div className="manage-trail-name">{trail.trailName}</div>
+                    <div className="manage-park-name">{trail.park}</div>
+                    <div className="manage-park-stats">Length: {trail.length}mi · Est. {Math.floor(trail.length*17)}min</div>
                 </div>
                     <div className='manage-button-container'>
                         <button  onClick={() => history.push(`/trails/${trail.id}/update`)} >Update</button>
-                                <OpenModalButton
-                                    className="trail-delete-button"
-                                    buttonText={"Delete"}
-                                    modalComponent={<DeleteTrailModal trailId={trail.id} setDeleted={setDeleted} />}
-                                    />
+                        &nbsp;&nbsp;<OpenModalButton
+                            className="trail-delete-button"
+                            buttonText={"Delete"}
+                            modalComponent={<DeleteTrailModal trailId={trail.id} setDeleted={setDeleted} />}
+                        />
                     </div>
             </div>
         )
@@ -68,15 +68,15 @@ const MyTrailsPage = () => {
       const favoriteCards = favorites?.map(trail => {
         return (
             <div>
-                <div key={trail.id} className="manage-trail-card" onClick={(e) => {
-                    history.push(`/trails/${trail.id}`)}}>
+                <div key={trail.id}  onClick={(e) => {
+                    history.push(`/trails/${trail.id}`)
+                    }}>
                     <div className="manage-trail-card-img-container">
-                        <img className="manage-trail-card-img" alt="Trail Card" src={trail?.coverPhoto}></img>
+                        <img className="manage-trail-card-img" alt="Trail Image" src={trail?.coverPhoto}></img>
                     </div>
-                    <div>{trail.trailName}</div>
-                    <div>{trail.park}</div>
-                    <div>{trail.city}, {trail.state}</div>
-                    <div>Length: {trail.length}mi</div>
+                    <div className="manage-trail-name">{trail.trailName}</div>
+                    <div className="manage-park-name">{trail.park}</div>
+                    <div className="manage-park-stats">Length: {trail.length}mi · Est. {Math.floor(trail.length*17)}min</div>
                 </div>
                     <div>
                         <button onClick={() => {removeFavorite(trail.id)}}>Remove Favorite</button>
@@ -94,14 +94,15 @@ const MyTrailsPage = () => {
                 <img className='banner-img' src={image}></img>
                 <h1 className='banner-text'>Lets do this...</h1>
             </div>
+            <h2>My Trails</h2>
             <div className="manage-trail-cards-container">
-                <h2>My Trails</h2>
-                <div>{cards}</div>
+                {manageCards}
             </div>
-            <div>
-                <h2>My Favorites</h2>
-                <div>{favoriteCards}</div>
+            <h2>My Favorites</h2>
+            <div className="manage-trail-cards-container">
+                {manageCards}
             </div>
+
         </div>
     )
 }
