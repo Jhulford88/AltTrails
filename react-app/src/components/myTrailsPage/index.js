@@ -35,6 +35,7 @@ const MyTrailsPage = () => {
     const removeFavorite = (trailId) => {
         dispatch(deleteFavoriteThunk(trailId))
         dispatch(authenticate())
+        setDeleted(true)
     }
 
     //Number of reviews by user
