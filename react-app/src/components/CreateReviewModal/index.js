@@ -34,7 +34,7 @@ const CreateReviewModal = ({trailId}) => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length) return;
 
-        dispatch(postNewReviewThunk(formData, trailId))
+        await dispatch(postNewReviewThunk(formData, trailId))
             .then(dispatch(getSingleTrailThunk(trailId)))
             .then(closeModal)
     }

@@ -117,8 +117,8 @@ function SignupFormModal() {
             <div className="errors">{errors.lastName ? errors.lastName : null}</div>
 			<div className="errors">{errors.city ? errors.city : null}</div>
             <div className="errors">{errors.state ? errors.state : null}</div>
-			<form onSubmit={handleSubmit}>
-				<h1>Sign Up</h1>
+			<form className="signupForm" onSubmit={handleSubmit}>
+				<h2>Sign Up</h2>
 				{/* <ul>
 					{errors?.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -149,7 +149,7 @@ function SignupFormModal() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
+						// required
 					/>
 				</label>
 				<label>
@@ -197,7 +197,9 @@ function SignupFormModal() {
 						// required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<div className="signup-button-container">
+					<button className="signup-button" type="submit">Sign Up</button>
+				</div>
 			</form>
 		</>
 	);

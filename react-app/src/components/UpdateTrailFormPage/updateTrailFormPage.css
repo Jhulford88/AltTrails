@@ -1,8 +1,8 @@
-.signupForm >h2{
+.update-trail-form >h2{
     margin: 0;
     padding: 0;
   }
-  .signupForm {
+  .update-trail-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,19 +14,19 @@
 
   }
 
-  .signupForm > *{
+  .update-trail-form > *{
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
   }
 
-  .signup-button-container {
+  .update-trail-form-button-container {
     display: flex;
     align-items: center;
   }
 
-  .signup-button{
+  .update-trail-form-button{
     width: 100%;
     height: 2rem;
     border: none;
@@ -43,21 +43,21 @@
     color: #FF5A5F;
   }
 
-  .signupForm >label {
+  .update-trail-form >label {
     font-size: 16px;
   }
 
-  .signupForm >label > input{
+  .update-trail-form >label > input{
     border: 2px solid black;
     padding: 4px 4px;
   }
 
-  .signupForm >label > select{
+  .update-trail-form >label > select{
     border: 2px solid black;
     padding: 4px 4px;
   }
 
-  .signupForm >label > textarea{
+  .update-trail-form >label > textarea{
     border: 2px solid black;
     padding: 4px 4px;
     font-family: Arial, Helvetica, sans-serif;

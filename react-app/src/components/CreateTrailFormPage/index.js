@@ -161,8 +161,8 @@ function CreateTrailFormPage() {
 
     return (
         <div>
-            <form className='signupForm' onSubmit={handleSubmit} >
-                <h1>Create a New Trail!</h1>
+            <form className='create-trail-form' onSubmit={handleSubmit} >
+                <h2>Create a New Trail!</h2>
                 <label>
                     Trail Name <span className='errors'>{errors?.trailName}</span>
                     <input
@@ -267,8 +267,8 @@ function CreateTrailFormPage() {
                         onChange={(e) => setCoverPhoto(e.target.value)}
                     />
                 </label>
-                <div className='signup-button-container'>
-                    <button className='signup-button' type='submit'>Create Trail</button>
+                <div className='create-trail-button-container'>
+                    <button className='create-trail-button' type='submit'>Create Trail</button>
                 </div>
             </form>
         </div>
