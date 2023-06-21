@@ -67,7 +67,7 @@ const MyTrailsPage = () => {
 
       const favoriteCards = favorites?.map(trail => {
         return (
-            <div>
+            <div className="manage-trail-card">
                 <div key={trail.id}  onClick={(e) => {
                     history.push(`/trails/${trail.id}`)
                     }}>
@@ -100,7 +100,7 @@ const MyTrailsPage = () => {
             </div>
             <h2>My Favorites</h2>
             <div className="manage-trail-cards-container">
-                {manageCards}
+                {favoriteCards}
             </div>
 
         </div>
