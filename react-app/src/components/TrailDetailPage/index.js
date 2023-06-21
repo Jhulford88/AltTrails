@@ -175,7 +175,7 @@ const TrailDetailPage = () => {
                 </div>
 
                 <ul className="reviews-ul">
-                  {singleTrail.reviews?.map(review => {
+                  {singleTrail?.reviews?.map(review => {
                     return (
                       <div key={review.id} className="review-area">
                         <div className="individual-review"> {review.reviewText}</div>

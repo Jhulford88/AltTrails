@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
               <NavLink className="category-link" exact to="/current">My Trails</NavLink>
             </li>
             <li>
-              <button className="login-button" onClick={handleLogout}>Log Out</button>
+              <button className="logout-button" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
