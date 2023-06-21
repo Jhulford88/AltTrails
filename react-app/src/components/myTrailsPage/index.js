@@ -29,13 +29,12 @@ const MyTrailsPage = () => {
         dispatch(getCurrentTrailsThunk())
         setDeleted(false)
         dispatch(authenticate())
-    }, [dispatch, deleted, favorites])
+    }, [dispatch, deleted])
 
     //Delete favorite from DB and update store
     const removeFavorite = (trailId) => {
         dispatch(deleteFavoriteThunk(trailId))
         dispatch(authenticate())
-
     }
 
 
@@ -94,12 +93,12 @@ const MyTrailsPage = () => {
                 <img className='banner-img' src={image}></img>
                 <h1 className='banner-text'>Lets do this...</h1>
             </div>
-            <h2>My Trails</h2>
-            <div className="manage-trail-cards-container">
+            <h1 className='section-headers-top'>My Trails</h1>
+            <div id='manage-cards-top' className="manage-trail-cards-container">
                 {manageCards}
             </div>
-            <h2>My Favorites</h2>
-            <div className="manage-trail-cards-container">
+            <h1 className='section-headers-bottom'>My Favorites</h1>
+            <div id='manage-cards-bottom' className="manage-trail-cards-container">
                 {favoriteCards}
             </div>
 
