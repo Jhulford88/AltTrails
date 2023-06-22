@@ -38,6 +38,7 @@ function UpdateTrailFormPage() {
     const categories = useSelector(state => state.categories.categories);
     useEffect(() => {
         if (!categories) dispatch(getCategoriesThunk())
+        window.scrollTo(0, 0)
     }, [dispatch])
 
     const sessionUser = useSelector(state => state.session.user)
