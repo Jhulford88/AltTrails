@@ -3,7 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTrailThunk } from "../../store/trails";
-import { createFavoriteThunk } from "../../store/trails";
+// import { createFavoriteThunk } from "../../store/trails";
+import { createFavoriteThunk } from "../../store/session";
 import { authenticate } from '../../store/session';
 import { getAllTrailsThunk } from "../../store/trails";
 import { getCategoriesThunk } from "../../store/categories";
@@ -31,6 +32,7 @@ const TrailDetailPage = () => {
 
 
 
+
     //dispatching thunks on mount
     useEffect(() => {
         dispatch(getSingleTrailThunk(trailId))
@@ -45,6 +47,7 @@ const TrailDetailPage = () => {
      //dispatch thunk on click
      const addFavorite = (e) => {
       dispatch(createFavoriteThunk(trailId))
+      // .then(dispatch(authenticate()))
     }
 
     //determine the category
@@ -101,7 +104,14 @@ const TrailDetailPage = () => {
       if (singleTrail.categoryId == 4) return "Walking"
     }
 
+    //has the user favorited this trail?
+    const userFavorited = sessionUser?.favorites?.filter(favorite => favorite.id == singleTrail.id)
+    console.log("userFavorited........", userFavorited)
+    //now check for userFavorited.length t/f
 
+    const isFavorited = userFavorited?.length ? "yes" : "no"
+
+    console.log("isFavorited........", isFavorited)
 
 
     return (
@@ -114,7 +124,7 @@ const TrailDetailPage = () => {
                 <img className="trail-card-img" src={singleTrail.coverPhoto}></img>
                 {sessionUser ?
                 <div className="favorite-button-container" title="Add to Favorites">
-                  <button className="favorite-button" onClick={addFavorite}><i id={null} class="fa-solid fa-bookmark"></i></button>
+                  <button className="favorite-button" onClick={addFavorite}><i id={isFavorited} class="fa-solid fa-bookmark"></i></button>
                 </div>
                 : null}
                 <div className="detail-banner-text">

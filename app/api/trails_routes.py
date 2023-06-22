@@ -268,13 +268,15 @@ def post_new_favorite(trailId):
     """
     print("hello from backend...............")
 
+    user = User.query.get(current_user.id)
 
     new_favorite = insert(favorites).values(user_id=current_user.id, trail_id=trailId)
 
     db.session.execute(new_favorite)
     db.session.commit()
 
-    return {"message": "Succesfully Favorited"}
+    return user.to_dict()
+    # return {"message": "Succesfully Favorited"}
 
 
 @trails_routes.route("/favorites/<int:trailId>/delete", methods=["DELETE"])

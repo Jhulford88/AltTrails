@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+// const CREATE_FAVORITE = "session/CREATE_FAVORITE"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -10,6 +11,13 @@ const setUser = (user) => ({
 const removeUser = () => ({
 	type: REMOVE_USER,
 });
+
+// const createFavorite = (user) => {
+//   return {
+//     type: CREATE_FAVORITE,
+// 	payload: user
+//   }
+// }
 
 const initialState = { user: null };
 
@@ -90,12 +98,29 @@ export const signUp = (formData) => async (dispatch) => {
 	}
 };
 
+//moving over the createFavorite thunk
+
+export const createFavoriteThunk = (trailId) => async (dispatch) => {
+	trailId = parseInt(trailId)
+	const res = await fetch(`/api/trails/favorites/${trailId}`, {
+	  method: "POST"
+	})
+	if (res.ok) {
+	  let response = await res.json()
+	  dispatch(setUser(response))
+	}
+  }
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		// case CREATE_FAVORITE:
+		// 	//???????????????????????????
+		// 	let newState = { ...state }
+		// 	return newState.favorites.push(action.favorite)
 		default:
 			return state;
 	}

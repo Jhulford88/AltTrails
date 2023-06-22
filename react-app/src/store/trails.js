@@ -68,6 +68,12 @@ const deleteReview = (reviewId) => {
   }
 }
 
+// const createFavorite = () => {
+//   return {
+//     type:
+//   }
+// }
+
 // ---------- THUNKS ----------
 export const getAllTrailsThunk = () => async (dispatch) => {
     const res = await fetch('/api/trails')
@@ -207,12 +213,15 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
   }
 }
 
-export const createFavoriteThunk = (trailId) => async (dispatch) => {
-  trailId = parseInt(trailId)
-  const res = await fetch(`/api/trails/favorites/${trailId}`, {
-    method: "POST"
-  })
-}
+// export const createFavoriteThunk = (trailId) => async (dispatch) => {
+//   trailId = parseInt(trailId)
+//   const res = await fetch(`/api/trails/favorites/${trailId}`, {
+//     method: "POST"
+//   })
+//   // if (res.ok) {
+//   //   dispatch(createFavorite(reviewId))
+//   // }
+// }
 
 export const deleteFavoriteThunk = (trailId) => async (dispatch) => {
   // console.log('trailId in the thunk..........', trail.id)
