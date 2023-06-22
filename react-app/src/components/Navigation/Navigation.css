@@ -48,9 +48,10 @@
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-  height: 50px;
+  height: 30px;
   margin-top: 5px;
   padding: 0;
+  margin-top: 20px;
 }
 
 
@@ -93,7 +94,7 @@ li>* {
   color: darkgreen;
 }
 
-.nav-discover-ul {
+/* .nav-discover-ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -101,7 +102,7 @@ li>* {
   list-style: none;
   height: 35px;
   margin-right: 40px;
-}
+} */
 
 .main-nav-container {
   display: flex;

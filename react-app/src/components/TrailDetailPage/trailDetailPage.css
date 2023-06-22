@@ -1,6 +1,6 @@
 .average-rating-number {
     font-size: 42px;
-    color: darkgreen;
+    color: #32690f;
 }
 
 
@@ -41,7 +41,7 @@
     border: none;
     width: 100%;
     text-align: center;
-    background: darkgreen;
+    background: #32690f;
     color: white;
     padding: 10px;
     margin-bottom: 70px;

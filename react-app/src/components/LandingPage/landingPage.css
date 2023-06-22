@@ -3,8 +3,11 @@
 }
 
 .all-trails-h1 {
-    margin-left: 30px;
+    text-align: center;
+
 }
+
+
 
 .browse-by-activity {
     margin-left: 30px;
@@ -38,6 +41,10 @@
     text-decoration: none;
 }
 
+.cat-pics:hover {
+    transform: scale(1.02)
+}
+
 .cat-pics {
     border-radius: 100%;
 }
@@ -51,6 +58,10 @@
     cursor: pointer;
     margin: 5px;
 
+}
+
+.trail-card:hover {
+    transform: scale(1.01)
 }
 
 .trail-cards-container {

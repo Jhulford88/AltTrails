@@ -67,7 +67,9 @@ const LandingPage = () => {
                     </NavLink>
                 </div>
             </div>
-            <h1 className="all-trails-h1">All trails...</h1>
+            <div className="all-trails-h1-container">
+            <h1 className="all-trails-h1">All Trails</h1>
+            </div>
             <div className="trail-cards-container">
                 {cards}
             </div>

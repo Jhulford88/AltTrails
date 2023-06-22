@@ -160,7 +160,7 @@ function CreateTrailFormPage() {
 
 
     return (
-        <div>
+        <div className='create-trail-form-parent'>
             <form className='create-trail-form' onSubmit={handleSubmit} >
                 <h2>Create a New Trail!</h2>
                 <label>

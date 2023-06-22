@@ -14,6 +14,11 @@
 
   }
 
+  .create-trail-form-parent {
+    background-color: beige;
+    border-top: 2px solid #028858;
+  }
+
   .create-trail-form > *{
     display: flex;
     flex-direction: column;

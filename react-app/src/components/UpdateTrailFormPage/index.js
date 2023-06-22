@@ -34,18 +34,18 @@ function UpdateTrailFormPage() {
     const { trailId } = useParams()
 
 
-
+    //useSelectors
+    const sessionUser = useSelector(state => state.session.user)
+    const singleTrail = useSelector(state => state.trails.allTrails[trailId])
     const categories = useSelector(state => state.categories.categories);
+
     useEffect(() => {
         if (!categories) dispatch(getCategoriesThunk())
         window.scrollTo(0, 0)
     }, [dispatch])
 
-    const sessionUser = useSelector(state => state.session.user)
 
 
-    const singleTrail = useSelector(state => state.trails.allTrails[trailId])
-    console.log('singletrail pulled from all trails............',singleTrail)
 
 
     //state slices
@@ -158,7 +158,7 @@ function UpdateTrailFormPage() {
     if (sessionUser?.id != singleTrail.userId) return <h1>Forbidden!</h1>
 
     return (
-        <div>
+        <div className='update-trail-form-parent'>
             <form className='update-trail-form' onSubmit={handleSubmit} >
                 <h1>Update your Trail!</h1>
                 <label>
