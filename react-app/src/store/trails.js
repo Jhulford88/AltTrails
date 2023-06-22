@@ -54,10 +54,11 @@ const getCurrentTrails = (trails) => {
   }
 }
 
-const postNewReview = (review) => {
+const postNewReview = (review, trailId) => {
   return {
     type: POST_NEW_REVIEW,
-    review
+    review,
+    trailId
   }
 }
 
@@ -183,7 +184,7 @@ export const postNewReviewThunk = (formData, trailId) => async (dispatch) => {
   if (res.ok) {
     const response = await res.json()
     // console.log("response in post review", response)
-    dispatch(postNewReview(response))
+    dispatch(postNewReview(response, trailId))
     return response
   } else {
     const response = await res.json()
@@ -263,6 +264,11 @@ const trailsReducer = (state = initialState, action) => {
           let filteredReviews = newDeleteReviewState.singleTrail.reviews.filter(review => review.id !== action.reviewId)
           newDeleteReviewState.singleTrail.reviews = filteredReviews
           return newDeleteReviewState
+        case POST_NEW_REVIEW:
+          let newReviewState = { ...state }
+          console.log('action.review.............', action.review)
+          newReviewState.singleTrail.reviews.push(action.review)
+          return newReviewState
         default:
           return state
     }

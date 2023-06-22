@@ -30,7 +30,7 @@ const TrailDetailPage = () => {
     const trails = useSelector(state => state.trails.allTrails)
     const categories = useSelector(state => state.categories.categories);
 
-
+    const [review, setReview] = useState(false)
 
 
     //dispatching thunks on mount
@@ -39,8 +39,10 @@ const TrailDetailPage = () => {
         dispatch(getAllTrailsThunk())
         dispatch(getCategoriesThunk())
         dispatch(authenticate())
-        window.scrollTo(0, 0)
-    }, [dispatch, trailId])
+        // review && window.scrollTo(0, 0)
+        setReview(false)
+    }, [dispatch, trailId, review])
+
 
 
 
@@ -177,7 +179,7 @@ const TrailDetailPage = () => {
                       <OpenReviewModalButton
                           className="create-review-button"
                           buttonText={"Write Review"}
-                          modalComponent={<CreateReviewModal trailId={trailId}/>}
+                          modalComponent={<CreateReviewModal setReview={setReview} trailId={trailId}/>}
                       />
                       </div>
                     : null}
