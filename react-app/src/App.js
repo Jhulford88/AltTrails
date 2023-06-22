@@ -12,6 +12,7 @@ import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
 import MyTrailsPage from "./components/myTrailsPage";
 import CategoriesPage from "./components/CategoriesPage";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/helpers";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>

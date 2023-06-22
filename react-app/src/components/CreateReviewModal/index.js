@@ -7,7 +7,7 @@ import { postNewReviewThunk } from '../../store/trails';
 import './createReviewModal.css'
 
 
-const CreateReviewModal = ({trailId}) => {
+const CreateReviewModal = ({trailId, setReview}) => {
 
      //initialize things
      const { closeModal } = useModal()
@@ -35,7 +35,8 @@ const CreateReviewModal = ({trailId}) => {
         if (Object.keys(newErrors).length) return;
 
         await dispatch(postNewReviewThunk(formData, trailId))
-            .then(dispatch(getSingleTrailThunk(trailId)))
+            // .then(dispatch(getSingleTrailThunk(trailId)))
+            .then(setReview(true))
             .then(closeModal)
     }
 

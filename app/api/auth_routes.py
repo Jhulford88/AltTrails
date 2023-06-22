@@ -69,7 +69,7 @@ def sign_up():
             last_name=form.data['last_name'],
             city=form.data['city'],
             state=form.data['state'],
-            hashed_password=form.data['password']
+            password=form.data['password']
         )
         db.session.add(user)
         db.session.commit()
