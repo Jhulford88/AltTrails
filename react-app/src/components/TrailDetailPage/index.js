@@ -108,7 +108,6 @@ const TrailDetailPage = () => {
     const userFavorited = sessionUser?.favorites?.filter(favorite => favorite.id == singleTrail.id)
     console.log("userFavorited........", userFavorited)
     //now check for userFavorited.length t/f
-
     const isFavorited = userFavorited?.length ? "yes" : "no"
 
     console.log("isFavorited........", isFavorited)
