@@ -53,13 +53,14 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li className="email-field">{user.email}</li>
+            <li>Hello, {user.username}!</li>
+            {/* <li className="email-field">{user.email}</li> */}
+            <hr className='bar' />
             <li>
               <NavLink className="category-link" exact to="/current">My Trails</NavLink>
             </li>
             <li>
-              <button className="logout-button" onClick={handleLogout}>Log Out</button>
+              <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

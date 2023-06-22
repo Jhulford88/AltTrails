@@ -5,6 +5,10 @@
     font-size: 16px;
 }
 
+.bar {
+    width: 90%;
+}
+
 .modal-button:hover {
     cursor: pointer;
     color: #037362;
@@ -13,4 +17,17 @@
 .email-field {
     padding-bottom: 8px;
     border-bottom: 1px solid #DCDEDD;
+}
+
+.dropdown-logout-button {
+    background-color: darkgreen;
+    color: whitesmoke;
+    height: 28px;
+    width: 88px;
+    border-radius: 8px;
+}
+
+.category-link {
+    margin-left: 8px;
+    font-weight: bolder;
 }

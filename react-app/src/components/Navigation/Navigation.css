@@ -94,16 +94,6 @@ li>* {
   color: darkgreen;
 }
 
-/* .nav-discover-ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  list-style: none;
-  height: 35px;
-  margin-right: 40px;
-} */
-
 .main-nav-container {
   display: flex;
   flex-direction: column;
