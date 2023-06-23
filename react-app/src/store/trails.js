@@ -1,277 +1,247 @@
-import { normalizeObj } from './helpers';
+import { normalizeObj } from "./helpers";
 
 // ------------ TYPE VARIABLES ------------
-const GET_ALL_TRAILS = 'trails/getAllTrails'
-const POST_NEW_TRAIL = 'trails/postNewTrail'
-const GET_SINGLE_TRAIL = 'trails/getSingleTrail'
-const UPDATE_TRAIL = 'trails/updateTrail'
-const DELETE_TRAIL= "trails/deleteTrail"
-const GET_CURRENT_TRAILS = "trails/getCurrentTrails"
-const POST_NEW_REVIEW = 'trails/postNewReview'
-const DELETE_REVIEW = "trails/deleteReview"
+const GET_ALL_TRAILS = "trails/getAllTrails";
+const POST_NEW_TRAIL = "trails/postNewTrail";
+const GET_SINGLE_TRAIL = "trails/getSingleTrail";
+const UPDATE_TRAIL = "trails/updateTrail";
+const DELETE_TRAIL = "trails/deleteTrail";
+const GET_CURRENT_TRAILS = "trails/getCurrentTrails";
+const POST_NEW_REVIEW = "trails/postNewReview";
+const DELETE_REVIEW = "trails/deleteReview";
 
 // ---------- ACTION CREATORS ----------
 const getAllTrails = (trails) => {
-    return {
-      type: GET_ALL_TRAILS,
-      trails
-    }
-}
+  return {
+    type: GET_ALL_TRAILS,
+    trails,
+  };
+};
 
 const postNewTrail = (trail) => {
   return {
     type: POST_NEW_TRAIL,
-    trail
-  }
-}
+    trail,
+  };
+};
 
 const getSingleTrail = (trail) => {
   return {
     type: GET_SINGLE_TRAIL,
-    trail
-  }
-}
+    trail,
+  };
+};
 
 const updateTrail = (trail, id) => {
   return {
     type: UPDATE_TRAIL,
     trail,
-    id
-  }
-}
+    id,
+  };
+};
 
 const deleteTrail = (trailId) => {
   return {
     type: DELETE_TRAIL,
-    trailId
-  }
-}
+    trailId,
+  };
+};
 
 const getCurrentTrails = (trails) => {
   return {
     type: GET_CURRENT_TRAILS,
-    trails
-  }
-}
+    trails,
+  };
+};
 
 const postNewReview = (review, trailId) => {
   return {
     type: POST_NEW_REVIEW,
     review,
-    trailId
-  }
-}
+    trailId,
+  };
+};
 
 const deleteReview = (reviewId) => {
   return {
     type: DELETE_REVIEW,
-    reviewId
-  }
-}
-
-// const createFavorite = () => {
-//   return {
-//     type:
-//   }
-// }
+    reviewId,
+  };
+};
 
 // ---------- THUNKS ----------
 export const getAllTrailsThunk = () => async (dispatch) => {
-    const res = await fetch('/api/trails')
-    if (res.ok) {
-      const { trails } = await res.json()
-      // console.log('trails in thunk response from backend.....................',trails)
-      dispatch(getAllTrails(trails))
-      return
-    } else {
-      console.log("Problem with loading all trails")
-    }
-}
+  const res = await fetch("/api/trails");
+  if (res.ok) {
+    const { trails } = await res.json();
+    dispatch(getAllTrails(trails));
+    return;
+  } else {
+    console.log("Problem with loading all trails");
+  }
+};
 
 export const postNewTrailThunk = (newTrail) => async (dispatch) => {
   try {
-    // console.log("Making post request to new trail route", newTrail)
-    const res = await fetch('/api/trails/new', {
+    const res = await fetch("/api/trails/new", {
       method: "POST",
-      body: newTrail
-    })
-    // console.log("Post request", res)
+      body: newTrail,
+    });
 
     if (res.ok) {
-      // console.log("Response OK")
-      const response = await res.json()
-      // console.log("Response data", response)
-      dispatch(postNewTrail(response.trail))
-      return response.trail
-    } else {
-      // console.error("Response not OK. Status code:", res.status)
-      const response = await res.json()
-      // console.log("Response when res is not okay and there are errors:", response)
-      return {
-        errors: { ...response }
-      }
-    }
-  } catch (e) {
-    console.error('Error caught in postNewTrailThunk', e)
-    return e
-  }
-}
-
-
-export const getSingleTrailThunk = (id) => async (dispatch) => {
-  // console.log("this is the id", id)
-  const res = await fetch(`/api/trails/${id}`)
-  if (res.ok) {
-    const { single_trail } = await res.json()
-    dispatch(getSingleTrail(single_trail))
-    return
-  } else {
-    const { errors } = await res.json()
-    return errors
-  }
-}
-
-export const updateTrailThunk = (id, trail) => async dispatch => {
-  try {
-    console.log("trail has arrived in thunk............", trail)
-    const res = await fetch(`/api/trails/${id}/update`, {
-      method: "PUT",
-      body: trail
-    })
-    // console.log("Edit request", res)
-
-    if (res.ok) {
-      console.log("Edit request OK", res)
       const response = await res.json();
-      dispatch(updateTrail(response.trail, id))
+      dispatch(postNewTrail(response.trail));
       return response.trail;
     } else {
-      // console.error('Edit response not OK')
-      const response = await res.json()
-      // console.error("Edit response", response)
+      const response = await res.json();
+      return {
+        errors: { ...response },
+      };
+    }
+  } catch (e) {
+    console.error("Error caught in postNewTrailThunk", e);
+    return e;
+  }
+};
+
+export const getSingleTrailThunk = (id) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${id}`);
+  if (res.ok) {
+    const { single_trail } = await res.json();
+    dispatch(getSingleTrail(single_trail));
+    return;
+  } else {
+    const { errors } = await res.json();
+    return errors;
+  }
+};
+
+export const updateTrailThunk = (id, trail) => async (dispatch) => {
+  try {
+    console.log("trail has arrived in thunk............", trail);
+    const res = await fetch(`/api/trails/${id}/update`, {
+      method: "PUT",
+      body: trail,
+    });
+
+    if (res.ok) {
+      console.log("Edit request OK", res);
+      const response = await res.json();
+      dispatch(updateTrail(response.trail, id));
+      return response.trail;
+    } else {
+      const response = await res.json();
       return response;
     }
   } catch (e) {
-    console.error("Error making edit request for trail", e)
+    console.error("Error making edit request for trail", e);
   }
-}
+};
 
 export const deleteTrailThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api/trails/${trailId}`, {
-    method: "DELETE"
-  })
+    method: "DELETE",
+  });
   if (res.ok) {
-    dispatch(deleteTrail(trailId))
+    dispatch(deleteTrail(trailId));
   }
-}
+};
 
 export const getCurrentTrailsThunk = () => async (dispatch) => {
-  const res = await fetch('/api/trails/current')
+  const res = await fetch("/api/trails/current");
   if (res.ok) {
-    const { trails } = await res.json()
-    // console.log(trails)
-    dispatch(getCurrentTrails(trails))
-    return
+    const { trails } = await res.json();
+    dispatch(getCurrentTrails(trails));
+    return;
   }
-}
+};
 
 export const postNewReviewThunk = (formData, trailId) => async (dispatch) => {
   const res = await fetch(`/api/trails/reviews/${trailId}`, {
     method: "POST",
-    body: formData
-  })
-  // console.log('res after returning from backend..........', res)
+    body: formData,
+  });
   if (res.ok) {
-    const response = await res.json()
-    // console.log("response in post review", response)
-    dispatch(postNewReview(response, trailId))
-    return response
+    const response = await res.json();
+    dispatch(postNewReview(response, trailId));
+    return response;
   } else {
-    const response = await res.json()
+    const response = await res.json();
     return {
-      errors: { ...response }
-    }
+      errors: { ...response },
+    };
   }
-}
+};
 
-export const updateReviewThunk = (formData, trailId, reviewId) => async (dispatch) => {
-  let id = parseInt(trailId)
-  console.log("comment in thunk", formData)
-  const res = await fetch(`/api/trails/reviews/${reviewId}/update`, {
-    method: "PUT",
-    body: formData
-  })
-  return res;
-}
+export const updateReviewThunk =
+  (formData, trailId, reviewId) => async (dispatch) => {
+    let id = parseInt(trailId);
+    console.log("comment in thunk", formData);
+    const res = await fetch(`/api/trails/reviews/${reviewId}/update`, {
+      method: "PUT",
+      body: formData,
+    });
+    return res;
+  };
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-  reviewId = parseInt(reviewId)
+  reviewId = parseInt(reviewId);
   const res = await fetch(`/api/trails/reviews/${reviewId}`, {
-    method: "DELETE"
-  })
+    method: "DELETE",
+  });
   if (res.ok) {
-    dispatch(deleteReview(reviewId))
+    dispatch(deleteReview(reviewId));
   }
-}
-
-// export const createFavoriteThunk = (trailId) => async (dispatch) => {
-//   trailId = parseInt(trailId)
-//   const res = await fetch(`/api/trails/favorites/${trailId}`, {
-//     method: "POST"
-//   })
-//   // if (res.ok) {
-//   //   dispatch(createFavorite(reviewId))
-//   // }
-// }
+};
 
 export const deleteFavoriteThunk = (trailId) => async (dispatch) => {
-  // console.log('trailId in the thunk..........', trail.id)
-  // let trailId = trail.id
   const res = await fetch(`/api/trails/favorites/${trailId}/delete`, {
-    method: "DELETE"
-  })
-
-}
+    method: "DELETE",
+  });
+};
 
 // --------- INITIAL STATE -------------
-const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} }
+const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} };
 
 // ---------- REDUCER ----------
 
 const trailsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_ALL_TRAILS:
+      return { ...state, allTrails: { ...normalizeObj(action.trails) } };
+    case POST_NEW_TRAIL:
+      return { ...state, singleTrail: { ...action.trail } };
+    case GET_SINGLE_TRAIL:
+      return { ...state, singleTrail: { ...action.trail } };
+    case UPDATE_TRAIL:
+      let newEditState = { ...state };
+      newEditState.allTrails[action.id] = action.trail;
+      return newEditState;
+    case DELETE_TRAIL:
+      let newDeleteState = { ...state };
+      delete newDeleteState.allTrails[action.trailId];
+      delete newDeleteState.singleTrail[action.trailId];
+      delete newDeleteState.userTrails[action.trailId];
+      return newDeleteState;
+    case GET_CURRENT_TRAILS:
+      return { ...state, userTrails: { ...normalizeObj(action.trails) } };
+    case DELETE_REVIEW:
+      let newDeleteReviewState = {
+        ...state,
+        singleTrail: { ...state.singleTrail },
+      };
+      let filteredReviews = newDeleteReviewState.singleTrail.reviews.filter(
+        (review) => review.id !== action.reviewId
+      );
+      newDeleteReviewState.singleTrail.reviews = filteredReviews;
+      return newDeleteReviewState;
+    case POST_NEW_REVIEW:
+      let newReviewState = { ...state };
+      newReviewState.singleTrail.reviews.push(action.review);
+      return newReviewState;
+    default:
+      return state;
+  }
+};
 
-    switch (action.type) {
-        case GET_ALL_TRAILS:
-          return { ...state, allTrails: { ...normalizeObj(action.trails)}}
-        case POST_NEW_TRAIL:
-          return { ...state, singleTrail: { ...action.trail } }
-        case GET_SINGLE_TRAIL:
-          return { ...state, singleTrail: { ...action.trail } }
-        case UPDATE_TRAIL:
-          let newEditState = { ...state }
-          newEditState.allTrails[action.id] = action.trail
-          return newEditState
-        case DELETE_TRAIL:
-          let newDeleteState = { ...state }
-          delete newDeleteState.allTrails[action.trailId]
-          delete newDeleteState.singleTrail[action.trailId]
-          delete newDeleteState.userTrails[action.trailId]
-          return newDeleteState
-        case GET_CURRENT_TRAILS:
-          return { ...state, userTrails: { ...normalizeObj(action.trails) } }
-        case DELETE_REVIEW:
-          let newDeleteReviewState = { ...state, singleTrail: { ...state.singleTrail } }
-          let filteredReviews = newDeleteReviewState.singleTrail.reviews.filter(review => review.id !== action.reviewId)
-          newDeleteReviewState.singleTrail.reviews = filteredReviews
-          return newDeleteReviewState
-        case POST_NEW_REVIEW:
-          let newReviewState = { ...state }
-          console.log('action.review.............', action.review)
-          newReviewState.singleTrail.reviews.push(action.review)
-          return newReviewState
-        default:
-          return state
-    }
-}
-
-export default trailsReducer
+export default trailsReducer;
