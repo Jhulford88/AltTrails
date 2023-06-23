@@ -1,8 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import (StringField, TextAreaField, IntegerField, DateField, TextAreaField, DecimalField)
-from wtforms.validators import DataRequired, Email, ValidationError, Length
-from datetime import date
-from flask_wtf.file import FileField, FileAllowed, FileRequired
+from wtforms import (StringField, TextAreaField, IntegerField, TextAreaField, DecimalField)
+from wtforms.validators import DataRequired, Length
 
 
 class CreateTrailForm(FlaskForm):
