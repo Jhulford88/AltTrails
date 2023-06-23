@@ -1,12 +1,11 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import User, Trail, Review, favorites, db
 from ..forms.create_trail_form import CreateTrailForm
 from ..forms.review_form import ReviewForm
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_required
 from sqlalchemy import insert
-from sqlalchemy.exc import IntegrityError
-from sqlalchemy import or_, delete
+from sqlalchemy import delete
 
 trails_routes = Blueprint('trails', __name__)
 
@@ -27,7 +26,6 @@ def post_new_trail():
     """
     Posts form data from the frontend and sends back the new trail.
     """
-    print("hello from backend...............")
 
     form = CreateTrailForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -48,10 +46,8 @@ def post_new_trail():
             cover_photo=data["cover_photo"],
             description=data["description"]
         )
-        print('newTrail in backend...........', new_trail)
         db.session.add(new_trail)
         db.session.commit()
-        print("This is your new Trail.........", new_trail)
         return (
             {"trail": new_trail.to_dict()},
             200,
@@ -69,7 +65,6 @@ def get_single_trail(id):
     Grabs a single trail by it's id
     """
     single_trail = Trail.query.get(id)
-    # print("project...................................", single_project)
 
     if single_trail is None:
         return {"errors": "Project not Found"}
@@ -81,10 +76,8 @@ def get_single_trail(id):
 @trails_routes.route("/<int:id>/update", methods=["PUT"])
 # @login_required
 def update_trail(id):
-    print("Updating trail.............................", id)
     edit_form = CreateTrailForm()
     edit_form["csrf_token"].data = request.cookies["csrf_token"]
-    print("FORM..................................", edit_form)
 
     if edit_form.validate_on_submit():
         data = edit_form.data
@@ -181,14 +174,13 @@ def post_new_review(id):
     Posts form data from the frontend into the comments table.
     Should return a JSON obj for the fronted to catch
     """
-    # print('entered the backend.................')
-    # print('id in the the backend.................', id)
+
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    # print('after creating form.................')
+
     if form.validate_on_submit():
         data = form.data
-        # print('passed form validators.................')
+
         newReview = Review(
             review_text=data["review_text"],
             star_rating=data["star_rating"],
@@ -208,7 +200,7 @@ def post_new_review(id):
 
 @trails_routes.route("/reviews/<int:reviewId>/update", methods=["PUT"])
 def update_review(reviewId):
-    print("reviewID in backend.............................", reviewId)
+
     edit_form = ReviewForm()
     edit_form["csrf_token"].data = request.cookies["csrf_token"]
     print("FORM..................................", edit_form)
@@ -233,7 +225,6 @@ def update_review(reviewId):
 
         db.session.commit()
 
-        print("This is your updated Review.......................", updated_review)
         return (
             {"trail": updated_review.to_dict()},
             200,
@@ -250,7 +241,6 @@ def update_review(reviewId):
 def delete_comment(reviewId):
     print("hello from delete review")
     review = Review.query.get(reviewId)
-    # print(comment)
 
     if not review:
         return {"errors": "Review does not exist"}, 404
@@ -276,7 +266,6 @@ def post_new_favorite(trailId):
     db.session.commit()
 
     return user.to_dict()
-    # return {"message": "Succesfully Favorited"}
 
 
 @trails_routes.route("/favorites/<int:trailId>/delete", methods=["DELETE"])
