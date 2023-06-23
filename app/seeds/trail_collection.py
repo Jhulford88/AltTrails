@@ -3,6 +3,7 @@ from sqlalchemy.sql import text
 from app.models.trail_collection import trail_collection
 from sqlalchemy import insert
 from sqlalchemy.exc import IntegrityError
+from app.models.db import add_prefix_for_prod
 
 # Adds a demo user, you can add other users here if you want
 def seed_trail_collections():
@@ -45,7 +46,7 @@ def seed_trail_collections():
         trail_id = trail_collection_data['trail_id']
         collection_id = trail_collection_data['collection_id']
 
-        trail_collection_to_insert = insert(trail_collection).values(trail_id=trail_id, collection_id=collection_id)
+        trail_collection_to_insert = insert(add_prefix_for_prod(trail_collection)).values(trail_id=trail_id, collection_id=collection_id)
 
         try:
             db.session.execute(trail_collection_to_insert)
