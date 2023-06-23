@@ -2,7 +2,6 @@ from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .favorite import favorites
-from sqlalchemy import or_
 
 
 class User(db.Model, UserMixin):
@@ -24,7 +23,6 @@ class User(db.Model, UserMixin):
     reviews = db.relationship('Review', back_populates='users', cascade="all, delete")
     trail_photos = db.relationship('Trail_Photo', back_populates='users', cascade="all, delete")
     collections = db.relationship('Collection', back_populates='users', cascade="all, delete")
-    # trail = db.relationship('User', back_populates='user')
 
     favorite_trails = db.relationship(
         'Trail',
