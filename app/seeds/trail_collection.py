@@ -1,6 +1,6 @@
 from app.models import db, environment, SCHEMA
 from sqlalchemy.sql import text
-from app.models.trail_collection import trail_collections
+from app.models.trail_collection import trail_collection
 from sqlalchemy import insert
 from sqlalchemy.exc import IntegrityError
 
@@ -45,7 +45,7 @@ def seed_trail_collections():
         trail_id = trail_collection_data['trail_id']
         collection_id = trail_collection_data['collection_id']
 
-        trail_collection_to_insert = insert(trail_collections).values(trail_id=trail_id, collection_id=collection_id)
+        trail_collection_to_insert = insert(trail_collection).values(trail_id=trail_id, collection_id=collection_id)
 
         try:
             db.session.execute(trail_collection_to_insert)
