@@ -61,6 +61,8 @@ function CreateTrailFormPage() {
     const newErrors = {};
     if (trailName.length < 1)
       newErrors["trailName"] = "Trail name is required!";
+    if (trailName.length > 50)
+      newErrors["trailName"] = "Trail name must be less than 50 characters!";
     if (park.length < 1) newErrors["park"] = "Park name is required!";
     if (city.length < 1) newErrors["city"] = "City is required!";
     if (state.length !== 2)
