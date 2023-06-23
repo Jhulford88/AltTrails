@@ -55,6 +55,8 @@ function SignupFormModal() {
     if (state.length !== 2)
       errors["state"] = "Please use your state's two character abbreviation.";
     if (!password.length) errors["password"] = "Please enter a valid password";
+    if (password.length < 6)
+      errors["password"] = "Password must be at least 6 characters";
     if (password !== confirmPassword)
       errors["confirmPassword"] = "Please ensure the passwords match";
     if (!email.includes("@") || !email.includes("."))
@@ -117,16 +119,6 @@ function SignupFormModal() {
 
   return (
     <>
-      <div className="errors">{errors.email ? errors.email : null}</div>
-      <div className="errors">{errors.username ? errors.username : null}</div>
-      <div className="errors">{errors.password ? errors.password : null}</div>
-      <div className="errors">
-        {errors.confirmPassword ? errors.confirmPassword : null}
-      </div>
-      <div className="errors">{errors.firstName ? errors.firstName : null}</div>
-      <div className="errors">{errors.lastName ? errors.lastName : null}</div>
-      <div className="errors">{errors.city ? errors.city : null}</div>
-      <div className="errors">{errors.state ? errors.state : null}</div>
       <form className="signupForm" onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         {/* <ul>
@@ -137,6 +129,7 @@ function SignupFormModal() {
 
         <label>
           Email
+          <div className="errors">{errors.email ? errors.email : null}</div>
           <input
             type="text"
             value={email}
@@ -145,6 +138,9 @@ function SignupFormModal() {
         </label>
         <label>
           Username
+          <div className="errors">
+            {errors.username ? errors.username : null}
+          </div>
           <input
             type="text"
             value={username}
@@ -153,6 +149,9 @@ function SignupFormModal() {
         </label>
         <label>
           Password
+          <div className="errors">
+            {errors.password ? errors.password : null}
+          </div>
           <input
             type="password"
             value={password}
@@ -161,6 +160,9 @@ function SignupFormModal() {
         </label>
         <label>
           Confirm Password
+          <div className="errors">
+            {errors.confirmPassword ? errors.confirmPassword : null}
+          </div>
           <input
             type="password"
             value={confirmPassword}
@@ -169,6 +171,9 @@ function SignupFormModal() {
         </label>
         <label>
           First Name
+          <div className="errors">
+            {errors.firstName ? errors.firstName : null}
+          </div>
           <input
             type="text"
             value={firstName}
@@ -177,6 +182,9 @@ function SignupFormModal() {
         </label>
         <label>
           Last Name
+          <div className="errors">
+            {errors.lastName ? errors.lastName : null}
+          </div>
           <input
             type="text"
             value={lastName}
@@ -185,6 +193,7 @@ function SignupFormModal() {
         </label>
         <label>
           City
+          <div className="errors">{errors.city ? errors.city : null}</div>
           <input
             type="text"
             value={city}
@@ -193,6 +202,7 @@ function SignupFormModal() {
         </label>
         <label>
           State
+          <div className="errors">{errors.state ? errors.state : null}</div>
           <input
             type="text"
             value={state}
