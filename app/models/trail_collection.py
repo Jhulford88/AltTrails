@@ -18,4 +18,4 @@ trail_collection = db.Table(
 )
 
 if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+    trail_collection.schema = SCHEMA

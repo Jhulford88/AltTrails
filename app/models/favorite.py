@@ -18,4 +18,4 @@ favorites = db.Table(
 )
 
 if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+    favorites.schema = SCHEMA

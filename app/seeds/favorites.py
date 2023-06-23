@@ -24,7 +24,7 @@ def seed_favorites():
         user_id = favorite_data['user_id']
         trail_id = favorite_data['trail_id']
 
-        favorite = insert(add_prefix_for_prod(favorites)).values(user_id=user_id, trail_id=trail_id)
+        favorite = insert(favorites).values(user_id=user_id, trail_id=trail_id)
 
         try:
             db.session.execute(favorite)
