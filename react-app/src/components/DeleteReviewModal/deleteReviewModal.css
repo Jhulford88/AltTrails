@@ -1,9 +1,8 @@
 .delete-modal-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* padding: 40px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .delete-modal-contents {
@@ -13,7 +12,6 @@
 }
 
 .delete-yes-button {
-    /* margin-right: 60px; */
     height: 30px;
     width: 60px;
     background-color: darkgreen;
@@ -23,7 +21,6 @@
 }
 
 .delete-cancel-button {
-    /* margin-right: 60px; */
     height: 30px;
     width: 60px;
     background-color: darkgreen;

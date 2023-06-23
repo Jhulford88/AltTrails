@@ -9,4 +9,3 @@ class ReviewForm(FlaskForm):
         validators=[DataRequired()],
     )
     star_rating = IntegerField("Star Rating", validators=[DataRequired()])
-    # trail_id = IntegerField("Trail ID", validators=[DataRequired()])

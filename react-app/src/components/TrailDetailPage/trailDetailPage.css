@@ -35,7 +35,7 @@
     align-items: center;
 }
 
-.create-review-button{
+.create-review-button {
     width: 20px;
     height: 50px;
     border: none;
@@ -74,13 +74,13 @@
 }
 
 .detail-banner-text {
-   position: absolute;
-   top: 270px;
-   left: 1%;
-   color: white;
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: 24px;
-   font-weight: lighter;
+    position: absolute;
+    top: 270px;
+    left: 1%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: lighter;
 }
 
 .detail-stats-container {
@@ -97,18 +97,14 @@
     height: 50px;
     text-align: center;
     border-bottom: 1px solid gray;
-
-
 }
 
 .fa-bookmark {
-
     color: gold;
     font-size: 60px;
 }
 
 #on {
-
     color: green;
     font-size: 60px;
 }
@@ -121,10 +117,9 @@
 }
 
 .favorite-button-container {
-   position: absolute;
-   top: 150px;
-   left: 92%;
-
+    position: absolute;
+    top: 150px;
+    left: 92%;
 }
 
 .individual-review {

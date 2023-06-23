@@ -4,10 +4,7 @@
 
 .all-trails-h1 {
     text-align: center;
-
 }
-
-
 
 .browse-by-activity {
     margin-left: 30px;
@@ -17,20 +14,17 @@
     background-color: beige;
     height: 400px;
     padding-top: 10px;
-
 }
 
 .cat-pic-container {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: space-around;
 }
 
 .cat-pics-labels {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: space-around;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
@@ -50,14 +44,12 @@
 }
 
 .trail-card {
-    /* border: 1px solid red; */
     width: 25%;
     padding: 10px;
     padding-bottom: 40px;
     height: 250px;
     cursor: pointer;
     margin: 5px;
-
 }
 
 .trail-card:hover {
@@ -68,17 +60,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* border: 1px solid blue; */
-    /* align-items: center; */
     justify-content: space-around;
 }
 
 .landing-trail-card-img {
     width: 100%;
     height: 200px;
-    /* border-radius: 10%; */
     object-fit: cover;
-    /* border: 1px solid black; */
     border-radius: 16px;
 }
 

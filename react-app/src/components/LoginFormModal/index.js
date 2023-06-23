@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
+import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { useHistory } from 'react-router-dom';
-import * as sessionActions from "../../store/session";
+import { useHistory } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -12,38 +12,41 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
-  const history = useHistory()
+  const history = useHistory();
 
+  //Dispatch thunk to login user
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
     } else {
-      history.push('/')
-      closeModal()
+      history.push("/");
+      closeModal();
     }
   };
 
+  //Dispatch thunk to log in demo user
   const handleClickDemoUser = async (e) => {
     e.preventDefault();
-    const data = await dispatch(sessionActions.login('demo@aa.io', "password"));
+    const data = await dispatch(sessionActions.login("demo@aa.io", "password"));
     if (data) {
       setErrors(data);
     } else {
-      history.push("/")
-      closeModal()
+      history.push("/");
+      closeModal();
     }
-  }
+  };
 
   return (
-
     <div className="form-container">
       <h1 className="login-header">Login</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <ul className="login-error-container">
           {errors?.map((error, idx) => (
-            <li className="login-error-item" key={idx}>{error}</li>
+            <li className="login-error-item" key={idx}>
+              {error}
+            </li>
           ))}
         </ul>
         <label>
@@ -64,9 +67,17 @@ function LoginFormModal() {
             required
           />
         </label>
-        <div className='login-button-container'>
-          <button className="login-button" type="submit">Log In</button>
-          <button className="demo-user-button" href="#" onClick={handleClickDemoUser}>Log in as Demo User</button>
+        <div className="login-button-container">
+          <button className="login-button" type="submit">
+            Log In
+          </button>
+          <button
+            className="demo-user-button"
+            href="#"
+            onClick={handleClickDemoUser}
+          >
+            Log in as Demo User
+          </button>
         </div>
       </form>
     </div>
