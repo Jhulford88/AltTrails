@@ -54,7 +54,6 @@
   margin-top: 20px;
 }
 
-
 .profile-dropdown {
   gap: 10px;
   display: flex;
@@ -75,7 +74,6 @@
 .profile-dropdown.hidden {
   display: none;
 }
-
 
 .navbar-leftmost>li {
   margin-right: 30px;
