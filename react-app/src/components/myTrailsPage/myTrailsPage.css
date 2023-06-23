@@ -1,21 +1,17 @@
 .manage-trail-card {
-    /* border: 2px solid red; */
     width: 25%;
     padding: 20px;
     padding-bottom: 40px;
     height: 275px;
     cursor: pointer;
     margin: 10px;
-
 }
 
 .manage-trail-cards-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width:100%;
-    /* margin-left: 90px; */
-    /* border: 4px solid blue; */
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 }
@@ -25,7 +21,6 @@
     height: 200px;
     border-radius: 15px;
     object-fit: cover;
-    /* border: 3px solid purple; */
 }
 
 .manage-trail-card-img-container {
@@ -33,7 +28,6 @@
     display: flex;
     flex-direction: row;
     flex-direction: wrap;
-    /* border: 3px solid purple; */
 }
 
 .manage-trail-name {
@@ -63,7 +57,6 @@
     height: 400px;
     text-align: center;
     justify-content: center;
-
 }
 
 .banner-img {
@@ -71,23 +64,22 @@
     position: relative;
     width: 100%;
     height: 400px;
-
 }
 
 .banner-text {
-   position: absolute;
-   top: 210px;
-   left: 38%;
-   color: white;
-   font-family: Arial, Helvetica, sans-serif;
-   font-size: 48px;
-   font-weight: lighter;
+    position: absolute;
+    top: 210px;
+    left: 38%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: lighter;
 }
 
 
 .section-headers-top {
     text-align: center;
-    background-color:  rgb(232, 231, 231);
+    background-color: rgb(232, 231, 231);
     margin: 0;
     padding-top: 30px;
 }
