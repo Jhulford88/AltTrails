@@ -118,6 +118,35 @@ const TrailDetailPage = () => {
   );
   const isFavorited = userFavorited?.length ? "yes" : "no";
 
+  //Building reviews
+  const reviews = singleTrail?.reviews?.map((review) => {
+    return (
+      <div key={review.id} className="review-area">
+        <div className="individual-review"> {review.reviewText}</div>
+        <div className="individual-review-stars">
+          {review.starRating}{" "}
+          <span className="individual-review-star">
+            <i class="fa-solid fa-star"></i>
+          </span>
+        </div>
+        {sessionUser && sessionUser.id === review.userId ? (
+          <OpenModalButton
+            className="create-review-button"
+            buttonText={"Update"}
+            modalComponent={<UpdateReviewModal review={review} />}
+          />
+        ) : null}
+        {sessionUser && sessionUser.id === review.userId ? (
+          <OpenModalButton
+            className="create-review-button"
+            buttonText={"Delete"}
+            modalComponent={<DeleteReviewModal reviewId={review.id} />}
+          />
+        ) : null}
+      </div>
+    );
+  });
+
   return (
     <div className="parent-container">
       <div className="trail-detail-subheader-container">
@@ -206,35 +235,7 @@ const TrailDetailPage = () => {
           ) : null}
         </div>
 
-        <ul className="reviews-ul">
-          {singleTrail?.reviews?.map((review) => {
-            return (
-              <div key={review.id} className="review-area">
-                <div className="individual-review"> {review.reviewText}</div>
-                <div className="individual-review-stars">
-                  {review.starRating}{" "}
-                  <span className="individual-review-star">
-                    <i class="fa-solid fa-star"></i>
-                  </span>
-                </div>
-                {sessionUser && sessionUser.id === review.userId ? (
-                  <OpenModalButton
-                    className="create-review-button"
-                    buttonText={"Update"}
-                    modalComponent={<UpdateReviewModal review={review} />}
-                  />
-                ) : null}
-                {sessionUser && sessionUser.id === review.userId ? (
-                  <OpenModalButton
-                    className="create-review-button"
-                    buttonText={"Delete"}
-                    modalComponent={<DeleteReviewModal reviewId={review.id} />}
-                  />
-                ) : null}
-              </div>
-            );
-          })}
-        </ul>
+        <ul className="reviews-ul">{reviews.reverse()}</ul>
         <div className="related-trails-container">
           <div className="related-trails-cards">{catCards[0]}</div>
           <div className="related-trails-cards">{catCards[1]}</div>
