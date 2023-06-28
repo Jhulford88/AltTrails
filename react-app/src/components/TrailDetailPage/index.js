@@ -122,6 +122,7 @@ const TrailDetailPage = () => {
   const reviews = singleTrail?.reviews?.map((review) => {
     return (
       <div key={review.id} className="review-area">
+        <div className="individual-review-date">{review.createdAt}</div>
         <div className="individual-review-username">{review.user} says...</div>
         <br></br>
         <div className="individual-review">{review.reviewText}</div>

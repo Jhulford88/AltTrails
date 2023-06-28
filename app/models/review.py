@@ -27,6 +27,6 @@ class Review(db.Model):
             "starRating": self.star_rating,
             "userId": self.user_id,
             "trailId": self.trail_id,
-            "createdAt": self.created_at,
+            "createdAt": self.created_at.strftime("%B %d, %Y"),
             "user": self.users.reviews_to_dict()["username"]
             }

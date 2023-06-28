@@ -132,6 +132,10 @@
     font-size: 20px;
 }
 
+.individual-review-date {
+    text-align: end;
+}
+
 .open-review-modal-button {
     margin-left: 75px;
     height: 50px;
