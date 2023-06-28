@@ -122,16 +122,16 @@ const TrailDetailPage = () => {
   const reviews = singleTrail?.reviews?.map((review) => {
     return (
       <div key={review.id} className="review-area">
+        <div className="individual-review-username">{review.user}</div>
         <div className="individual-review-date">{review.createdAt}</div>
-        <div className="individual-review-username">{review.user} says...</div>
-        <br></br>
-        <div className="individual-review">{review.reviewText}</div>
         <div className="individual-review-stars">
-          {review.starRating}{" "}
           <span className="individual-review-star">
-            <i class="fa-solid fa-star"></i>
+            {Array(review.starRating).fill(<i class="fa-solid fa-star"></i>)}
           </span>
         </div>
+        <br></br>
+        <div className="individual-review">{review.reviewText}</div>
+        <br></br>
         {sessionUser && sessionUser.id === review.userId ? (
           <OpenModalButton
             className="create-review-button"

@@ -132,8 +132,8 @@
     font-size: 20px;
 }
 
-.individual-review-date {
-    text-align: end;
+.individual-review-username {
+    font-size: larger;
 }
 
 .open-review-modal-button {
