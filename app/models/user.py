@@ -53,3 +53,8 @@ class User(db.Model, UserMixin):
             'state': self.state,
             "favorites": [favorite.to_dict() for favorite in self.favorite_trails]
         }
+
+    def reviews_to_dict(self):
+        return {
+            'username': self.username
+        }

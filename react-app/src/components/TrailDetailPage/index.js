@@ -122,7 +122,9 @@ const TrailDetailPage = () => {
   const reviews = singleTrail?.reviews?.map((review) => {
     return (
       <div key={review.id} className="review-area">
-        <div className="individual-review"> {review.reviewText}</div>
+        <div className="individual-review-username">{review.user} says...</div>
+        <br></br>
+        <div className="individual-review">{review.reviewText}</div>
         <div className="individual-review-stars">
           {review.starRating}{" "}
           <span className="individual-review-star">
@@ -235,7 +237,7 @@ const TrailDetailPage = () => {
           ) : null}
         </div>
 
-        <ul className="reviews-ul">{reviews.reverse()}</ul>
+        <ul className="reviews-ul">{reviews?.reverse()}</ul>
         <div className="related-trails-container">
           <div className="related-trails-cards">{catCards[0]}</div>
           <div className="related-trails-cards">{catCards[1]}</div>
