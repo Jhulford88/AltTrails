@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.category_routes import category_routes
 from .api.trails_routes import trails_routes
 from .api.favorites_routes import favorites_routes
+from .api.collections_routes import collections_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +35,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(trails_routes, url_prefix='/api/trails')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
 app.register_blueprint(favorites_routes, url_prefix='/api/favorites')
+app.register_blueprint(collections_routes, url_prefix='/api/collections')
 
 
 db.init_app(app)
