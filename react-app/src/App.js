@@ -14,6 +14,7 @@ import CategoriesPage from "./components/CategoriesPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/helpers";
 import CollectionsPage from "./components/TrailCollectionsPage";
+import CollectionDetailPage from "./components/CollectionDetailPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route exact path="/collections">
             <CollectionsPage />
+          </Route>
+          <Route exact path="/collections/:collectionId">
+            <CollectionDetailPage />
           </Route>
         </Switch>
       )}

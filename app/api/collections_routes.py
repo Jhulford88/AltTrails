@@ -19,3 +19,17 @@ def getAllCollections():
     collections = Collection.query.all()
     response = [collection.to_dict() for collection in collections]
     return {"collections": response}
+
+
+@collections_routes.route("/<int:id>")
+def get_single_collection(id):
+    """
+    Grabs a single collection by it's id
+    """
+    single_collection = Collection.query.get(id)
+
+    if single_collection is None:
+        return {"errors": "Collection not Found"}
+
+    response = single_collection.to_dict()
+    return {"single_collection": response}

@@ -1,44 +1,45 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCollectionsThunk } from "../../store/collections";
+import { getSingleCollectionThunk } from "../../store/collections";
 import image from "../../assets/collections-page-banner.avif";
-import "./trailCollectionsPage.css";
+import "./collectionDetailPage.css";
 
-const CollectionsPage = () => {
+const CollectionDetailPage = () => {
   //Initialize things
   const dispatch = useDispatch();
   const history = useHistory();
+  const { collectionId } = useParams();
 
   //useSelectors
-  const collections = useSelector((state) => state.collections.allCollections);
+  const collection = useSelector((state) => state.collections.singleCollection);
 
   //Dispatch Thunks
   useEffect(() => {
-    dispatch(getAllCollectionsThunk());
+    dispatch(getSingleCollectionThunk(collectionId));
   }, [dispatch]);
 
-  //Build collection cards to display
-  const cards = Object.values(collections)?.map((collection) => {
+  //Build trail cards to display
+  const cards = collection.trails?.map((trail) => {
     return (
       <div
-        key={collection.id}
+        key={trail.id}
         className="trail-card"
         onClick={(e) => {
-          history.push(`/collections/${collection.id}`);
+          history.push(`/trails/${trail.id}`);
         }}
       >
         <div className="trail-card-img-container">
           <img
             className="landing-trail-card-img"
             alt="Trail Image"
-            src={collection?.trails[0].coverPhoto}
+            src={trail?.coverPhoto}
           ></img>
         </div>
-        <div className="trail-name">{collection.name}</div>
-        {/* <div className="park-name">{trail.park}</div> */}
+        <div className="trail-name">{trail.trailName}</div>
+        <div className="park-name">{trail.park}</div>
         <div>
-          {/* Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min */}
+          Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min
         </div>
       </div>
     );
@@ -48,11 +49,11 @@ const CollectionsPage = () => {
     <div className="collections-page-parent-container">
       <div className="collections-banner-img-container">
         <img className="collections-banner-img" src={image}></img>
-        <h1 className="collections-banner-text">Collections</h1>
+        <h1 className="collections-banner-text">{collection.name}</h1>
       </div>
       <div className="trail-cards-container">{cards}</div>
     </div>
   );
 };
 
-export default CollectionsPage;
+export default CollectionDetailPage;
