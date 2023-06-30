@@ -20,6 +20,8 @@ const CollectionModal = ({ trailId }) => {
     if (collectionName.length > 55)
       newErrors["collectionName"] =
         "Collection name must be 55 characters or less!";
+    if (collectionName.length < 1)
+      newErrors["collectionName"] = "Collection name is required!";
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length) return;
@@ -41,7 +43,10 @@ const CollectionModal = ({ trailId }) => {
         <h2>Add trail to a new collection</h2>
         <form className="create-collection-form" onSubmit={handleSubmit}>
           <label>
-            Collection Name <span className="errors"></span>
+            Collection Name{" "}
+            <span className="errors">
+              {errors.collectionName ? errors.collectionName : null}
+            </span>
             <input
               type="text"
               value={collectionName}
