@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import User, Trail, Review, favorites, Collection, db
+from app.models.trail_collection import trail_collection
 from ..forms.create_trail_form import CreateTrailForm
 from ..forms.review_form import ReviewForm
 from flask_login import current_user, login_required
@@ -33,3 +34,24 @@ def get_single_collection(id):
 
     response = single_collection.to_dict()
     return {"single_collection": response}
+
+
+@collections_routes.route("/new", methods=["POST"])
+def create_new_collection():
+    """
+    Create a new Collection and add a trail to it
+    """
+    data = request.get_json()
+    new_collection = Collection(
+        name=data["collectionName"],
+        user_id=current_user.id
+    )
+    db.session.add(new_collection)
+    db.session.commit()
+
+    new_collection_trail = insert(trail_collection).values(trail_id=data["trailId"], collection_id=new_collection.id)
+
+    db.session.execute(new_collection_trail)
+    db.session.commit()
+
+    return "Success!"
