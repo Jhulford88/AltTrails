@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllTrailsThunk } from "../../store/trails";
-import { getCategoriesThunk } from "../../store/categories";
-import hiking from "../../assets/hiking-banner.jpeg";
-import biking from "../../assets/biking-banner.jpeg";
-import running from "../../assets/running-banner.webp";
-import walking from "../../assets/walking-banner.jpeg";
+import image from "../../assets/collections-page-banner.avif";
 import "./trailCollectionsPage.css";
 
 const CollectionsPage = () => {
@@ -16,7 +11,14 @@ const CollectionsPage = () => {
 
   //Dispatch Thunks
 
-  return <h1>Hello from collections page</h1>;
+  return (
+    <div className="collections-page-parent-container">
+      <div className="collections-banner-img-container">
+        <img className="collections-banner-img" src={image}></img>
+        <h1 className="collections-banner-text">Collections</h1>
+      </div>
+    </div>
+  );
 };
 
 export default CollectionsPage;
