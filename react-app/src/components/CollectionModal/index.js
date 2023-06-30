@@ -15,7 +15,7 @@ const CollectionModal = ({ trailId }) => {
   );
 
   //State
-  const [collectionName, setCollectionName] = useState();
+  const [collectionName, setCollectionName] = useState("");
   const [collectionId, setCollectionId] = useState();
   const [errors, setErrors] = useState({});
 
@@ -24,21 +24,31 @@ const CollectionModal = ({ trailId }) => {
     dispatch(getCurrentCollectionsThunk());
   }, [dispatch]);
 
+  console.log("collection name.......", collectionName);
+
   const newHandleSubmit = async (e) => {
     e.preventDefault();
 
     //Frontend form validation
     const newErrors = {};
-    if (collectionName.length > 55)
+    if (collectionName?.length > 55)
       newErrors["collectionName"] =
         "Collection name must be 55 characters or less!";
-    if (collectionName.length < 1)
+    if (collectionName?.length < 1)
       newErrors["collectionName"] = "Collection name is required!";
+    if (
+      Object.values(userCollections).filter(
+        (collection) => collection.name === collectionName
+      ).length
+    )
+      newErrors["collectionName"] =
+        "Collection name already exists! Please pick a different name!";
 
     setErrors(newErrors);
-    if (Object.keys(newErrors).length) return;
+    if (Object.keys(newErrors)?.length) return;
 
     // Fetch to post new trail
+
     const res = await fetch(`/api/collections/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -46,7 +56,7 @@ const CollectionModal = ({ trailId }) => {
         collectionName,
         trailId,
       }),
-    });
+    }).then(closeModal);
   };
 
   const addHandleSubmit = async (e) => {
@@ -54,12 +64,11 @@ const CollectionModal = ({ trailId }) => {
 
     //Frontend form validation
     const newErrors = {};
-    // if (collectionName.length > 55)
-    //   newErrors["collectionName"] =
-    //     "Collection name must be 55 characters or less!";
-
+    if (!collectionId)
+      newErrors["collection"] = "Please select a collection to add to!";
+    console.log("newErrors.collection.......", newErrors.collection);
     setErrors(newErrors);
-    if (Object.keys(newErrors).length) return;
+    if (Object.keys(newErrors)?.length) return;
 
     // Fetch to post new trail
     const res = await fetch(`/api/collections/add`, {
@@ -69,7 +78,7 @@ const CollectionModal = ({ trailId }) => {
         collectionId,
         trailId,
       }),
-    });
+    }).then(closeModal);
   };
 
   return (
@@ -95,9 +104,13 @@ const CollectionModal = ({ trailId }) => {
         </form>
       </div>
       <div className="add-to-existing">
+        <h2>Add trail to an existing collection</h2>
         <form className="add-collection-form" onSubmit={addHandleSubmit}>
           <label>
-            Select Collection <span className="errors"></span>
+            Select Collection{" "}
+            <span className="errors">
+              {errors.collection ? errors.collection : null}
+            </span>
             <select
               value={collectionId}
               onChange={(e) => setCollectionId(e.target.value)}

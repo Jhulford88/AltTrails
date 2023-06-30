@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getCurrentTrailsThunk } from "../../store/trails";
 import { deleteFavoriteThunk } from "../../store/trails";
 import { authenticate } from "../../store/session";
+import { getCurrentCollectionsThunk } from "../../store/collections";
 import OpenModalButton from "../OpenModalButton";
 import DeleteTrailModal from "../DeleteTrailModal";
 import image from "../../assets/slider-5.avif";
@@ -18,12 +19,14 @@ const MyTrailsPage = () => {
   const user = useSelector((state) => state.session.user);
   const favorites = user?.favorites;
   const trails = useSelector((state) => state.trails.userTrails);
+  const collections = useSelector((state) => state.collections.userCollections);
 
   //State (to force reload of state after delete)
   const [deleted, setDeleted] = useState(false);
 
   //Dispatch thunk to get users trails
   useEffect(() => {
+    dispatch(getCurrentCollectionsThunk());
     dispatch(getCurrentTrailsThunk());
     setDeleted(false);
     dispatch(authenticate());
@@ -121,6 +124,32 @@ const MyTrailsPage = () => {
     );
   });
 
+  //Build collection cards to display
+  const collectionCards = Object.values(collections)?.map((collection) => {
+    return (
+      <div
+        key={collection.id}
+        className="trail-card"
+        onClick={(e) => {
+          history.push(`/collections/${collection.id}`);
+        }}
+      >
+        <div className="trail-card-img-container">
+          <img
+            className="landing-trail-card-img"
+            alt="Trail Image"
+            src={collection?.trails[0].coverPhoto}
+          ></img>
+        </div>
+        <div className="trail-name">{collection.name}</div>
+        {/* <div className="park-name">{trail.park}</div> */}
+        <div>
+          {/* Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min */}
+        </div>
+      </div>
+    );
+  });
+
   if (!user) history.push("/");
 
   return (
@@ -143,6 +172,10 @@ const MyTrailsPage = () => {
       <h1 className="section-headers-bottom">My Favorites</h1>
       <div id="manage-cards-bottom" className="manage-trail-cards-container">
         {favoriteCards}
+      </div>
+      <h1 className="section-headers-bottom">My Collections</h1>
+      <div id="manage-cards-bottom" className="manage-trail-cards-container">
+        {collectionCards}
       </div>
     </div>
   );
