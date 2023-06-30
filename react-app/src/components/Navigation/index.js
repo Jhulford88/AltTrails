@@ -18,6 +18,11 @@ function Navigation({ isLoaded }) {
               <img className="logo" src={logo} alt="logo and home link"></img>
             </NavLink>
           </li>
+          <li>
+            <NavLink exact to="/collections" className="navbar-links-left">
+              Collections
+            </NavLink>
+          </li>
           <li id="navbar-links-left">
             {sessionUser ? (
               <NavLink
