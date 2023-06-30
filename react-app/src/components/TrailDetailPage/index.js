@@ -11,6 +11,8 @@ import OpenReviewModalButton from "../OpenReviewModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import DeleteReviewModal from "../DeleteReviewModal";
+import CollectionModal from "../CollectionModal";
+import OpenCollectionModalButton from "../OpenCollectionModalButton";
 import "./trailDetailPage.css";
 
 const TrailDetailPage = () => {
@@ -207,6 +209,13 @@ const TrailDetailPage = () => {
       </div>
 
       <div className="detail-page-container">
+        <div className="create-review-button-container">
+          <OpenCollectionModalButton
+            className="create-review-button"
+            buttonText={"Add to a collection"}
+            modalComponent={<CollectionModal trailId={trailId} />}
+          />
+        </div>
         <div className="detail-page-description">{singleTrail.description}</div>
         <div className="review-totals-container">
           {singleTrail.reviews?.length ? (
