@@ -13,6 +13,7 @@ import MyTrailsPage from "./components/myTrailsPage";
 import CategoriesPage from "./components/CategoriesPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/helpers";
+import CollectionsPage from "./components/TrailCollectionsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
@@ -40,7 +41,7 @@ function App() {
             <CreateTrailFormPage />
           </Route>
           <Route exact path="/trails/:trailId">
-          <TrailDetailPage />
+            <TrailDetailPage />
           </Route>
           <Route exact path="/trails/:trailId/update">
             <UpdateTrailFormPage />
@@ -51,10 +52,12 @@ function App() {
           <Route exact path="/categories/:categoryParam">
             <CategoriesPage />
           </Route>
+          <Route exact path="/collections">
+            <CollectionsPage />
+          </Route>
         </Switch>
-
       )}
-        <Footer/>
+      <Footer />
     </>
   );
 }
