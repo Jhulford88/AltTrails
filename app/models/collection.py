@@ -27,5 +27,6 @@ class Collection(db.Model):
         return{
             'id': self.id,
             'name': self.name,
-            'userId': self.user_id
+            'userId': self.user_id,
+            'trails': [trail.to_dict() for trail in self.trail_collections]
             }
