@@ -3,6 +3,7 @@ import { normalizeObj } from "./helpers";
 // ------------ TYPE VARIABLES ------------
 const GET_ALL_COLLECTIONS = "collections/getAllCollections";
 const GET_SINGLE_COLLECTION = "collections/getSingleCollection";
+const GET_CURRENT_COLLECTIONS = "collections/getCurrentCollections";
 
 // ---------- ACTION CREATORS ----------
 const getAllCollections = (collections) => {
@@ -16,6 +17,13 @@ const getSingleCollection = (single_collection) => {
   return {
     type: GET_SINGLE_COLLECTION,
     single_collection,
+  };
+};
+
+const getCurrentCollections = (collections) => {
+  return {
+    type: GET_CURRENT_COLLECTIONS,
+    collections,
   };
 };
 
@@ -43,8 +51,21 @@ export const getSingleCollectionThunk = (id) => async (dispatch) => {
   }
 };
 
+export const getCurrentCollectionsThunk = () => async (dispatch) => {
+  const res = await fetch("/api/collections/current");
+  if (res.ok) {
+    const { collections } = await res.json();
+    dispatch(getCurrentCollections(collections));
+    return;
+  }
+};
+
 // --------- INITIAL STATE -------------
-const initialState = { allCollections: {}, singleCollection: {} };
+const initialState = {
+  allCollections: {},
+  singleCollection: {},
+  userCollections: {},
+};
 
 // ---------- REDUCER ----------
 const collections = (state = initialState, action) => {
@@ -56,6 +77,11 @@ const collections = (state = initialState, action) => {
       };
     case GET_SINGLE_COLLECTION:
       return { ...state, singleCollection: { ...action.single_collection } };
+    case GET_CURRENT_COLLECTIONS:
+      return {
+        ...state,
+        userCollections: { ...normalizeObj(action.collections) },
+      };
     default:
       return state;
   }

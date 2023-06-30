@@ -207,7 +207,7 @@ const TrailDetailPage = () => {
           <div className="detail-stats-res">{findCategory()}</div>
         </div>
       </div>
-
+      <div className="detail-page-description">{singleTrail.description}</div>
       <div className="detail-page-container">
         <div className="create-review-button-container">
           <OpenCollectionModalButton
@@ -216,7 +216,6 @@ const TrailDetailPage = () => {
             modalComponent={<CollectionModal trailId={trailId} />}
           />
         </div>
-        <div className="detail-page-description">{singleTrail.description}</div>
         <div className="review-totals-container">
           {singleTrail.reviews?.length ? (
             <div>

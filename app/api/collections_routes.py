@@ -55,3 +55,34 @@ def create_new_collection():
     db.session.commit()
 
     return "Success!"
+
+
+@collections_routes.route("/add", methods=["POST"])
+def add_to_collection():
+    """
+    Add a trail to an existing Collection
+    """
+    data = request.get_json()
+
+
+    new_collection_trail = insert(trail_collection).values(trail_id=data["trailId"], collection_id=data["collectionId"])
+
+    db.session.execute(new_collection_trail)
+    db.session.commit()
+
+    return "Success!"
+
+
+@collections_routes.route("/current")
+def get_current_user_collections():
+    """
+    Grabs all the collections owned by the current user
+    """
+
+    id = current_user.id
+
+    collections = Collection.query.filter(Collection.user_id == id)
+
+    res = [collection.to_dict() for collection in collections]
+
+    return {"collections": res}
