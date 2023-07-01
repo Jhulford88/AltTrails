@@ -86,3 +86,18 @@ def get_current_user_collections():
     res = [collection.to_dict() for collection in collections]
 
     return {"collections": res}
+
+
+@collections_routes.route("/<int:collectionId>/delete", methods=["DELETE"])
+# @login_required
+def delete_collection(collectionId):
+    print('hello from the backend..................')
+    collection = Collection.query.get(collectionId)
+
+    if not collection:
+        return {"errors": "Collection does not exist"}, 404
+
+    db.session.delete(collection)
+    db.session.commit()
+
+    return {"message": "Succesfully Deleted Collection"}, 200

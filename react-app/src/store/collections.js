@@ -4,6 +4,7 @@ import { normalizeObj } from "./helpers";
 const GET_ALL_COLLECTIONS = "collections/getAllCollections";
 const GET_SINGLE_COLLECTION = "collections/getSingleCollection";
 const GET_CURRENT_COLLECTIONS = "collections/getCurrentCollections";
+const DELETE_COLLECTION = "collections/deleteCollection";
 
 // ---------- ACTION CREATORS ----------
 const getAllCollections = (collections) => {
@@ -24,6 +25,13 @@ const getCurrentCollections = (collections) => {
   return {
     type: GET_CURRENT_COLLECTIONS,
     collections,
+  };
+};
+
+const deleteCollection = (collectionId) => {
+  return {
+    type: DELETE_COLLECTION,
+    collectionId,
   };
 };
 
@@ -60,6 +68,18 @@ export const getCurrentCollectionsThunk = () => async (dispatch) => {
   }
 };
 
+export const deleteCollectionThunk = (collectionId) => async (dispatch) => {
+  collectionId = parseInt(collectionId);
+  console.log("hello from inside deleteCollection thunk.......");
+  const res = await fetch(`/api/collections/${collectionId}/delete`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    console.log("res was ok..........");
+    dispatch(deleteCollection(collectionId));
+  }
+};
+
 // --------- INITIAL STATE -------------
 const initialState = {
   allCollections: {},
@@ -82,6 +102,10 @@ const collections = (state = initialState, action) => {
         ...state,
         userCollections: { ...normalizeObj(action.collections) },
       };
+    case DELETE_COLLECTION:
+      let newDeleteState = { ...state };
+      delete newDeleteState.userCollections[action.collectionId];
+      return newDeleteState;
     default:
       return state;
   }

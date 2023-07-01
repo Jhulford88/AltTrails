@@ -7,6 +7,8 @@ import { authenticate } from "../../store/session";
 import { getCurrentCollectionsThunk } from "../../store/collections";
 import OpenModalButton from "../OpenModalButton";
 import DeleteTrailModal from "../DeleteTrailModal";
+import OpenDeleteCollectionModalButton from "../OpenDeleteCollectionModalButton";
+import DeleteCollectionModal from "../DeleteCollectionModal";
 import image from "../../assets/slider-5.avif";
 import "./myTrailsPage.css";
 
@@ -127,24 +129,33 @@ const MyTrailsPage = () => {
   //Build collection cards to display
   const collectionCards = Object.values(collections)?.map((collection) => {
     return (
-      <div
-        key={collection.id}
-        className="trail-card"
-        onClick={(e) => {
-          history.push(`/collections/${collection.id}`);
-        }}
-      >
-        <div className="trail-card-img-container">
-          <img
-            className="landing-trail-card-img"
-            alt="Trail Image"
-            src={collection?.trails[0].coverPhoto}
-          ></img>
+      <div className="trail-card">
+        <div
+          key={collection.id}
+          onClick={(e) => {
+            history.push(`/collections/${collection.id}`);
+          }}
+        >
+          <div className="trail-card-img-container">
+            <img
+              className="landing-trail-card-img"
+              alt="Trail Image"
+              src={collection?.trails[0].coverPhoto}
+            ></img>
+          </div>
+          <div className="trail-name">{collection.name}</div>
         </div>
-        <div className="trail-name">{collection.name}</div>
-        {/* <div className="park-name">{trail.park}</div> */}
         <div>
-          {/* Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min */}
+          <OpenDeleteCollectionModalButton
+            className="trail-delete-button"
+            buttonText={"Delete"}
+            modalComponent={
+              <DeleteCollectionModal
+                collectionId={collection.id}
+                setDeleted={setDeleted}
+              />
+            }
+          />
         </div>
       </div>
     );
