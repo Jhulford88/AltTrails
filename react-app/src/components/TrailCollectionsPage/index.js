@@ -32,14 +32,14 @@ const CollectionsPage = () => {
           <img
             className="landing-trail-card-img"
             alt="Trail Image"
-            src={collection?.trails[0].coverPhoto}
+            src={
+              collection?.trails?.length
+                ? collection?.trails[0]?.coverPhoto
+                : image
+            }
           ></img>
         </div>
         <div className="trail-name">{collection.name}</div>
-        {/* <div className="park-name">{trail.park}</div> */}
-        <div>
-          {/* Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min */}
-        </div>
       </div>
     );
   });

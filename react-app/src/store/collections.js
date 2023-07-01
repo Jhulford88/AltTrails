@@ -5,6 +5,7 @@ const GET_ALL_COLLECTIONS = "collections/getAllCollections";
 const GET_SINGLE_COLLECTION = "collections/getSingleCollection";
 const GET_CURRENT_COLLECTIONS = "collections/getCurrentCollections";
 const DELETE_COLLECTION = "collections/deleteCollection";
+const DELETE_FROM_COLLECTION = "collections/deleteFromCollection";
 
 // ---------- ACTION CREATORS ----------
 const getAllCollections = (collections) => {
@@ -32,6 +33,14 @@ const deleteCollection = (collectionId) => {
   return {
     type: DELETE_COLLECTION,
     collectionId,
+  };
+};
+
+const deleteFromCollection = (collectionId, trailId) => {
+  return {
+    type: DELETE_FROM_COLLECTION,
+    collectionId,
+    trailId,
   };
 };
 
@@ -80,6 +89,24 @@ export const deleteCollectionThunk = (collectionId) => async (dispatch) => {
   }
 };
 
+export const deleteFromCollectionThunk =
+  (collectionId, trailId) => async (dispatch) => {
+    collectionId = parseInt(collectionId);
+
+    console.log("collectionId.......", collectionId);
+    console.log("trailId.......", trailId);
+
+    const res = await fetch(
+      `/api/collections/delete/${collectionId}/${trailId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (res.ok) {
+      dispatch(deleteFromCollection(collectionId, trailId));
+    }
+  };
+
 // --------- INITIAL STATE -------------
 const initialState = {
   allCollections: {},
@@ -106,6 +133,13 @@ const collections = (state = initialState, action) => {
       let newDeleteState = { ...state };
       delete newDeleteState.userCollections[action.collectionId];
       return newDeleteState;
+    case DELETE_FROM_COLLECTION:
+      let newDeleteFromState = { ...state };
+      let filteredTrails = newDeleteFromState.singleCollection.trails.filter(
+        (trail) => trail.id !== action.trailId
+      );
+      newDeleteFromState.singleCollection.trails = filteredTrails;
+      return newDeleteFromState;
     default:
       return state;
   }

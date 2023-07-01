@@ -101,3 +101,23 @@ def delete_collection(collectionId):
     db.session.commit()
 
     return {"message": "Succesfully Deleted Collection"}, 200
+
+@collections_routes.route("/delete/<int:collectionId>/<int:trailId>", methods=["DELETE"])
+# @login_required
+def delete_from_collection(collectionId, trailId):
+
+    delete_query = delete(trail_collection).where(
+    ((trail_collection.c.trail_id == trailId) & (trail_collection.c.collection_id == collectionId)))
+
+    db.session.execute(delete_query)
+    db.session.commit()
+
+    # collection = Collection.query.get(collectionId)
+
+    # if not collection:
+    #     return {"errors": "Collection does not exist"}, 404
+
+    # db.session.delete(collection)
+    # db.session.commit()
+
+    return {"message": "Succesfully Deleted Trail From Collection"}, 200
