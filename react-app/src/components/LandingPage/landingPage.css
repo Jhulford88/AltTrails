@@ -6,26 +6,50 @@
     text-align: center;
     padding-left: 40px;
     /* padding-top: 20px; */
+    /* border: 2px solid purple; */
+    border-radius: 40px;
+    width: 90%;
+    height: 70px;
+    background-color: #32690f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .all-trails-h1-container {
-    border: 1px solid lightgray;
-    /* background-color: beige;
-    color: #32690f; */
-    margin-top: 20px;
+    /* border: 2px solid red; */
+    background-color: white;
+    color: aliceblue;
+    margin-bottom: 20px;
+    /* width: 95%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .collections-h1-container {
-    border: 1px solid lightgray;
-    background-color: #32690f;
+    /* border: 2px solid red; */
+    background-color: white;
     color: aliceblue;
     margin-bottom: 20px;
+    /* width: 95%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popular-collections-h1 {
     text-align: center;
     padding-left: 40px;
     /* padding-top: 20px; */
+    /* border: 2px solid purple; */
+    border-radius: 40px;
+    width: 90%;
+    height: 70px;
+    background-color: #32690f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .browse-by-activity {
@@ -80,11 +104,21 @@
     transform: scale(1.01)
 }
 
+.trail-cards-container-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
 .trail-cards-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    /* border: 2px solid red; */
+    width: 95%;
+    background-color: beige;
+    border-radius: 20px;
 }
 
 .landing-trail-card-img {

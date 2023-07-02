@@ -142,7 +142,9 @@ const LandingPage = () => {
       <div className="all-trails-h1-container">
         <h1 className="all-trails-h1">Explore All Trails</h1>
       </div>
-      <div className="trail-cards-container">{cards}</div>
+      <div className="trail-cards-container-container">
+        <div className="trail-cards-container">{cards}</div>
+      </div>
     </div>
   );
 };
