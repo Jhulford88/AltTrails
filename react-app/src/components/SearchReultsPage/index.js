@@ -10,25 +10,24 @@ import bikingPhoto from "../../assets/biking-photo.png";
 import runningPhoto from "../../assets/running-photo.png";
 import walkingPhoto from "../../assets/walking-photo.png";
 import image from "../../assets/collections-page-banner.avif";
-import "./landingPage.css";
+// import "./SearchResultsPage.css";
 
-const LandingPage = () => {
+const SearchResultsPage = () => {
   //Initialize things
   const dispatch = useDispatch();
   const history = useHistory();
 
   //useSelectors
   const trails = useSelector((state) => state.trails.allTrails);
-  const collections = useSelector((state) => state.collections.allCollections);
+  //   const collections = useSelector((state) => state.collections.allCollections);
 
   //State
-  const [search, setSearch] = useState("");
+  //   const [search, setSearch] = useState("");
 
   //Dispatch thunk to get all trails
-  useEffect(() => {
-    dispatch(getAllTrailsThunk());
-    dispatch(getAllCollectionsThunk());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(getAllTrailsThunk());
+  //   }, [dispatch]);
 
   //Build trail cards to display
   const cards = Object.values(trails)?.map((trail) => {
@@ -57,41 +56,41 @@ const LandingPage = () => {
   });
 
   //Build collection cards to display
-  const collectionCards = Object.values(collections)?.map((collection) => {
-    return (
-      <div
-        key={collection.id}
-        className="collection-page-trail-card"
-        onClick={(e) => {
-          history.push(`/collections/${collection.id}`);
-        }}
-      >
-        <div className="collection-card-img-container">
-          <img
-            className="collections-trail-card-img"
-            alt="Trail Image"
-            src={
-              collection?.trails?.length
-                ? collection?.trails[0]?.coverPhoto
-                : image
-            }
-          ></img>
-          <div className="collection-card-trail-name">{collection.name}</div>
-        </div>
-      </div>
-    );
-  });
+  //   const collectionCards = Object.values(collections)?.map((collection) => {
+  //     return (
+  //       <div
+  //         key={collection.id}
+  //         className="collection-page-trail-card"
+  //         onClick={(e) => {
+  //           history.push(`/collections/${collection.id}`);
+  //         }}
+  //       >
+  //         <div className="collection-card-img-container">
+  //           <img
+  //             className="collections-trail-card-img"
+  //             alt="Trail Image"
+  //             src={
+  //               collection?.trails?.length
+  //                 ? collection?.trails[0]?.coverPhoto
+  //                 : image
+  //             }
+  //           ></img>
+  //           <div className="collection-card-trail-name">{collection.name}</div>
+  //         </div>
+  //       </div>
+  //     );
+  //   });
 
-  const collectionCardSelection = new Array(1).fill(
-    collectionCards.slice(0, 4)
-  );
+  //   const collectionCardSelection = new Array(1).fill(
+  //     collectionCards.slice(0, 4)
+  //   );
 
   if (!trails) return <h1>Loading...</h1>;
 
   return (
     <div>
       <Slider />
-      <div className="search-bar-container">
+      {/* <div className="search-bar-container">
         <input
           type="search"
           className="search-bar"
@@ -100,7 +99,6 @@ const LandingPage = () => {
             setSearch(e.target.value);
           }}
         />
-        {/* dispatch the search thunk here, passing it e.target.value */}
         <button
           className="search-button"
           onClick={async (e) => {
@@ -111,8 +109,9 @@ const LandingPage = () => {
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-      </div>
-      <div className="categories-container">
+      </div> */}
+
+      {/* <div className="categories-container">
         <h1 className="browse-by-activity">Browse by activity</h1>
         <div className="cat-pic-container">
           <NavLink className="cat-pics-navlink" exact to="/categories/Hiking">
@@ -132,19 +131,19 @@ const LandingPage = () => {
             <h2 className="cat-pics-labels">Walking</h2>
           </NavLink>
         </div>
-      </div>
-      <div className="collections-h1-container">
+      </div> */}
+      {/* <div className="collections-h1-container">
         <h1 className="popular-collections-h1">Explore Popular Collections</h1>
-      </div>
-      <div className="landing-collection-container">
+      </div> */}
+      {/* <div className="landing-collection-container">
         {collectionCardSelection}
-      </div>
+      </div> */}
       <div className="all-trails-h1-container">
-        <h1 className="all-trails-h1">Explore All Trails</h1>
+        <h1 className="all-trails-h1">Search Results</h1>
       </div>
       <div className="trail-cards-container">{cards}</div>
     </div>
   );
 };
 
-export default LandingPage;
+export default SearchResultsPage;

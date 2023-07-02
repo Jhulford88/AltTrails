@@ -12,6 +12,7 @@ import UpdateTrailFormPage from "./components/UpdateTrailFormPage";
 import MyTrailsPage from "./components/myTrailsPage";
 import CategoriesPage from "./components/CategoriesPage";
 import Footer from "./components/Footer";
+import SearchResultsPage from "./components/SearchReultsPage";
 import ScrollToTop from "./components/helpers";
 import CollectionsPage from "./components/TrailCollectionsPage";
 import CollectionDetailPage from "./components/CollectionDetailPage";
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route exact path="/trails/new">
             <CreateTrailFormPage />
+          </Route>
+          <Route exact path="/trails/search">
+            <SearchResultsPage />
           </Route>
           <Route exact path="/trails/:trailId">
             <TrailDetailPage />

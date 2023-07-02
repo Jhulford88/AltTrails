@@ -280,3 +280,20 @@ def delete_favorite(trailId):
     db.session.commit()
 
     return {"message": "Succesfully Deleted"}
+
+
+@trails_routes.route("/search")
+def search_projects():
+    """
+    Searches through all of the projects based on query parameters from the search bar.
+    Should return a JSON obj for the fronted to catch
+    """
+    search_query = request.args.get("query")
+    print("search param being picked up by backend route: ", search_query)
+    trail_query = (
+        db.session.query(Trail)
+        .filter((Trail.trail_name.ilike(f"%{search_query}%")) | (Trail.description.ilike(f"%{search_query}%")) | (Trail.park.ilike(f"%{search_query}%")))
+    )
+    print("query response from search route: ", trail_query.all())
+    response = [trail.to_dict() for trail in trail_query]
+    return {"trails": response}

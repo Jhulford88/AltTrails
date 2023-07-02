@@ -200,6 +200,20 @@ export const deleteFavoriteThunk = (trailId) => async (dispatch) => {
   });
 };
 
+export const searchAllTrailsThunk = (query) => async (dispatch) => {
+  console.log("in the thunk! here is the search query:", query);
+  // console.log("this is what the fetch url looks like: ", `/api/search?query=${query}`)
+  const res = await fetch(`/api/trails/search?query=${query}`);
+  if (res.ok) {
+    //projects here will be filtered based on the search query
+    const { trails } = await res.json();
+    dispatch(getAllTrails(trails));
+    return;
+  } else {
+    console.log("Problem with loading trails with query params");
+  }
+};
+
 // --------- INITIAL STATE -------------
 const initialState = { allTrails: {}, singleTrail: {}, userTrails: {} };
 
