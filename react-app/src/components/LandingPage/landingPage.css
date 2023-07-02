@@ -4,10 +4,34 @@
 
 .all-trails-h1 {
     text-align: center;
+    padding-left: 40px;
+    /* padding-top: 20px; */
+}
+
+.all-trails-h1-container {
+    border: 1px solid lightgray;
+    /* background-color: beige;
+    color: #32690f; */
+    margin-top: 20px;
+}
+
+.collections-h1-container {
+    border: 1px solid lightgray;
+    background-color: #32690f;
+    color: aliceblue;
+    margin-bottom: 20px;
+}
+
+.popular-collections-h1 {
+    text-align: center;
+    padding-left: 40px;
+    /* padding-top: 20px; */
 }
 
 .browse-by-activity {
     margin-left: 30px;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 .categories-container {
@@ -68,6 +92,10 @@
     height: 200px;
     object-fit: cover;
     border-radius: 16px;
+}
+
+.landing-collection-container {
+    display: flex;
 }
 
 .trail-card-img-container {

@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { getAllTrailsThunk } from "../../store/trails";
+import { getAllCollectionsThunk } from "../../store/collections";
 import Slider from "../Slider";
 import hikingPhoto from "../../assets/hiking-photo.png";
 import bikingPhoto from "../../assets/biking-photo.png";
 import runningPhoto from "../../assets/running-photo.png";
 import walkingPhoto from "../../assets/walking-photo.png";
+import image from "../../assets/collections-page-banner.avif";
 import "./landingPage.css";
 
 const LandingPage = () => {
@@ -16,10 +18,12 @@ const LandingPage = () => {
 
   //useSelectors
   const trails = useSelector((state) => state.trails.allTrails);
+  const collections = useSelector((state) => state.collections.allCollections);
 
   //Dispatch thunk to get all trails
   useEffect(() => {
     dispatch(getAllTrailsThunk());
+    dispatch(getAllCollectionsThunk());
   }, [dispatch]);
 
   //Build trail cards to display
@@ -48,6 +52,36 @@ const LandingPage = () => {
     );
   });
 
+  //Build collection cards to display
+  const collectionCards = Object.values(collections)?.map((collection) => {
+    return (
+      <div
+        key={collection.id}
+        className="collection-page-trail-card"
+        onClick={(e) => {
+          history.push(`/collections/${collection.id}`);
+        }}
+      >
+        <div className="collection-card-img-container">
+          <img
+            className="collections-trail-card-img"
+            alt="Trail Image"
+            src={
+              collection?.trails?.length
+                ? collection?.trails[0]?.coverPhoto
+                : image
+            }
+          ></img>
+          <div className="collection-card-trail-name">{collection.name}</div>
+        </div>
+      </div>
+    );
+  });
+
+  const collectionCardSelection = new Array(1).fill(
+    collectionCards.slice(0, 4)
+  );
+
   if (!trails) return <h1>Loading...</h1>;
 
   return (
@@ -74,8 +108,14 @@ const LandingPage = () => {
           </NavLink>
         </div>
       </div>
+      <div className="collections-h1-container">
+        <h1 className="popular-collections-h1">Explore Popular Collections</h1>
+      </div>
+      <div className="landing-collection-container">
+        {collectionCardSelection}
+      </div>
       <div className="all-trails-h1-container">
-        <h1 className="all-trails-h1">All Trails</h1>
+        <h1 className="all-trails-h1">Explore All Trails</h1>
       </div>
       <div className="trail-cards-container">{cards}</div>
     </div>

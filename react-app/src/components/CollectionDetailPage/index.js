@@ -49,7 +49,7 @@ const CollectionDetailPage = () => {
           </div>
         </div>
         <div>
-          {user.id === collection.userId ? (
+          {user?.id === collection.userId ? (
             <OpenDeleteFromCollectionModalButton
               className="trail-delete-button"
               buttonText={"Delete"}
