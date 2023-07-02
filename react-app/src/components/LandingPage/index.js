@@ -95,7 +95,7 @@ const LandingPage = () => {
         <input
           type="search"
           className="search-bar"
-          placeholder="Search by project!"
+          placeholder="Search by Trail Name, Park, or Description!"
           onChange={(e) => {
             setSearch(e.target.value);
           }}

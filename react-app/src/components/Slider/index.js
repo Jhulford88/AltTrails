@@ -22,6 +22,7 @@ const Slider = () => {
         infiniteLoop={true}
         showStatus={false}
         showArrows={false}
+        showIndicators={false}
       >
         <div>
           <img className="car-img" src={image1} />
