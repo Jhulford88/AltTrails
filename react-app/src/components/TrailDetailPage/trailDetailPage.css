@@ -24,18 +24,30 @@
     cursor: pointer;
 }
 
+.collection-button-container {
+    border: 1px solid black;
+    height: 80px;
+    border-radius: 10px;
+    background-color: rgb(244, 241, 241);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 40%;
+    /* border: 2px solid red; */
+}
+
 .cover-photo-container {
     height: 400px;
     justify-content: center;
     background-color: beige;
 }
 
+
 .create-review-button-container {
     display: flex;
-    align-items: center;
 }
 
-.create-review-button {
+/* .create-review-button {
     width: 20px;
     height: 50px;
     border: none;
@@ -46,19 +58,22 @@
     padding: 10px;
     margin-bottom: 70px;
     cursor: pointer;
-}
+} */
 
 .detail-page-container {
     width: 97%;
     margin-top: 10px;
     margin-left: 10px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
-    column-gap: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
+    padding-top: 20px;
+    /* border: 2px solid purple; */
+    /* align-items: center; */
+    justify-content: space-evenly;
 }
 
 .detail-stats-res {
@@ -71,6 +86,7 @@
     grid-column-start: 1;
     grid-column-end: 5;
     font-size: 20px;
+    margin: 40px;
 }
 
 .detail-banner-text {
@@ -136,13 +152,23 @@
     font-size: larger;
 }
 
-.open-review-modal-button {
-    margin-left: 75px;
+.open-collection-modal-button {
     height: 50px;
     width: 150px;
     border-radius: 20px;
     background: darkgreen;
     color: white;
+    cursor: pointer;
+}
+
+.open-review-modal-button {
+    /* margin-left: 75px; */
+    height: 50px;
+    width: 150px;
+    border-radius: 20px;
+    background: darkgreen;
+    color: white;
+    cursor: pointer;
 }
 
 .park-name-h2 {
@@ -160,48 +186,64 @@
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(244, 241, 241);
+    width: 100%;
+    /* border: 2px solid red; */
 }
 
 .reviews-ul {
     list-style: none;
-    grid-row-start: 3;
-    grid-column-start: 1;
-    grid-column-end: 5;
+    width: 100%;
+    /* border: 2px solid orange; */
+}
+
+.reviews-ul-container {
+    list-style: none;
+    width: 60%;
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: center;
 }
 
 .review-totals-container {
-    margin-top: 15px;
     margin-bottom: 5px;
     margin-left: 10px;
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
     border: 1px solid gray;
     border-radius: 10px;
-    padding: 10px;
+    padding-left: 10px;
     background-color: rgb(244, 241, 241);
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid blue; */
+    height: 80px;
+    width: 40%;
 }
 
+
+
 .related-trails-container {
-    grid-row-start: 1;
-    grid-row-end: 10;
-    grid-column-start: 5;
-    grid-column-end: 7;
     margin-left: 20px;
-    margin-top: 40px;
-    display: grid;
-    grid-template-rows: 4fr;
-    grid-template-columns: auto;
+    /* margin-top: 40px; */
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid green; */
+    width: 30%;
+    align-items: center;
 }
 
 .related-trails-cards {
-    grid-column-start: 1;
-    grid-column-end: 2;
     padding-bottom: 20px;
-    padding-left: 40px;
-    width: 80%;
+    /* padding-left: 40px; */
+    width: 100%;
+}
+
+.reviews-and-related {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* border: 4px solid red; */
+    width: 100%;
 }
 
 .trail-card-img {

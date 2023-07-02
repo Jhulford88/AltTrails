@@ -209,13 +209,6 @@ const TrailDetailPage = () => {
       </div>
       <div className="detail-page-description">{singleTrail.description}</div>
       <div className="detail-page-container">
-        <div className="create-review-button-container">
-          <OpenCollectionModalButton
-            className="create-review-button"
-            buttonText={"Add to a collection"}
-            modalComponent={<CollectionModal trailId={trailId} />}
-          />
-        </div>
         <div className="review-totals-container">
           {singleTrail.reviews?.length ? (
             <div>
@@ -229,9 +222,7 @@ const TrailDetailPage = () => {
                 {"(" + singleTrail.reviews?.length + ")"} <span>reviews</span>
               </div>
             </div>
-          ) : (
-            <h2>Be the First to Leave a Review!</h2>
-          )}
+          ) : null}
 
           {sessionUser ? (
             <div className="create-review-button-container">
@@ -245,13 +236,25 @@ const TrailDetailPage = () => {
             </div>
           ) : null}
         </div>
+        <div className="collection-button-container">
+          <OpenCollectionModalButton
+            className="create-review-button"
+            buttonText={"Add to a collection"}
+            modalComponent={<CollectionModal trailId={trailId} />}
+          />
+        </div>
 
-        <ul className="reviews-ul">{reviews?.reverse()}</ul>
-        <div className="related-trails-container">
-          <div className="related-trails-cards">{catCards[0]}</div>
-          <div className="related-trails-cards">{catCards[1]}</div>
-          <div className="related-trails-cards">{catCards[2]}</div>
-          <div className="related-trails-cards">{catCards[3]}</div>
+        <div className="reviews-and-related">
+          <div className="reviews-ul-container">
+            <ul className="reviews-ul">{reviews?.reverse()}</ul>
+          </div>
+          <div className="related-trails-container">
+            <h2>Related {findCategory()} Trails</h2>
+            <div className="related-trails-cards">{catCards[0]}</div>
+            <div className="related-trails-cards">{catCards[1]}</div>
+            <div className="related-trails-cards">{catCards[2]}</div>
+            <div className="related-trails-cards">{catCards[3]}</div>
+          </div>
         </div>
       </div>
     </div>

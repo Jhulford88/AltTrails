@@ -84,24 +84,27 @@ const CollectionModal = ({ trailId }) => {
   return (
     <div className="collection-modal-parent-container">
       <div className="add-to-new">
-        <h2>Add trail to a new collection</h2>
-        <form className="create-collection-form" onSubmit={newHandleSubmit}>
-          <label>
-            Collection Name{" "}
-            <span className="errors">
-              {errors.collectionName ? errors.collectionName : null}
-            </span>
-            <input
-              type="text"
-              value={collectionName}
-              placeholder="Collection Name"
-              onChange={(e) => setCollectionName(e.target.value)}
-            />
-          </label>
-          <button className="create-collection-button" type="submit">
-            Create Collection
-          </button>
-        </form>
+        <div className="add-to-new-content">
+          <h2>Add trail to a new collection</h2>
+          <form className="create-collection-form" onSubmit={newHandleSubmit}>
+            <label>
+              Collection Name{" "}
+              <span className="errors">
+                {errors.collectionName ? errors.collectionName : null}
+              </span>
+              <input
+                type="text"
+                value={collectionName}
+                placeholder="Collection Name"
+                onChange={(e) => setCollectionName(e.target.value)}
+              />
+            </label>
+            <br className="break"></br>
+            <button className="create-collection-button" type="submit">
+              Create Collection
+            </button>
+          </form>
+        </div>
       </div>
       <div className="add-to-existing">
         <h2>Add trail to an existing collection</h2>
