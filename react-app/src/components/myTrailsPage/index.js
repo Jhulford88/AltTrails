@@ -129,16 +129,17 @@ const MyTrailsPage = () => {
   //Build collection cards to display
   const collectionCards = Object.values(collections)?.map((collection) => {
     return (
-      <div className="trail-card">
+      <div className="collection-page-trail-card">
         <div
+          className="collection-card-top"
           key={collection.id}
           onClick={(e) => {
             history.push(`/collections/${collection.id}`);
           }}
         >
-          <div className="trail-card-img-container">
+          <div className="collection-card-img-container">
             <img
-              className="landing-trail-card-img"
+              className="collections-trail-card-img"
               alt="Trail Image"
               src={
                 collection?.trails?.length
@@ -146,10 +147,10 @@ const MyTrailsPage = () => {
                   : image
               }
             ></img>
+            <div className="collection-card-trail-name">{collection.name}</div>
           </div>
-          <div className="trail-name">{collection.name}</div>
         </div>
-        <div>
+        <div className="trail-delete-button-container">
           <OpenDeleteCollectionModalButton
             className="trail-delete-button"
             buttonText={"Delete"}
@@ -168,7 +169,7 @@ const MyTrailsPage = () => {
   if (!user) history.push("/");
 
   return (
-    <div>
+    <div className="my-trails-parent">
       <div className="banner-img-container">
         <img className="banner-img" src={image}></img>
         <h1 className="banner-text">Lets do this...</h1>

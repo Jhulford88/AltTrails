@@ -12,7 +12,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -51,6 +51,7 @@
 
 #manage-cards-bottom {
     background-color: beige;
+    padding-bottom: 30px;
 }
 
 .banner-img-container {
@@ -89,6 +90,7 @@
     background-color: beige;
     margin: 0;
     padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .user-stats {
@@ -99,3 +101,15 @@
     text-align: center;
     padding-top: 25px;
 }
+
+.collection-card-top {
+    padding-bottom: 5px;
+}
+
+/* .my-trails-parent {
+    padding-bottom: 30px;
+} */
+
+/* .trail-delete-button {
+    margin-bottom: 20px;
+} */

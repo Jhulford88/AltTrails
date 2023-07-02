@@ -44,7 +44,7 @@ const CollectionDetailPage = () => {
           </div>
           <div className="trail-name">{trail.trailName}</div>
           <div className="park-name">{trail.park}</div>
-          <div>
+          <div className="length-and-time">
             Length: {trail.length}mi · Est. {Math.floor(trail.length * 17)}min
           </div>
         </div>
