@@ -24,8 +24,6 @@ const CollectionModal = ({ trailId }) => {
     dispatch(getCurrentCollectionsThunk());
   }, [dispatch]);
 
-  console.log("collection name.......", collectionName);
-
   const newHandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -84,41 +82,48 @@ const CollectionModal = ({ trailId }) => {
   return (
     <div className="collection-modal-parent-container">
       <div className="add-to-new">
-        <div className="add-to-new-content">
-          <h2>Add trail to a new collection</h2>
-          <form className="create-collection-form" onSubmit={newHandleSubmit}>
-            <label>
-              Collection Name{" "}
-              <span className="errors">
-                {errors.collectionName ? errors.collectionName : null}
-              </span>
-              <input
-                type="text"
-                value={collectionName}
-                placeholder="Collection Name"
-                onChange={(e) => setCollectionName(e.target.value)}
-              />
-            </label>
-            <br className="break"></br>
+        <h2 className="collection-form-headers">
+          Add trail to a new collection
+        </h2>
+        <form className="create-collection-form" onSubmit={newHandleSubmit}>
+          <label className="form-labels">
+            Collection Name{" "}
+            <span className="errors">
+              {errors.collectionName ? errors.collectionName : null}
+            </span>
+            <input
+              className="add-to-new-input"
+              type="text"
+              value={collectionName}
+              // placeholder="Collection Name"
+              onChange={(e) => setCollectionName(e.target.value)}
+            />
+          </label>
+          <br className="break"></br>
+          <div className="create-collection-button-container">
             <button className="create-collection-button" type="submit">
               Create Collection
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
+      <hr className="bar" />
       <div className="add-to-existing">
-        <h2>Add trail to an existing collection</h2>
+        <h2 className="existing-collection-form-headers">
+          Add trail to an existing collection
+        </h2>
         <form className="add-collection-form" onSubmit={addHandleSubmit}>
-          <label>
+          <label className="form-labels">
             Select Collection{" "}
             <span className="errors">
               {errors.collection ? errors.collection : null}
             </span>
             <select
+              className="add-to-existing-select"
               value={collectionId}
               onChange={(e) => setCollectionId(e.target.value)}
             >
-              <option default>Select a Collection</option>
+              <option default>Collections</option>
               {userCollections &&
                 Object.values(userCollections).map((collection) => (
                   <option key={collection.id} value={collection.id}>

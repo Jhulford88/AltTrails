@@ -224,18 +224,20 @@
 
 .related-trails-container {
     margin-left: 20px;
-    /* margin-top: 40px; */
+    margin-top: 18px;
     display: flex;
     flex-direction: column;
-    /* border: 2px solid green; */
-    width: 30%;
+    border: 1px solid gray;
+    width: 35%;
     align-items: center;
+    background-color: beige;
+    border-radius: 20px;
 }
 
 .related-trails-cards {
     padding-bottom: 20px;
     /* padding-left: 40px; */
-    width: 100%;
+    width: 80%;
 }
 
 .reviews-and-related {
