@@ -95,7 +95,7 @@ input:focus {
 }
 
 .cat-pics:hover {
-    transform: scale(1.02)
+    transform: scale(1.05)
 }
 
 .cat-pics {
@@ -109,10 +109,11 @@ input:focus {
     height: 250px;
     cursor: pointer;
     margin: 5px;
+    filter: brightness(90%);
 }
 
 .trail-card:hover {
-    transform: scale(1.01)
+    transform: scale(1.03)
 }
 
 .trail-cards-container-container {
@@ -186,6 +187,7 @@ input:focus {
     position: relative;
     /* display: inline-block; */
     padding-right: 10px;
+    margin-left: 40px;
 }
 
 

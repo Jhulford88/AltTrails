@@ -11,7 +11,7 @@ const Slider = () => {
   const user = useSelector((state) => state.session.user);
 
   return (
-    <div>
+    <div className="slider-parent-container">
       <p className="test">
         Let's find a new trail{user ? ", " + user.firstName : null}
       </p>

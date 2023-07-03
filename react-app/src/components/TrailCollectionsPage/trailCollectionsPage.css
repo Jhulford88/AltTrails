@@ -31,9 +31,13 @@
     /* border: 2px solid red; */
 }
 
-.trail-card:hover {
-    transform: scale(1.01)
+.collection-page-trail-card:hover {
+    transform: scale(1.03);
 }
+
+/* .trail-card:hover {
+    transform: scale(1.01)
+} */
 
 .trail-cards-container {
     display: flex;
