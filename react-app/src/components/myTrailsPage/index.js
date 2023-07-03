@@ -42,15 +42,6 @@ const MyTrailsPage = () => {
     setDeleted(true);
   };
 
-  //Number of reviews by user
-  // const reviewsWritten = () => {
-  //   let sum = 0;
-  //   Object.values(trails).forEach((trail) => {
-  //     sum += trail.reviews.length;
-  //   });
-  //   return sum;
-  // };
-
   //Build the current users trail cards
   const manageCards = Object.values(trails)?.map((trail) => {
     return (

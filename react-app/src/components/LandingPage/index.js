@@ -93,6 +93,7 @@ const LandingPage = () => {
       <Slider />
       <div className="search-bar-container">
         <input
+          id="search-button-enter"
           type="search"
           className="search-bar"
           placeholder="Search by Trail Name, Park, or Description!"
@@ -100,7 +101,6 @@ const LandingPage = () => {
             setSearch(e.target.value);
           }}
         />
-        {/* dispatch the search thunk here, passing it e.target.value */}
         <button
           className="search-button"
           onClick={async (e) => {

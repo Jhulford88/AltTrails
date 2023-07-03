@@ -16,7 +16,7 @@
 
 .update-trail-form-parent {
   background-color: beige;
-  border-top: 2px solid #028858;
+  border-top: 2px solid #32690f;
 }
 
 .update-trail-form>* {
@@ -37,7 +37,7 @@
   border: none;
   width: 100%;
   text-align: center;
-  background: #028858;
+  background: #32690f;
   color: white;
   padding: 10px;
   margin-bottom: 70px;

@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-right">
-        <div className="footer-headers">Stack</div>
+        <div className="footer-headers">Technologies</div>
         <div className="link-container-right">
           <div>
             <i class="fa-brands fa-square-js"></i>
