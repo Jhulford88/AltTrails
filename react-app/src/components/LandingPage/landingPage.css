@@ -2,6 +2,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
 .all-trails-h1 {
     text-align: center;
     padding-left: 40px;
@@ -156,12 +163,11 @@
     /* border: 2px solid red; */
     padding: 8px;
     display: flex;
+    flex-direction: row;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17);
     background-color: beige;
-    /* align-items: center; */
     justify-content: center;
-    /* height: 25px;
-    border-bottom: 25px; */
+    position: relative;
 }
 
 .search-bar {
@@ -174,18 +180,24 @@
     font-size: 20px;
     overflow: visible;
     position: relative;
+    /* display: inline-block; */
+    padding-right: 10px;
 }
 
+
+
 .search-button {
-    border: 2px solid green;
+    /* border: 4px solid green; */
     border-radius: 100%;
     background-color: #32690f;
     /* background: none; */
-    font-size: 40px;
+    font-size: 35px;
     color: aliceblue;
-    position: relative;
-    bottom: 35px;
+    position: absolute;
+    bottom: 50px;
+    right: 305px;
     margin-left: 10px;
+    /* display: inline-block; */
 }
 
 .search-button:hover {
