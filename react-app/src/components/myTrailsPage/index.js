@@ -19,9 +19,10 @@ const MyTrailsPage = () => {
 
   //useSelectors
   const user = useSelector((state) => state.session.user);
-  const favorites = user?.favorites;
   const trails = useSelector((state) => state.trails.userTrails);
   const collections = useSelector((state) => state.collections.userCollections);
+  const favorites = user?.favorites;
+  const reviews = user?.reviews;
 
   //State (to force reload of state after delete)
   const [deleted, setDeleted] = useState(false);
@@ -42,13 +43,13 @@ const MyTrailsPage = () => {
   };
 
   //Number of reviews by user
-  const reviewsWritten = () => {
-    let sum = 0;
-    Object.values(trails).forEach((trail) => {
-      sum += trail.reviews.length;
-    });
-    return sum;
-  };
+  // const reviewsWritten = () => {
+  //   let sum = 0;
+  //   Object.values(trails).forEach((trail) => {
+  //     sum += trail.reviews.length;
+  //   });
+  //   return sum;
+  // };
 
   //Build the current users trail cards
   const manageCards = Object.values(trails)?.map((trail) => {
@@ -178,7 +179,7 @@ const MyTrailsPage = () => {
         {user.favorites.length ? user.favorites.length : 0} Favorites!
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
         {Object.values(trails).length ? Object.values(trails).length : 0} Trails
-        Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviewsWritten()} Reviews
+        Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length} Reviews
         Written!
       </div>
       <h1 className="section-headers-top">My Trails</h1>
