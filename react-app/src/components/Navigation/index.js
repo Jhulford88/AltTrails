@@ -19,7 +19,12 @@ function Navigation({ isLoaded }) {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/collections" className="navbar-links-left">
+            <NavLink
+              exact
+              to="/collections"
+              id="nav-links-left"
+              className="navbar-links-left"
+            >
               Collections
             </NavLink>
           </li>
@@ -30,6 +35,7 @@ function Navigation({ isLoaded }) {
                 to="/trails/new"
                 className="navbar-links-left"
                 title="Create a New Trail!"
+                id="nav-links-left"
               >
                 Create a Trail
               </NavLink>
@@ -37,7 +43,12 @@ function Navigation({ isLoaded }) {
           </li>
           <li id="navbar-links-left">
             {sessionUser ? (
-              <NavLink className="navbar-links-left" exact to="/current">
+              <NavLink
+                className="navbar-links-left"
+                id="nav-links-left"
+                exact
+                to="/current"
+              >
                 My Trails
               </NavLink>
             ) : null}

@@ -43,7 +43,7 @@ const SearchResultsPage = () => {
     <div>
       <Slider />
       <div className="all-trails-h1-container">
-        <h1 className="all-trails-h1">Explore All Trails</h1>
+        <h1 className="all-trails-h1">Search Results</h1>
       </div>
       <div className="trail-cards-container-container">
         <div className="trail-cards-container">{cards}</div>
