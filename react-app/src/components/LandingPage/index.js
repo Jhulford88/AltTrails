@@ -100,6 +100,12 @@ const LandingPage = () => {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
+          onKeyDown={async (e) => {
+            if (e.key === "Enter") {
+              await dispatch(searchAllTrailsThunk(search));
+              history.push("/trails/search");
+            }
+          }}
         />
         <button
           className="search-button"

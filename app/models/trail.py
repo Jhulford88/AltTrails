@@ -38,8 +38,7 @@ class Trail(db.Model):
     favorite_users = db.relationship(
         'User',
         secondary='favorites',
-        back_populates='favorite_trails',
-        cascade="all, delete")
+        back_populates='favorite_trails')
 
 
 

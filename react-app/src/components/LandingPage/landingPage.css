@@ -19,7 +19,7 @@ input:focus {
     /* padding-top: 20px; */
     /* border: 2px solid purple; */
     border-radius: 40px;
-    width: 90%;
+    width: 80%;
     height: 70px;
     background-color: #32690f;
     display: flex;
@@ -55,7 +55,7 @@ input:focus {
     /* padding-top: 20px; */
     /* border: 2px solid purple; */
     border-radius: 40px;
-    width: 90%;
+    width: 80%;
     height: 70px;
     background-color: #32690f;
     display: flex;
@@ -143,6 +143,11 @@ input:focus {
 
 .landing-collection-container {
     display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* justify-content: center;
+    align-items: center;
+    width: 90%; */
 }
 
 .trail-card-img-container {
