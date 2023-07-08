@@ -1,5 +1,5 @@
 .collection-modal-parent-container {
-    /* border: 4px solid red; */
+    border: 2px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,83 +7,12 @@
     padding: 40px;
 }
 
-.add-to-existing {
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .add-to-new {
-    /* border: 2px solid blue; */
+    border: 2px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 470px;
 }
 
-.create-collection-button-container {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-}
-
-.add-collection-button {
-    background-color: darkgreen;
-    color: white;
-    width: 120px;
-    height: 30px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.create-collection-button {
-    margin-top: 10px;
-    background-color: darkgreen;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    height: 30px;
-    border-radius: 10px;
-}
-
-.collection-form-headers {
-    font-size: 30px;
-}
-
-
-.add-to-new-input {
-    width: 100%;
-    border: 1px solid black;
-    height: 20px;
-    margin-top: 5px;
-}
-
-.create-collection-form {
-    /* border: 2px solid green; */
-    margin-left: -60px;
-}
-
-.add-collection-form {
-    /* border: 2px solid purple; */
-    margin-left: 80px;
-}
-
-.add-to-existing-select {
-    width: 90%;
-    /* border: 2px black; */
-    height: 25px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-.existing-collection-form-headers {
-    font-size: 25px;
-}
-
-.form-labels {
-    font-weight: bolder;
-}
+/* .create-collection-button {} */
