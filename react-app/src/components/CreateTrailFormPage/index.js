@@ -157,7 +157,11 @@ function CreateTrailFormPage() {
 
   return (
     <div className="create-trail-form-parent">
-      <form className="create-trail-form" onSubmit={handleSubmit}>
+      <form
+        className="create-trail-form"
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
         <h2>Create a New Trail!</h2>
         <label>
           Trail Name <span className="errors">{errors?.trailName}</span>
@@ -260,16 +264,22 @@ function CreateTrailFormPage() {
         <label>
           Cover Photo<span className="errors">{errors?.coverPhoto}</span>
           <input
-            type="text"
-            value={coverPhoto}
+            type="file"
+            accept="image/*"
+            // value={coverPhoto}
             placeholder="Cover Photo"
-            onChange={(e) => setCoverPhoto(e.target.value)}
+            onChange={(e) => setCoverPhoto(e.target.files[0])}
           />
         </label>
         <div className="create-trail-button-container">
           <button className="create-trail-button" type="submit">
             Create Trail
           </button>
+          {/* {
+            imageLoading && (
+              <p>Loading...</p>
+            )
+          } */}
         </div>
       </form>
     </div>

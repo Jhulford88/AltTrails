@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, TextAreaField, IntegerField, TextAreaField, DecimalField)
-from wtforms.validators import DataRequired, Length
-
+from wtforms.validators import DataRequired, Length, Email, ValidationError
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from ..api.AWS_helpers import ALLOWED_EXTENSIONS
 
 class CreateTrailForm(FlaskForm):
     trail_name = StringField('Trail Name', validators=[DataRequired()])
@@ -17,7 +18,9 @@ class CreateTrailForm(FlaskForm):
     category_id = IntegerField("Category ID", validators=[DataRequired()])
     length = DecimalField('Length', validators=[DataRequired()])
     elevation_gain = IntegerField("Elevation Gain", validators=[DataRequired()])
-    cover_photo = StringField('Cover Photo', validators=[DataRequired()])
+    cover_photo = FileField(
+        "Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))]
+    )
     description = TextAreaField(
         "Description",
         validators=[DataRequired()],
