@@ -9,10 +9,13 @@ const Footer = () => {
         <div className="person-container">
           <p className="name">Joshua Hulford</p>
           <div className="link-container-left">
-            <a href="https://www.linkedin.com/in/joshua-hulford/">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/joshua-hulford/"
+            >
               <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="https://github.com/Jhulford88">
+            <a target="_blank" href="https://github.com/Jhulford88">
               <i class="fa-brands fa-square-github"></i>
             </a>
           </div>
