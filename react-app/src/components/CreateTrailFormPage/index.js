@@ -193,12 +193,6 @@ function CreateTrailFormPage() {
         </label>
         <label>
           State<span className="errors">{errors?.state}</span>
-          {/* <input
-            type="text"
-            value={state}
-            placeholder="State"
-            onChange={(e) => setState(e.target.value)}
-          /> */}
           <select value={state} onChange={(e) => setState(e.target.value)}>
             <option default>Select a State</option>
             {stateNames.map((state) => (
@@ -276,6 +270,7 @@ function CreateTrailFormPage() {
           Cover Photo<span className="errors">{errors?.coverPhoto}</span>
           <input
             type="file"
+            id="cover-photo-input"
             accept="image/*"
             // value={coverPhoto}
             placeholder="Cover Photo"

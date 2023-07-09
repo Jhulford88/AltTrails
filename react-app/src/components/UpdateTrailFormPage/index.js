@@ -166,7 +166,7 @@ function UpdateTrailFormPage() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <h1>Update your Trail!</h1>
+        <h2>Update your Trail!</h2>
         <label>
           Trail Name <span className="errors">{errors?.trailName}</span>
           <input
@@ -278,6 +278,7 @@ function UpdateTrailFormPage() {
         <label>
           Cover Photo<span className="errors">{errors?.coverPhoto}</span>
           <input
+            id="cover-photo-input"
             type="file"
             accept="image/*"
             // value={coverPhoto}
