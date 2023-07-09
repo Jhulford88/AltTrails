@@ -160,7 +160,11 @@ function UpdateTrailFormPage() {
 
   return (
     <div className="update-trail-form-parent">
-      <form className="update-trail-form" onSubmit={handleSubmit}>
+      <form
+        className="update-trail-form"
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
         <h1>Update your Trail!</h1>
         <label>
           Trail Name <span className="errors">{errors?.trailName}</span>
@@ -263,10 +267,11 @@ function UpdateTrailFormPage() {
         <label>
           Cover Photo<span className="errors">{errors?.coverPhoto}</span>
           <input
-            type="text"
-            value={coverPhoto}
+            type="file"
+            accept="image/*"
+            // value={coverPhoto}
             placeholder="Cover Photo"
-            onChange={(e) => setCoverPhoto(e.target.value)}
+            onChange={(e) => setCoverPhoto(e.target.files[0])}
           />
         </label>
         <div className="update-trail-form-button-container">

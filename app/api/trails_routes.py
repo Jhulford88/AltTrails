@@ -6,6 +6,7 @@ from ..forms.review_form import ReviewForm
 from flask_login import current_user, login_required
 from sqlalchemy import insert
 from sqlalchemy import delete
+from .AWS_helpers import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 trails_routes = Blueprint('trails', __name__)
 
@@ -32,6 +33,15 @@ def post_new_trail():
     if form.validate_on_submit():
         data = form.data
 
+        trail_image = data["cover_photo"]
+        print("TRAIL IMAGE data from the backend route ", trail_image)
+        trail_image.filename = get_unique_filename(trail_image.filename)
+        upload = upload_file_to_s3(trail_image)
+
+        if "url" not in upload:
+            print("Errors Occured in the AWS Upload", upload["errors"])
+            return upload["errors"]
+
         new_trail = Trail(
             trail_name=data["trail_name"],
             park=data["park"],
@@ -43,7 +53,7 @@ def post_new_trail():
             length=data["length"],
             elevation_gain=data["elevation_gain"],
             user_id=current_user.id,
-            cover_photo=data["cover_photo"],
+            cover_photo=upload["url"], #cover_photo=data["cover_photo"],
             description=data["description"]
         )
         db.session.add(new_trail)
@@ -90,6 +100,7 @@ def update_trail(id):
 
         # if updated_trail.user_id != current_user.id:
         #     return {"errors": "Forbidden"}, 401
+        prev_trail_image = updated_trail.cover_photo
 
         if data["trail_name"]:
             updated_trail.trail_name = data["trail_name"]
@@ -109,8 +120,33 @@ def update_trail(id):
             updated_trail.length = data["length"]
         if data["elevation_gain"]:
             updated_trail.elevation_gain = data["elevation_gain"]
+        # if data["cover_photo"]:
+        #     updated_trail.cover_photo = data["cover_photo"]
         if data["cover_photo"]:
-            updated_trail.cover_photo = data["cover_photo"]
+            # need to call aws helpers
+            # need to delete the old image in the database
+
+            trail_image = data["cover_photo"]
+            print("\nTRAIL IMAGE data from the backend route\n", trail_image)
+            trail_image.filename = get_unique_filename(
+                trail_image.filename)
+            upload = upload_file_to_s3(trail_image)
+
+            #            project_image.filename = get_unique_filename(project_image.filename)
+            # upload = upload_file_to_s3(project_image)
+
+            # if "url" not in upload:
+            #     print("Errors Occured in the AWS Upload", upload["errors"])
+            #     return upload["errors"]
+
+            if "url" not in upload:
+                print("Errors Occured in the AWS Upload", upload["errors"])
+                return upload["errors"]
+
+            if updated_trail.id not in range(1, 43):
+                remove_file_from_s3(prev_trail_image)
+
+            updated_trail.cover_photo = upload["url"]
         if data["description"]:
             updated_trail.description = data["description"]
 
