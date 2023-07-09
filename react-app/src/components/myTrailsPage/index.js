@@ -167,23 +167,48 @@ const MyTrailsPage = () => {
         <h1 className="banner-text">Lets do this...</h1>
       </div>
       <div className="user-stats">
-        {user.favorites.length ? user.favorites.length : 0} Favorites!
+        {user.favorites?.length ? user.favorites.length : 0}{" "}
+        {user.favorites?.length === 1
+          ? "Trail Favorited!"
+          : "Trails Favorited!"}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-        {Object.values(trails).length ? Object.values(trails).length : 0} Trails
-        Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length} Reviews
-        Written!
+        {Object.values(trails).length ? Object.values(trails).length : 0}{" "}
+        {user.trails?.length === 1 ? "Trail Created!" : "Trails Created!"}{" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length}{" "}
+        {reviews.length === 1 ? "Review Written!" : "Reviews Written!"}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {Object.values(collections).length
+          ? Object.values(collections).length
+          : 0}{" "}
+        {Object.values(collections)?.length === 1
+          ? "Collection Created!"
+          : "Collections Created!"}
       </div>
-      <h1 className="section-headers-top">My Trails</h1>
-      <div id="manage-cards-top" className="manage-trail-cards-container">
-        {manageCards}
-      </div>
-      <h1 className="section-headers-bottom">My Favorites</h1>
-      <div id="manage-cards-bottom" className="manage-trail-cards-container">
-        {favoriteCards}
-      </div>
-      <h1 className="section-headers-bottom">My Collections</h1>
-      <div id="manage-cards-bottom" className="manage-trail-cards-container">
-        {collectionCards}
+      <div className="card-sections-parent">
+        <h1 className="section-headers">My Trails</h1>
+        <div id="manage-cards-top" className="manage-trail-cards-container">
+          {manageCards.length ? (
+            manageCards
+          ) : (
+            <h2>Create your first trail to see them here!</h2>
+          )}
+        </div>
+        <h1 className="section-headers">My Favorites</h1>
+        <div id="manage-cards-middle" className="manage-trail-cards-container">
+          {favoriteCards.length ? (
+            favoriteCards
+          ) : (
+            <h2>favorite some trails to see them here!</h2>
+          )}
+        </div>
+        <h1 className="section-headers">My Collections</h1>
+        <div id="manage-cards-bottom" className="manage-trail-cards-container">
+          {collectionCards.length ? (
+            collectionCards
+          ) : (
+            <h2>Create your first collection to see them here!</h2>
+          )}
+        </div>
       </div>
     </div>
   );

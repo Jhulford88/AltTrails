@@ -1,19 +1,27 @@
+.card-sections-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .manage-trail-card {
-    width: 25%;
+    width: 27%;
     padding: 20px;
     padding-bottom: 40px;
     height: 275px;
     cursor: pointer;
     margin: 10px;
+    /* border: 2px solid red; */
 }
 
 .manage-trail-cards-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
+    width: 95%;
+    justify-content: space-evenly;
+    /* align-items: center; */
+
 }
 
 .manage-trail-card-img {
@@ -46,12 +54,25 @@
 }
 
 #manage-cards-top {
-    background-color: rgb(232, 231, 231);
+    background-color: beige;
+    padding-bottom: 30px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+}
+
+#manage-cards-middle {
+    background-color: beige;
+    padding-bottom: 30px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
 }
 
 #manage-cards-bottom {
     background-color: beige;
     padding-bottom: 30px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .banner-img-container {
@@ -78,28 +99,44 @@
 }
 
 
-.section-headers-top {
+.section-headers {
     text-align: center;
-    background-color: rgb(232, 231, 231);
-    margin: 0;
+    background-color: rgb(237, 236, 236);
+    margin: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    width: 40%;
+}
+
+/* .section-headers-middle {
+    text-align: center;
+    background-color: white;
+    margin: 10px;
     padding-top: 30px;
+    padding-bottom: 10px;
+    border: 2px solid red;
+    width: 40%;
 }
 
 .section-headers-bottom {
     text-align: center;
-    background-color: beige;
-    margin: 0;
+    background-color: white;
+    margin: 10px;
     padding-top: 30px;
-    padding-bottom: 20px;
-}
+    padding-bottom: 10px;
+    border: 2px solid red;
+    width: 40%;
+} */
 
 .user-stats {
     background-color: darkgreen;
-    height: 60px;
+    height: 40px;
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .collection-card-top {
