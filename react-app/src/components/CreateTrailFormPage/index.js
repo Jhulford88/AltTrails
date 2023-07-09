@@ -242,7 +242,8 @@ function CreateTrailFormPage() {
           </select>
         </label>
         <label>
-          Length<span className="errors">{errors?.length}</span>
+          {"Length (mi)"}
+          <span className="errors">{errors?.length}</span>
           <input
             type="decimal"
             value={length}
@@ -251,7 +252,8 @@ function CreateTrailFormPage() {
           />
         </label>
         <label>
-          Elevation Gain<span className="errors">{errors?.elevationGain}</span>
+          {"Elevation Gain (ft)"}
+          <span className="errors">{errors?.elevationGain}</span>
           <input
             type="number"
             value={elevationGain}
