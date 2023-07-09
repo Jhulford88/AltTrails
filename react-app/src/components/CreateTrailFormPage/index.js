@@ -6,6 +6,7 @@ import { postNewTrailThunk } from "../../store/trails";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { stateNames, stateAbb } from "./stateNames";
 import "./createTrailFormPage.css";
 
 //This is used to convert the backend errors into a format that the frontend can use
@@ -192,12 +193,20 @@ function CreateTrailFormPage() {
         </label>
         <label>
           State<span className="errors">{errors?.state}</span>
-          <input
+          {/* <input
             type="text"
             value={state}
             placeholder="State"
             onChange={(e) => setState(e.target.value)}
-          />
+          /> */}
+          <select value={state} onChange={(e) => setState(e.target.value)}>
+            <option default>Select a State</option>
+            {stateNames.map((state) => (
+              <option key={state} value={stateAbb[stateNames.indexOf(state)]}>
+                {state}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Latitude<span className="errors">{errors?.lat}</span>

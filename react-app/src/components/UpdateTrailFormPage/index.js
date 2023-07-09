@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesThunk } from "../../store/categories";
 import { updateTrailThunk, getAllTrailsThunk } from "../../store/trails";
+import { stateNames, stateAbb } from "../CreateTrailFormPage/stateNames";
 import "./updateTrailFormPage.css";
 
 //Helper to convert the backend errors into a format that the frontend can use
@@ -195,12 +196,20 @@ function UpdateTrailFormPage() {
         </label>
         <label>
           State<span className="errors">{errors?.state}</span>
-          <input
+          {/* <input
             type="text"
             value={state}
             placeholder="State"
             onChange={(e) => setState(e.target.value)}
-          />
+          /> */}
+          <select value={state} onChange={(e) => setState(e.target.value)}>
+            <option default>Select a State</option>
+            {stateNames.map((state) => (
+              <option key={state} value={stateAbb[stateNames.indexOf(state)]}>
+                {state}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Latitude<span className="errors">{errors?.lat}</span>
