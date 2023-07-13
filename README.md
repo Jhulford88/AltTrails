@@ -1,7 +1,9 @@
 # AltTrails
+
 AltTrails is a soft clone of AllTrails. With a world full of adventure, AltTrails seeks to make those adventures more accessible by allowing its users to share their favorite hiking trails with a larger community. 
 
-##Technologies
+## Technologies
+
 AltTrails was created using the following technologies...
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -28,3 +30,27 @@ AltTrails was created using the following technologies...
 5. To start the frontend, run "npm start"
 
 6. Now you can use the Demo User or Create an account
+
+
+## Features
+
+1. Trails
+Logged in users can CREATE a trail detail page
+All users can READ trail detail pages
+Logged in users can UPDATE and DELETE trail detail pages which they have created
+2. Reviews
+Logged in users can CREATE a review on a trail detail page
+ALL users can READ reviews
+Logged in users can UPDATE and DELETE their reviews
+3. Favorites
+Logged in users can CREATE a favorites designation on any trail
+Owners of a favorite designation can READ, UPDATE or DELETE the favorite designation through their profile page
+4. Collections (coming soon!)
+Logged in users can CREATE collections of existing trails
+All users can Read collections of existing trails created by other users
+Logged in users can UPDATE collections which they have created
+Logged in users can DELETE collections which they have created
+5. Search / Categories
+All users can READ and UPDATE filtered trails based on what the user types into the search bar or by navigating through category links
+6. AWS Implementation
+All photos loaded by users will be automatically hosted through AWS
