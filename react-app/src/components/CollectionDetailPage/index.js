@@ -62,11 +62,6 @@ const CollectionDetailPage = () => {
               }
             />
           ) : null}
-          {console.log("trailId on collection detail page......", trail.id)}
-          {console.log(
-            "collectionId on collection detail page......",
-            collection.id
-          )}
         </div>
       </div>
     );
