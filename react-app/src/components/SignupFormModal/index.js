@@ -76,10 +76,10 @@ function SignupFormModal() {
       formData.append("state", state);
       formData.append("password", password);
 
-      console.log("Form Data gathered from form:");
-      for (let key of formData.entries()) {
-        console.log(key[0] + " ----> " + key[1]);
-      }
+      // console.log("Form Data gathered from form:");
+      // for (let key of formData.entries()) {
+      //   console.log(key[0] + " ----> " + key[1]);
+      // }
 
       const data = await dispatch(signUp(formData));
       // Handle backend validation errors
@@ -220,13 +220,3 @@ function SignupFormModal() {
 }
 
 export default SignupFormModal;
-
-// const err = data.reduce((acc, cv) => {
-// 	let split = cv.split(":")
-// 	let key = split[0].trim()
-// 	let property = split[1].trim()
-// 	acc[key] = property
-// 	return acc
-//   }, {})
-
-//
