@@ -269,7 +269,6 @@ function UpdateTrailFormPage() {
           <input
             type="file"
             accept="image/*"
-            // value={coverPhoto}
             placeholder="Cover Photo"
             onChange={(e) => setCoverPhoto(e.target.files[0])}
           />
