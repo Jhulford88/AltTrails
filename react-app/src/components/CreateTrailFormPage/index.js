@@ -266,7 +266,6 @@ function CreateTrailFormPage() {
           <input
             type="file"
             accept="image/*"
-            // value={coverPhoto}
             placeholder="Cover Photo"
             onChange={(e) => setCoverPhoto(e.target.files[0])}
           />
@@ -275,11 +274,6 @@ function CreateTrailFormPage() {
           <button className="create-trail-button" type="submit">
             Create Trail
           </button>
-          {/* {
-            imageLoading && (
-              <p>Loading...</p>
-            )
-          } */}
         </div>
       </form>
     </div>
