@@ -110,7 +110,6 @@ const LandingPage = () => {
         <button
           className="search-button"
           onClick={async (e) => {
-            console.log("search query: ", search);
             await dispatch(searchAllTrailsThunk(search));
             history.push("/trails/search");
           }}
