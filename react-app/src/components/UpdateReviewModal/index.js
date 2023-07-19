@@ -30,10 +30,10 @@ const UpdateReviewModal = ({ review }) => {
   formData.append("trail_id", review.trailId);
 
   // Log our form data
-  console.log("Form Data gathered from form:");
-  for (let key of formData.entries()) {
-    console.log(key[0] + " ----> " + key[1]);
-  }
+  // console.log("Form Data gathered from form:");
+  // for (let key of formData.entries()) {
+  //   console.log(key[0] + " ----> " + key[1]);
+  // }
 
   return (
     <div className="review-form-container">
