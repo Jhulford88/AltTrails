@@ -32,11 +32,6 @@ const DeleteTrailModal = ({ trailId, setDeleted }) => {
         </div>
       </div>
     </div>
-    // <div>
-    //   <h2>Confirm Delete</h2>
-    //   <button onClick={deleteTrail}>Yes</button>
-    //   <button onClick={closeModal}>Cancel</button>
-    // </div>
   );
 };
 
