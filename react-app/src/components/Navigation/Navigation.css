@@ -30,17 +30,11 @@
   align-items: center;
   padding-left: 25px;
   width: 623px;
-  /* padding-top: 20px; */
 }
 
 .navbarlink:hover {
   color: darkgreen;
 }
-
-/* #nav-links-left {
-  border: 2px solid red;
-  position: relative;
-} */
 
 .navbar-rightmost {
   display: flex;
