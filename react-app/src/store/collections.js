@@ -79,12 +79,10 @@ export const getCurrentCollectionsThunk = () => async (dispatch) => {
 
 export const deleteCollectionThunk = (collectionId) => async (dispatch) => {
   collectionId = parseInt(collectionId);
-  console.log("hello from inside deleteCollection thunk.......");
   const res = await fetch(`/api/collections/${collectionId}/delete`, {
     method: "DELETE",
   });
   if (res.ok) {
-    console.log("res was ok..........");
     dispatch(deleteCollection(collectionId));
   }
 };
@@ -92,10 +90,6 @@ export const deleteCollectionThunk = (collectionId) => async (dispatch) => {
 export const deleteFromCollectionThunk =
   (collectionId, trailId) => async (dispatch) => {
     collectionId = parseInt(collectionId);
-
-    console.log("collectionId.......", collectionId);
-    console.log("trailId.......", trailId);
-
     const res = await fetch(
       `/api/collections/delete/${collectionId}/${trailId}`,
       {

@@ -118,14 +118,12 @@ export const getSingleTrailThunk = (id) => async (dispatch) => {
 
 export const updateTrailThunk = (id, trail) => async (dispatch) => {
   try {
-    console.log("trail has arrived in thunk............", trail);
     const res = await fetch(`/api/trails/${id}/update`, {
       method: "PUT",
       body: trail,
     });
 
     if (res.ok) {
-      console.log("Edit request OK", res);
       const response = await res.json();
       dispatch(updateTrail(response.trail, id));
       return response.trail;
@@ -176,7 +174,6 @@ export const postNewReviewThunk = (formData, trailId) => async (dispatch) => {
 export const updateReviewThunk =
   (formData, trailId, reviewId) => async (dispatch) => {
     let id = parseInt(trailId);
-    console.log("comment in thunk", formData);
     const res = await fetch(`/api/trails/reviews/${reviewId}/update`, {
       method: "PUT",
       body: formData,
@@ -201,8 +198,6 @@ export const deleteFavoriteThunk = (trailId) => async (dispatch) => {
 };
 
 export const searchAllTrailsThunk = (query) => async (dispatch) => {
-  console.log("in the thunk! here is the search query:", query);
-  // console.log("this is what the fetch url looks like: ", `/api/search?query=${query}`)
   const res = await fetch(`/api/trails/search?query=${query}`);
   if (res.ok) {
     //projects here will be filtered based on the search query
