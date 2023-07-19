@@ -24,6 +24,7 @@ const CollectionModal = ({ trailId }) => {
     dispatch(getCurrentCollectionsThunk());
   }, [dispatch]);
 
+  //handles adding a trail to a new collection
   const newHandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,8 +46,7 @@ const CollectionModal = ({ trailId }) => {
     setErrors(newErrors);
     if (Object.keys(newErrors)?.length) return;
 
-    // Fetch to post new trail
-
+    // Fetch to post trail to new collection
     const res = await fetch(`/api/collections/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,6 +57,7 @@ const CollectionModal = ({ trailId }) => {
     }).then(closeModal);
   };
 
+  //Handles adding a trail to an existing collection
   const addHandleSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,11 +65,10 @@ const CollectionModal = ({ trailId }) => {
     const newErrors = {};
     if (!collectionId)
       newErrors["collection"] = "Please select a collection to add to!";
-    console.log("newErrors.collection.......", newErrors.collection);
     setErrors(newErrors);
     if (Object.keys(newErrors)?.length) return;
 
-    // Fetch to post new trail
+    // Fetch to post trail to existing collection
     const res = await fetch(`/api/collections/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -95,7 +95,6 @@ const CollectionModal = ({ trailId }) => {
               className="add-to-new-input"
               type="text"
               value={collectionName}
-              // placeholder="Collection Name"
               onChange={(e) => setCollectionName(e.target.value)}
             />
           </label>

@@ -1,5 +1,4 @@
 .collection-modal-parent-container {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,11 +7,8 @@
 }
 
 .add-to-new {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-/* .create-collection-button {} */
