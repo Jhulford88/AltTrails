@@ -10,8 +10,6 @@ const DeleteFromCollectionModal = ({ collectionId, trailId, setDeleted }) => {
 
   //Dispatch thunk to delete collection
   const deleteFromCollection = (e) => {
-    console.log("collectionId in modal..........", collectionId);
-    console.log("trailId in modal..........", trailId);
     dispatch(deleteFromCollectionThunk(collectionId, trailId))
       .then(setDeleted(true))
       .then(closeModal);
