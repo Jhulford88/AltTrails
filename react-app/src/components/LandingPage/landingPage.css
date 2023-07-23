@@ -128,7 +128,6 @@ input:focus {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* border: 2px solid red; */
     width: 95%;
     background-color: beige;
     border-radius: 20px;

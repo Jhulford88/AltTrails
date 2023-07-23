@@ -73,7 +73,9 @@ const CollectionDetailPage = () => {
         <img className="collections-banner-img" src={image}></img>
         <h1 className="collections-banner-text">{collection.name}</h1>
       </div>
-      <div className="trail-cards-container">{cards}</div>
+      <div className="trail-cards-container-container">
+        <div className="trail-cards-container">{cards}</div>
+      </div>
     </div>
   );
 };
