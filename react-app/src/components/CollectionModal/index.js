@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { getCurrentCollectionsThunk } from "../../store/collections";
 import "./collectionModal.css";
@@ -8,6 +9,7 @@ const CollectionModal = ({ trailId }) => {
   //initialize things
   const { closeModal } = useModal();
   const dispatch = useDispatch();
+  let history = useHistory();
 
   //useSelectors
   const userCollections = useSelector(
@@ -54,7 +56,10 @@ const CollectionModal = ({ trailId }) => {
         collectionName,
         trailId,
       }),
-    }).then(closeModal);
+    });
+    let newCollection = await res.json();
+    history.push(`/collections/${newCollection.collectionId}`);
+    closeModal();
   };
 
   //Handles adding a trail to an existing collection
@@ -76,7 +81,9 @@ const CollectionModal = ({ trailId }) => {
         collectionId,
         trailId,
       }),
-    }).then(closeModal);
+    })
+      .then(history.push(`/collections/${collectionId}`))
+      .then(closeModal);
   };
 
   return (

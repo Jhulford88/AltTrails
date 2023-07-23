@@ -54,7 +54,7 @@ def create_new_collection():
     db.session.execute(new_collection_trail)
     db.session.commit()
 
-    return "Success!"
+    return {"collectionId": new_collection.id}
 
 
 @collections_routes.route("/add", methods=["POST"])
