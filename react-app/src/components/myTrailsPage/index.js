@@ -201,7 +201,11 @@ const MyTrailsPage = () => {
             id="manage-cards-bottom"
             className="manage-trail-cards-container"
           >
-            {favoriteCards}
+            {favoriteCards.length ? (
+              favoriteCards
+            ) : (
+              <h2>favorite some trails to see them here!</h2>
+            )}
           </div>
         </div>
         <div className="my-collections-section">
