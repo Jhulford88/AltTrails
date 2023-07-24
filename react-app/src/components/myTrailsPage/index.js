@@ -167,11 +167,22 @@ const MyTrailsPage = () => {
         <h1 className="banner-text">Lets do this...</h1>
       </div>
       <div className="user-stats">
-        {user.favorites.length ? user.favorites.length : 0} Favorites!
+        {user.favorites?.length ? user.favorites.length : 0}{" "}
+        {user.favorites?.length === 1
+          ? "Trail Favorited!"
+          : "Trails Favorited!"}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-        {Object.values(trails).length ? Object.values(trails).length : 0} Trails
-        Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length} Reviews
-        Written!
+        {Object.values(trails).length ? Object.values(trails).length : 0}{" "}
+        {user.trails?.length === 1 ? "Trail Created!" : "Trails Created!"}{" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length}{" "}
+        {reviews.length === 1 ? "Review Written!" : "Reviews Written!"}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {Object.values(collections).length
+          ? Object.values(collections).length
+          : 0}{" "}
+        {Object.values(collections)?.length === 1
+          ? "Collection Created!"
+          : "Collections Created!"}
       </div>
       <div className="my-trails-sections-container">
         <div className="my-trails-section">
