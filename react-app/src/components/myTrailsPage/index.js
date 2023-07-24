@@ -214,7 +214,11 @@ const MyTrailsPage = () => {
             id="manage-cards-bottom"
             className="manage-trail-cards-container"
           >
-            {collectionCards}
+            {collectionCards.length ? (
+              collectionCards
+            ) : (
+              <h2>Create your first collection to see them here!</h2>
+            )}
           </div>
         </div>
       </div>
