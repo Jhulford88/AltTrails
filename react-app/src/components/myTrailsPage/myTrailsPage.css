@@ -14,6 +14,7 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    /* border: 2px solid red; */
 }
 
 .manage-trail-card-img {
@@ -46,11 +47,11 @@
 }
 
 #manage-cards-top {
-    background-color: rgb(232, 231, 231);
+    /* background-color: rgb(232, 231, 231); */
 }
 
 #manage-cards-bottom {
-    background-color: beige;
+    /* background-color: beige; */
     padding-bottom: 30px;
 }
 
@@ -80,14 +81,14 @@
 
 .section-headers-top {
     text-align: center;
-    background-color: rgb(232, 231, 231);
+    /* background-color: rgb(232, 231, 231); */
     margin: 0;
     padding-top: 30px;
 }
 
 .section-headers-bottom {
     text-align: center;
-    background-color: beige;
+    /* background-color: beige; */
     margin: 0;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -104,4 +105,34 @@
 
 .collection-card-top {
     padding-bottom: 5px;
+}
+
+.my-trails-sections-container {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.my-trails-section {
+    /* border: 2px solid purple; */
+    border-radius: 20px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(232, 231, 231);
+}
+
+.my-favorites-section {
+    /* border: 2px solid purple; */
+    background-color: beige;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.my-collections-section {
+    background-color: rgb(232, 231, 231);
+    border-radius: 20px;
+    margin-bottom: 20px;
 }

@@ -42,7 +42,7 @@ const MyTrailsPage = () => {
     setDeleted(true);
   };
 
-  //Build the current users trail cards
+  //Build the current users trail cards - "My Trails" section
   const manageCards = Object.values(trails)?.map((trail) => {
     return (
       <div className="manage-trail-card">
@@ -82,7 +82,7 @@ const MyTrailsPage = () => {
     );
   });
 
-  //Build the users favorites trail cards
+  //Build the users favorites trail cards - "My Favorites" section
   const favoriteCards = favorites?.map((trail) => {
     return (
       <div className="manage-trail-card">
@@ -118,7 +118,7 @@ const MyTrailsPage = () => {
     );
   });
 
-  //Build collection cards to display
+  //Build collection cards to display - "My Collections" section
   const collectionCards = Object.values(collections)?.map((collection) => {
     return (
       <div className="collection-page-trail-card">
@@ -173,17 +173,31 @@ const MyTrailsPage = () => {
         Created! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {reviews.length} Reviews
         Written!
       </div>
-      <h1 className="section-headers-top">My Trails</h1>
-      <div id="manage-cards-top" className="manage-trail-cards-container">
-        {manageCards}
-      </div>
-      <h1 className="section-headers-bottom">My Favorites</h1>
-      <div id="manage-cards-bottom" className="manage-trail-cards-container">
-        {favoriteCards}
-      </div>
-      <h1 className="section-headers-bottom">My Collections</h1>
-      <div id="manage-cards-bottom" className="manage-trail-cards-container">
-        {collectionCards}
+      <div className="my-trails-sections-container">
+        <div className="my-trails-section">
+          <h1 className="section-headers-top">My Trails</h1>
+          <div id="manage-cards-top" className="manage-trail-cards-container">
+            {manageCards}
+          </div>
+        </div>
+        <div className="my-favorites-section">
+          <h1 className="section-headers-bottom">My Favorites</h1>
+          <div
+            id="manage-cards-bottom"
+            className="manage-trail-cards-container"
+          >
+            {favoriteCards}
+          </div>
+        </div>
+        <div className="my-collections-section">
+          <h1 className="section-headers-bottom">My Collections</h1>
+          <div
+            id="manage-cards-bottom"
+            className="manage-trail-cards-container"
+          >
+            {collectionCards}
+          </div>
+        </div>
       </div>
     </div>
   );
