@@ -188,7 +188,11 @@ const MyTrailsPage = () => {
         <div className="my-trails-section">
           <h1 className="section-headers-top">My Trails</h1>
           <div id="manage-cards-top" className="manage-trail-cards-container">
-            {manageCards}
+            {manageCards.length ? (
+              manageCards
+            ) : (
+              <h2>Create your first trail to see them here!</h2>
+            )}
           </div>
         </div>
         <div className="my-favorites-section">
