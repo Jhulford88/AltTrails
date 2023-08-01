@@ -129,7 +129,7 @@ function UpdateTrailFormPage() {
     // Handle backend validation errors
     if (!updatedTrailOrErrors) return null;
     if ("errors" in updatedTrailOrErrors) {
-      // handle errors from the backend which comes in as an object with a key of errors
+      // Handle errors from the backend which comes in as an object with a key of errors
       console.error(
         "The backend returned validation errors when creating a new form",
         updatedTrailOrErrors
