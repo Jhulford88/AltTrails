@@ -19,6 +19,7 @@ const LandingPage = () => {
     //useSelectors
     const trails = useSelector(state => state.trails.allTrails)
 
+<<<<<<< Updated upstream
     useEffect(() => {
         dispatch(getAllTrailsThunk())
     }, [dispatch])
@@ -42,6 +43,13 @@ const LandingPage = () => {
     if (!trails) return (
         <h1>Loading...</h1>
     )
+=======
+  //Dispatch thunk to get all trails and collections
+  useEffect(() => {
+    dispatch(getAllTrailsThunk());
+    dispatch(getAllCollectionsThunk());
+  }, [dispatch]);
+>>>>>>> Stashed changes
 
     return (
         <div>
